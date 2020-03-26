@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Playfair+Display|Poppins:300,500&amp;subset=latin-ext');
+/* @import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Playfair+Display|Poppins:300,500&amp;subset=latin-ext');
 .fIstok {
   font-family: 'Istok Web', sans-serif;
   font-weight: 700;
@@ -14,6 +14,33 @@
 .fPlayfair {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
+} */
+
+@font-face {
+  font-family: 'Circe-Light';
+  src: url('../../exyte.com/fonts/Circe-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Circe-Regular';
+  src: url('../../exyte.com/fonts/Circe-Regular.eot');
+  src: local('Circe'), local('Circe-Regular'),
+    url('../../exyte.com/fonts/Circe-Regulard41d.eot?#iefix') format('embedded-opentype'),
+    url('../../exyte.com/fonts/Circe-Regular.woff') format('woff'),
+    url('../../exyte.com/fonts/Circe-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe-Bold';
+  src: url('../../exyte.com/fonts/Circe-Bold.woff2') format('woff2'),
+       url('../../exyte.com/fonts/Circe-Bold.woff') format('woff'),
+       url('../../exyte.com/fonts/Circe-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 a,
 a:hover,
@@ -1801,8 +1828,8 @@ a {
 }
 .muffinSlider .muffinSlide .headline h1 {
   font-size: 50px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
 }
 .muffinSlider .muffinSlide .headline .button {
   padding: 40px 0 0 0;

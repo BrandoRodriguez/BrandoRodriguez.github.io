@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from exyte.com/blog/technologies-behind-immersive-VR-2 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:16:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85444300-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-85444300-1');
+    </script>
+    <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "../../platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));
+
+
+      twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function () {
+          // dataLayer.push({
+          //   'event': 'socialInteraction',
+          //   'socialNetwork': 'Twitter',
+          //   'socialAction': 'click',
+          //   'socialTarget': window.location.href
+          // });
+        });
+      });
+    </script>
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='../../static.ads-twitter.com/uwt.js',
+        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o278x');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <meta charset="UTF-8">
+    <title>VR full body tracking technologies</title>
+    <meta name="description" content="In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@exytehq" />
+    <meta name="twitter:creator" content="@exytehq" />
+    <meta property="og:url" content="https://exyte.com/blog/technologies-behind-immersive-VR-2" />
+    <meta property="og:title" content="VR full body tracking technologies" />
+    <meta property="og:description" content="In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR." />
+    <meta property="og:image" content="https://exyte.com&#x2F;upload&#x2F;preview_oscar.png" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i&amp;display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/boostrap.css">
+    <link rel="stylesheet" href="../css/exyte.css">
+    <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../img/favicon-96.png" sizes="96x96" type="image/png">
+    <link rel="icon" href="../img/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="canonical" href="technologies-behind-immersive-VR-2.html">
+    <link rel="alternate" hreflang="en" href="technologies-behind-immersive-VR-2.html" />
+    <link rel="alternate" hreflang="x-default" href="technologies-behind-immersive-VR-2.html" />
+    <script type="application/ld+json">
+        { "@context": "https://schema.org",
+            "@type": "Article",
+            "author": [
+                {
+                  "@type": "Person",
+                  "name": "Igor Zapletnev"
+                }
+            ],
+            "headline": "VR full body tracking technologies",
+            "image": "https://exyte.com/upload/preview_oscar.png",
+            "editor": "Vasilisa Sheromova",
+            "genre": "software applications",
+            "keywords": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Exyte",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://exyte.com/img/logo-sm.sv"
+                }
+            },
+            "url": "https://exyte.com/blog/technologies-behind-immersive-VR-2",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://exyte.com/blog/technologies-behind-immersive-VR-2"
+            },
+            "datePublished": "2019-07-19",
+            "dateCreated": "2019-07-19",
+            "dateModified": "2019-07-19",
+            "description": "In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR.",
+            "articleBody": "After the explosion of interest in VR in 2016-2017, interest also quickly
+disappeared. The VR market was disappointing: 5 million active VR devices versus
+120 million video games consoles. VR gaming couldn&#39;t provide acceptable prices,
+stability of equipment and quality content. Despite this, the VR market is
+gradually developing and in 2019 there are new cheaper and more stable devices
+supporting a rising amount of high-quality VR content.
+
+In this article, we will analyze the development of VR equipment, consider how
+modern virtual reality helmets work and what additional immersion technologies
+are on the market.
+
+POSITIONAL TRACKING TECHNOLOGIES
+The question of determining the position of the object in space is relevant not
+only for VR, sailors and pilots need to understand where they are and where to
+keep the course. Engineers working on virtual reality systems are solving a
+similar problem.
+
+Fun fact, speaking of navigation, at the dawn of virtual reality devices were
+designed to train military pilots and looked like an evil mushroom.
+
+Picture from (https:&#x2F;&#x2F;icdn8.digitaltrends .com&#x2F;There are several important
+characteristics of virtual reality systems:
+
+ * Delay. How quickly the system responds to changes in position.
+ * Accuracy. How precisely the system determines coordinates 
+ * Number of objects. How many objects in space can be determined by the system
+   (helmet, joysticks, additional items)
+ * Coverage area. How large is the area available for movement
+ * Sensitivity to the environment. For example, how sensitive the system is to
+   external light or to nearby magnetic field distortions.
+
+If the system characteristics perform with a large delay or lack accuracy, what
+we see does not coincide with the impulses from the vestibular apparatus (you
+turn the head, but he picture updates with a delay). In many people, this
+“mismatch” can cause a feeling of nausea. 
+
+The nature of this phenomenon is controversial, but there is a common hypothesis
+based our survival instinct. When in ancient times a person ate a poisonous
+plant affecting brain activity, they felt dizzy and the body experienced a
+similar “mismatch” between what it saw and what it felt. To get rid of toxic
+substances, instinct evoked sense of nausea with subsequent vomiting. The same
+survival instinct now keeps us from poorly calibrated positioning systems with
+low accuracy or a large delay.
+
+Let&#39;s take a look at the main positioning systems and their features.
+
+INERTIAL POSITIONING SYSTEM
+The most common device is the inertial measurement unit (gyrostabilizer). IMU
+consists of several gyroscopes and accelerometers. The gyroscope determines the
+level of inclination, and the accelerometer – how speed has changed according to
+the change in coordinates.
+
+Picture from wikipedia .org. Inertial positioning system based on
+gyrostabilizer, used in Apollo spacecraftThe gyrostabilizer can&#39;t tell where the
+object is. It can only determine the acceleration by three coordinates. One way
+to get the path and coordinates is to integrate accelerations twice. But like
+any other positioning system, such a system gives a random measurement error
+that becomes quadratic when integrated. IMU-only systems accumulate these
+errors, which are never reset. The resulting error is called “drift” of inertial
+systems.
+
+Therefore, virtual reality systems that use only IMU, such as Google Cardboard,
+give you three out of six degrees of freedom. They only allow you to look
+around, standing still.
+
+Almost all industrial positioning systems have built-in IMU. It is quite stable
+and can work without visual input, so when the visual sensor of the system is
+obscured, the system switches to the IMU. When used for short periods of time,
+IMU positioning systems show little drift that can be disregarded in favor of
+overall good results.
+
+To remove the error of integration IMUs are used with another independent
+positioning system, which constantly corrects the IMU. These systems work
+simultaneously and the final position is calculated on the basis of data from
+all of them using Kalman filters.
+
+ACOUSTIC POSITIONING SYSTEM
+In acoustic positioning systems, several sound sources generate an ultrasonic
+signal, and the microphone system in the room performs trilateration. The
+position of the object is calculated from the geometry of the microphones.
+
+On the other hand it has some significant disadvantages:
+
+ * The space between the transmitter and receiver should be completely empty not
+   to distort sound waves. That&#39;s the reason Acoustic positioning is very rarely
+   used in industrial positioning systems.
+ * Low refresh frequence
+ * Dependence on the environment. The speed of sound wave propagation depends on
+   the temperature and humidity of the room.
+
+MAGNETIC POSITIONING SYSTEM
+The magnetic system is the first positioning system that can be used the virtual
+reality mass market. In such a system there is a source of electromagnetic field
+with three orthogonally arranged inductors and each monitored body is equipped
+with a sensor with three coils. The position is determined by the electromotive
+force induced in the sensor coils.
+
+A similar principle is used in theremin, a musical instrument that produces
+sounds of different frequency depending on the position of the player&#39;s hands
+relative to the magnetic field around the receiver.
+
+Magnetic systems are quite accurate, but they only operate at a short distance
+from the source of electromagnetic field. Because of that fall back modern VR
+barely uses magnetic positioning, while it&#39;s very popular in the medical field
+because of its high accuracy.
+
+OPTICAL POSITIONING SYSTEM
+The most common positioning system at the moment. It works on the same principle
+as our eyes – the brain receives a stereo image from two sources and creates a
+three-dimensional image on top of it. Two different image sources allow our
+brain to assess the position of the object in space.
+
+Take a look at Epipolar geometry and computer stereo vision&quot; to learn more about
+stereo images.
+
+Picture from wikipedia .orgOptical systems are divided into several subgroups:
+by the presence of markers and by the location of the camera.
+
+OPTICAL POSITIONAL TRACKING WITH MARKERS
+Cameras are installed along the perimeter of the room, optical markers are
+attached to the sensors. Each sensor has its own pattern so that the system can
+distinguish the sensors from each other.
+
+Picture from cnet .comSensors can be passive (reflect light) and active (emit
+light). Active give more stable tracking and more accurate position
+determination.
+
+OPTICAL POSITIONAL TRACKING WITHOUT MARKERS
+In this case, instead of markers with fixed patterns, the system itself tries to
+find “anchors” on the image. The system determines the selection points (angles
+and faces) and then correlates the change in position of these points with the
+IMU data. One of these algorithms we will consider later.
+
+Picture from venturebeat .comOUTSIDE-IN TRACKING IN VR
+Let&#39;s move on to the second parameter that categorises optical systems – the
+position of the camera. In Outside-in systems, objects are tracked with a camera
+fixed at a stationary location. As long as the objects are within the range of
+the camera, the positioning works quite well. The classic representative of such
+a system is Playstation VR.
+
+Picture from playstation .comINSIDE-OUT TRACKING IN VR
+In this case, the cameras are installed on the VR-devices. Inside-out devices
+then gives you a considerably more freedom to move compared to Outside-in
+devices. Both leading VR headsets, HTC Cosmos and Oculus Quest, mostly use this
+positional tracking system. 
+
+Pictures from hi-fi.ru and pisces.bbystatic .comVR HEADSETS FOR GAMING
+OCULUS RIFT
+Photo from http:&#x2F;&#x2F;www.openhmd. netOculus Rift uses the Outside-in positioning
+method called “constellation.” The headset and controllers have infrared markers
+invisible to the bare eye. The infrared camera is installed in front of the play
+area and determines the position of the markers. The resulting image is rendered
+in the headset for the player to see.
+
+Also, the headset and controllers have an IMU installed. The final position of
+the devices is calculated according to the data from the IMU and the optical
+sensors.
+
+HTC VIVE
+In the Lighthouse positional tracking system, sensors are placed inside the
+headset, in contrast to Rift, where the sensor calculating the position is
+outside.
+
+The play area is surrounded by base stations. HTC Vive headset has a photodiode
+system that detects infrared radiation emitted from the base stations. Inside
+the base stations, there are two stepper motors that spin two infrared lasers at
+a constant speed with a Fresnel lens scattering the laser into a plane. The
+algorithm is as follows:
+
+ * Base station #1 produces a big flash and it signals the other base station to
+   stop working. All photodiodes reset the timer and start the countdown.
+ * When the horizontal laser plane crosses the photodiode, the photodiode
+   remembers the time. Given that the speed of the motor is preset and constant,
+   the device can calculate the angle between the photodiode and the station.
+ * Then the procedure repeats for the vertical plane.
+ * The calculated angles of each photodiode are converted to the position of an
+   imaginary camera, and for that group of photodiodes a PnP problem is solved.
+
+We used the Lighthouse system for one of our projects, and as it turned out,
+there are a lot of nuances that worsen the stability of Vive&#39;s tracking system:
+
+ * Direct sunlight entering the play area. We had to work in constant shadows
+   with blinds down.
+ * Presence of reflective surfaces in the play area (mirrors, glass).
+ * Sensitivity electromagnetic noise at a frequency of 2.4 GHz. That kind of
+   interference can be a result of a large number of WiFi routers working around
+   the play area or a broken microwave being nearby. If you are thinking of
+   opening a VR Arcade with HTC Vive, don&#39;t do it in a shopping mall or anywhere
+   where many people are likely to use WiFi.
+ * The instability of SteamVR platform. Lighthouse needs SteamVR software for
+   proper functioning, but the platform itself doesn&#39;t always work properly.
+   Usually, to solve positioning problems, you need to turn SteamVR off and on
+   again.
+
+OCULUS QUEST
+Quest, similar to HTC Cosmos, use Inside-out optical positioning systems. No
+additional sensors or stations are required around the play area.
+
+Oculus Quest looks magical from the outside. You put your helmet on, and it
+starts working:
+
+ * You don&#39;t need to prepare the room.
+ * You don&#39;t need to have a computer connected.
+ * Hence there are no wires (I thought this, although being evident from the
+   above, merits it&#39;s proper bullet).
+ * There are almost no restrictions on the area of playing space (I walked out
+   from our office on the sixth-floor to a nearby cafe and Oculus still could
+   track the starting point).
+ * The cost of the device is $400 (compared to almost $3000 total cost of HTC
+   Vive+MSI VR One powering it).
+
+On the downside, Oculus Quest has less powerful hardware if compared to a PC so
+that AAA games won&#39;t run. However, as a user, I am thrilled with Oculus Quest.
+
+TECHNOLOGIES BEHIND FREE ROAM GAMES
+In VR games, there are a few movement mechanics: 
+
+ * The player can move, and the distance covered by their avatar in VR equals
+   the distance the player covers in the play area. 
+ * The player stands still and can teleport their avatar in VR.
+ * The player stands still and can move their avatar backward and forward with
+   controller buttons. The latter option greatly reduces the level of immersion
+   in virtual reality. There are though several technologies to address this
+   issue.
+
+KAT VR TREADMILL
+A Chinese-American company that develops treadmills for virtual reality. You put
+on special shoes, stand on the treadmill; the treadmill tracks your movements
+and transfers data to your avatar. Kat VR Mini costs around $5000.
+
+The company is now raising money on Kickstarter for its new product “KAT Loco”.
+Ankle sensors detect jumping from one foot to another, and that counts as
+walking.
+
+OPTITRACK MOTION CAPTURE SOLUTION
+Optitrack is the leader of free roam solutions on the market used by major VR
+arcade franchises, like SandboxVR and TheVoid, use Optitrack.
+
+Optitrack cameras are installed throughout the play area to track both movable
+and immovable objects. Optitrack produces its own cameras to insure a high
+update frequency and high resolution.
+
+Picture from https:&#x2F;&#x2F;optitrack .com&#x2F;The biggest disadvantage is the cost. An
+area of 30 by 30 meters for 48 objects (12 people) costs $500.000 as shown in
+the screenshot of price calculator from the Optitrack website.
+
+Picture from https:&#x2F;&#x2F;optitrack .com&#x2F;SIMULTANEOUS LOCALIZATION AND MAPPING
+An Optitrack alternative is Inside Out systems. Its main representative is SLAM 
+(Simultaneous localisation and mapping) algorithm that is already used in the
+latest HTC Vive Cosmos and Oculus Quest. The camera attached to the headset
+analyzes the environment and builds a map of the room. The controllers work on
+the IMU and the headset cameras determine the position of the controllers by
+movement patterns.
+
+The greatest thing about SLAM is the ability to use any room for VR and almost
+no space restrictions. On the other hand, there is no support for additional
+items, as there are no static cameras and sensors that can track them.
+
+WHAT MAKES THE MOST IMMERSIVE VR GAMES
+VR used to copy videogames realities where the player was an incorporeal
+creature lucky to have hands (sometimes hands also were no option). It didn&#39;t
+influence the gameplay; it just didn&#39;t seem very real. Now many VR games and
+applications allow users to see their full-bodied VR avatar and interact with
+physical objects.
+
+VR WEAPONS
+HTC has trackers that can be attached to weapons, like baseball bats, guns, and
+torches. Feeling the weight and momentum of a bat when you swing it gets
+immersion to the next level.
+
+Photo from https:&#x2F;&#x2F;www.gomgi .comFULL BODY TRACKING IN VR
+The kinematic model of a person allows you to see the whole body in VR.
+Typically, you need sensors are attached to every major joint to create a model,
+but a VR avatar can also be built with only 5 sensors attached to hands, feet
+and head. Of course, the more sensors you get the greater the accuracy is.
+
+HAPTIC GAMING VESTS AND SUITS
+Headsets provide input for two of our senses, sight and hearing, and while taste
+and smell are still off-limits, there is a way to input touch. With a vibration
+vest on you can feel the blows drawn at you. You might have already heard about
+the bHaptics company and their devices.
+
+Picture from https:&#x2F;&#x2F;www.bhaptics .com&#x2F;&#x2F;In addition to the vest, they develop
+sleeves for hands, arms, and feet and cushions for the face.
+
+Another company is TeslaSuit. Judging by the description, in addition to the
+feeling of touch, the suit will allow you to feel warmth and cold. The suit is
+not available even for pre-order yet though.
+
+Picture from https:&#x2F;&#x2F;teslasuit .io&#x2F;VR HAND GLOVES
+Leap Motion used to develop an infrared sensor that can be attached to any VR
+headset, which would not only track the position of your hands but the position
+of your fingers too. There was one restriction, that sort of robbed LeapMotion
+of its coolness; tracking would only work if you don&#39;t have anything in your
+hands. Also, any non-standard hand positions were tracked extremely poorly and
+you couldn&#39;t use any controllers.
+
+Last year the company was rumored to be sold to Apple, but in the end, the deal
+did not take place. In May of 2019, LeapMotion was bought by UltraHaptics for
+$30 million. At the peak of popularity in 2013, Leapmotion estimated at 300
+million.
+
+The Haptxgloves company develops VR gloves that allow you to feel the weight and
+volume of objects. So far, they look rather shabby. Early Access is available on
+the Haptxgloves website. 
+
+SUMMARY
+The virtual reality market continues to develop slowly. There are new cheaper
+and more stable virtual reality systems, and additional equipment allows you to
+dive into VR even more.
+
+Recently we&#39;ve got my hands on Oculus Quest so that a review will follow soon.
+Stay tuned!"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/",
+                        "name": "Blog Exyte"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/technologies-behind-immersive-VR-2",
+                        "name": "VR full body tracking technologies"
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '585984638600036',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+    </script>
+    <script async defer src="../../connect.facebook.net/en_US/sdk.js"></script>
+    <!-- End Facebook SDK -->
+    <div class="page-wrapper page-article">
+    <div class="header-wrapper">
+        <header>
+            <div class="header">
+                <div class="container row">
+                    <div class="logo offset-md-1 col-md-3 col-9">
+                        <a href="../index.html">
+                            <img src="../img/logo-sm.svg" alt="Exyte homepage" width="71" height="20">
+                        </a>
+                    </div><!-- logo -->
+                    <button class="btn-open-menu"><span></span></button>
+                    <nav class="nav row col-md-13">
+                        <ul class="page-nav list">
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../services.html">Services</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../team.html">Team</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../blog.html">Blog</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                            </li>
+                        </ul><!-- page-nav -->
+                        <ul class="social-nav list">
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://instagram.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/instagram.svg" alt="Open Exyte's Instagram in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik02LjY2NyAxMGEzLjMzMyAzLjMzMyAwIDEgMSA2LjY2NyAwIDMuMzMzIDMuMzMzIDAgMCAxLTYuNjY3IDBtLTEuODAyIDBhNS4xMzUgNS4xMzUgMCAxIDAgMTAuMjcgMCA1LjEzNSA1LjEzNSAwIDAgMC0xMC4yNyAwbTkuMjc0LTUuMzM4YTEuMiAxLjIgMCAxIDAgMS4yLTEuMiAxLjIgMS4yIDAgMCAwLTEuMiAxLjJNNS45NiAxOC4xNGMtLjk3NS0uMDQ1LTEuNTA1LS4yMDctMS44NTctLjM0NGEzLjEwOCAzLjEwOCAwIDAgMS0xLjE1LS43NDggMy4wODUgMy4wODUgMCAwIDEtLjc0OC0xLjE1Yy0uMTM3LS4zNTItLjMtLjg4Mi0uMzQ0LTEuODU3LS4wNDktMS4wNTQtLjA1OC0xLjM3LS4wNTgtNC4wNCAwLTIuNjcxLjAxLTIuOTg3LjA1OC00LjA0Mi4wNDQtLjk3NS4yMDgtMS41MDQuMzQ0LTEuODU3LjE4Mi0uNDY3LjM5OC0uOC43NDgtMS4xNS4zNS0uMzUuNjgyLS41NjcgMS4xNS0uNzQ4LjM1Mi0uMTM4Ljg4Mi0uMyAxLjg1Ny0uMzQ0IDEuMDU0LS4wNDkgMS4zNzEtLjA1OCA0LjA0LS4wNTggMi42NyAwIDIuOTg3LjAxIDQuMDQyLjA1OC45NzUuMDQ0IDEuNTA0LjIwOCAxLjg1Ny4zNDQuNDY3LjE4LjguMzk4IDEuMTUuNzQ4LjM1LjM1LjU2Ni42ODMuNzQ4IDEuMTUuMTM3LjM1Mi4zLjg4Mi4zNDQgMS44NTcuMDQ5IDEuMDU1LjA1OCAxLjM3LjA1OCA0LjA0MSAwIDIuNjctLjAxIDIuOTg3LS4wNTggNC4wNDItLjA0NC45NzQtLjIwNyAxLjUwNC0uMzQ0IDEuODU3LS4xODIuNDY2LS4zOTguOC0uNzQ4IDEuMTQ5LS4zNS4zNS0uNjgzLjU2Ni0xLjE1Ljc0OC0uMzUyLjEzNy0uODgyLjMtMS44NTcuMzQ0LTEuMDU0LjA0OC0xLjM3MS4wNTgtNC4wNDIuMDU4LTIuNjcgMC0yLjk4Ni0uMDEtNC4wNC0uMDU4TTUuODc3LjA2QzQuODEzLjExIDQuMDg1LjI3OSAzLjQ1LjUyNkE0LjkwOCA0LjkwOCAwIDAgMCAxLjY4IDEuNjc4IDQuODgzIDQuODgzIDAgMCAwIC41MjUgMy40NUMuMjc4IDQuMDg2LjExIDQuODEzLjA2MSA1Ljg3Ny4wMSA2Ljk0MyAwIDcuMjg0IDAgMTBzLjAxMSAzLjA1Ny4wNiA0LjEyM2MuMDQ5IDEuMDY0LjIxOCAxLjc5MS40NjUgMi40MjdhNC44ODggNC44ODggMCAwIDAgMS4xNTQgMS43NzIgNC45MTQgNC45MTQgMCAwIDAgMS43NzEgMS4xNTNjLjYzNy4yNDcgMS4zNjMuNDE2IDIuNDI3LjQ2NEM2Ljk0NCAxOS45ODggNy4yODUgMjAgMTAgMjBjMi43MTYgMCAzLjA1Ny0uMDExIDQuMTIzLS4wNiAxLjA2NS0uMDQ5IDEuNzkyLS4yMTggMi40MjgtLjQ2NWE0LjkxOCA0LjkxOCAwIDAgMCAxLjc3MS0xLjE1MyA0Ljg5OSA0Ljg5OSAwIDAgMCAxLjE1NC0xLjc3MmMuMjQ3LS42MzYuNDE3LTEuMzYzLjQ2NC0yLjQyNy4wNDktMS4wNjcuMDYtMS40MDcuMDYtNC4xMjNzLS4wMTEtMy4wNTctLjA2LTQuMTIzYy0uMDQ4LTEuMDY0LS4yMTctMS43OTItLjQ2NC0yLjQyN2E0LjkxOCA0LjkxOCAwIDAgMC0xLjE1NC0xLjc3MiA0Ljg5MyA0Ljg5MyAwIDAgMC0xLjc3LTEuMTUzYy0uNjM3LS4yNDctMS4zNjQtLjQxNy0yLjQyOC0uNDY0QzEzLjA1OC4wMSAxMi43MTcgMCAxMC4wMDIgMCA3LjI4NiAwIDYuOTQ1LjAxMSA1Ljg3OC4wNiIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Instagram in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://twitter.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/twitter.svg" alt="Open Exyte's Twitter in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Open Exyte's Twitter in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://github.com/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/github.svg" alt="Open Exyte's Github in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05Ljk5NyAwQzQuNDc3IDAgMCA0LjU5IDAgMTAuMjUyYzAgNC41MyAyLjg2NSA4LjM3MyA2LjgzNyA5LjczLjUuMDk0LjY4My0uMjIzLjY4My0uNDk0IDAtLjI0NS0uMDEtMS4wNTItLjAxNC0xLjkwOS0yLjc4MS42Mi0zLjM2OC0xLjIxLTMuMzY4LTEuMjEtLjQ1NS0xLjE4NS0xLjExLTEuNS0xLjExLTEuNS0uOTA3LS42MzYuMDY4LS42MjMuMDY4LS42MjMgMS4wMDQuMDcyIDEuNTMzIDEuMDU3IDEuNTMzIDEuMDU3Ljg5MiAxLjU2NyAyLjMzOSAxLjExNCAyLjkxLjg1Mi4wODktLjY2My4zNDgtMS4xMTUuNjM0LTEuMzcxLTIuMjItLjI2LTQuNTU1LTEuMTM4LTQuNTU1LTUuMDY3IDAtMS4xMi4zOS0yLjAzNCAxLjAzLTIuNzUyLS4xMDQtLjI1OC0uNDQ2LTEuMy4wOTctMi43MTMgMCAwIC44NC0uMjc2IDIuNzUgMS4wNWE5LjM1NCA5LjM1NCAwIDAgMSAyLjUwMi0uMzQ0Yy44NS4wMDQgMS43MDYuMTE4IDIuNTA1LjM0NSAxLjkwOC0xLjMyNyAyLjc0Ni0xLjA1MSAyLjc0Ni0xLjA1MS41NDQgMS40MTIuMjAyIDIuNDU1LjA5OCAyLjcxMy42NDEuNzE4IDEuMDMgMS42MzMgMS4wMyAyLjc1MiAwIDMuOTM4LTIuMzQgNC44MDUtNC41NjYgNS4wNTkuMzU5LjMxOC42NzguOTQyLjY3OCAxLjg5OCAwIDEuMzcyLS4wMTEgMi40NzYtLjAxMSAyLjgxNCAwIC4yNzMuMTguNTkyLjY4Ny40OTIgMy45Ny0xLjM1NyA2LjgzLTUuMiA2LjgzLTkuNzI4QzE5Ljk5NSA0LjU5IDE1LjUyIDAgOS45OTggMCIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Github in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://clutch.co/profile/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/clutch.svg" alt="Open Exyte's Clutch in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjE4cHgiIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAwIDE4IDIwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNiAoNjc0OTEpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5jbHV0Y2g8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iY2x1dGNoIiBmaWxsPSIjMDAwMDAwIj4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMy41MzA4NjQyLDE0LjEyMzQ1NjggQzEyLjUwMzA3ODYsMTUuMDMxNjczNyAxMS4xNzM5MTQxLDE1LjUyNDYwODggOS44MDI0NjkxMywxNS41MDYxNzI5IEM2LjY0MTk3NTMxLDE1LjUwNjE3MjkgNC4zMjA5ODc2NiwxMy4xODUxODUyIDQuMzIwOTg3NjYsMTAgQzQuMzIwOTg3NjYsNi44MTQ4MTQ4MSA2LjU2NzkwMTIzLDQuNTkyNTkyNTkgOS44MDI0NjkxMyw0LjU5MjU5MjU5IEMxMS4xNzY5ODMsNC41NzQwMDU2IDEyLjUxMTE5NTIsNS4wNTY3Nzk3NCAxMy41NTU1NTU2LDUuOTUwNjE3MjkgTDE0LjI0NjkxMzYsNi41NDMyMDk4OCBMMTcuMzA4NjQyLDMuNDgxNDgxNDggTDE2LjU0MzIwOTksMi43NjU0MzIxIEMxNC42OTEyOTAzLDEuMTEwODgyMzQgMTIuMjg1NTk3MywwLjIxMjA1MTk1MyA5LjgwMjQ2OTEzLDAuMjQ2OTEzNTggQzQuMTIzNDU2NzksMC4yNDY5MTM1OCAwLDQuMzQ1Njc5MDEgMCw5Ljk3NTMwODY0IEMwLDE1LjYwNDkzODIgNC4yMjIyMjIyMiwxOS44MjcxNjA0IDkuODAyNDY5MTMsMTkuODI3MTYwNCBDMTIuMzA5MTUxMiwxOS44NjA3NDEzIDE0LjczNTQzMywxOC45NDMxNjU3IDE2LjU5MjU5MjYsMTcuMjU5MjU5MiBMMTcuMzMzMzMzMywxNi41Njc5MDEyIEwxNC4yMjIyMjIyLDEzLjUwNjE3MjkgTDEzLjUzMDg2NDIsMTQuMTIzNDU2OCBaIiBpZD0iUGF0aCI+PC9wYXRoPg0KICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbCIgY3g9IjkuNjU0MzIwOTkiIGN5PSIxMC4wMjQ2OTE0IiByPSIzLjI4Mzk1MDYyIj48L2NpcmNsZT4NCiAgICAgICAgPC9nPg0KICAgIDwvZz4NCjwvc3ZnPg==" alt="Open Exyte's Clutch in new tab">
+                                </a>
+                            </li>
+                        </ul><!-- social-nav -->
+                    </nav><!-- nav -->
+                </div>
+            </div>
+            <div class="mobile-nav">
+                <ul class="page-nav list">
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../services.html">Services</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../team.html">Team</a>
+                    </li>
+                    <li class="page-nav__item current">
+                        <a class="page-nav__link" href="../blog.html">Blog</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                    </li>
+                </ul><!-- page-nav -->
+            </div>
+        </header>
+    </div>
+    <div class="article page-content">
+        <div class="article__header container">
+            <div class="row">
+                <div class="offset-md-3 col-md-1">
+                    <a class="article__btn-back" href="../blog.html"></a>
+                </div>
+                <div class="col-xl-9 col-md-10">
+                    <h1 class="article__title">VR full body tracking technologies</h1>
+                    <p class="article__description">In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR.</p>
+                </div>
+            </div>
+        </div>
+        <div class="article__content container">
+            <div class="row">
+                <div class="article__img-wrap offset-xl-3 col-xl-12 offset-md-2 col-md-14">
+                    <img class="article__img" src="../upload/preview_oscar.png" alt="">
+                </div>
+                <div class="article__text-block offset-md-4 col-md-10">
+                    <p class="article__text article__text-style">After the explosion of interest in VR in 2016-2017, interest also quickly disappeared. The VR market was disappointing: 5 million active VR devices versus 120 million video games consoles. VR gaming couldn't provide acceptable prices, stability of equipment and quality content. Despite this, the VR market is gradually developing and in 2019 there are new cheaper and more stable devices supporting a rising amount of high-quality VR content.</p>
+<p class="article__text article__text-style">In this article, we will analyze the development of VR equipment, consider how modern virtual reality helmets work and what additional immersion technologies are on the market.</p>
+<h2 class="article__title--h2">Positional tracking technologies</h2>
+<p class="article__text article__text-style">The question of determining the position of the object in space is relevant not only for VR, sailors and pilots  need to understand where they are and where to keep the course. Engineers working on virtual reality systems are solving a similar problem.</p>
+<p class="article__text article__text-style">Fun fact, speaking of navigation, at the dawn of virtual reality devices were designed to train military pilots and looked like an evil mushroom.</p>
+<img src="../upload/VR_1.png" alt="" title="Picture from (https://icdn8.digitaltrends .com/" /><div class="article__img-title">Picture from (https://icdn8.digitaltrends .com/</div>
+<p class="article__text article__text-style">There are several important characteristics of virtual reality systems:</p>
+<ul class="article__list">
+<li class="article__item"><strong>Delay</strong>. How quickly the system responds to changes in position.</li>
+<li class="article__item"><strong>Accuracy</strong>. How precisely the system determines coordinates </li>
+<li class="article__item"><strong>Number of objects</strong>. How many objects in space can be determined by the system (helmet, joysticks, additional items)</li>
+<li class="article__item"><strong>Coverage area</strong>. How large is the area available for movement</li>
+<li class="article__item"><strong>Sensitivity to the environment</strong>. For example, how sensitive the system is to external light or to nearby magnetic field distortions.</li>
+</ul>
+<p class="article__text article__text-style">If the system characteristics perform with a large delay or lack accuracy, what we see does not coincide with the impulses from the vestibular apparatus (you turn the head, but he picture updates with a delay). In many people, this “mismatch” can cause a feeling of nausea. </p>
+<p class="article__text article__text-style">The nature of this phenomenon is controversial, but there is a common hypothesis based our survival instinct. When in ancient times a person ate a poisonous plant affecting brain activity, they felt dizzy and the body experienced a similar “mismatch” between what it saw and what it felt. To get rid of toxic substances, instinct evoked sense of nausea with subsequent vomiting. The same survival instinct now keeps us from poorly calibrated positioning systems with low accuracy or a large delay.</p>
+<p class="article__text article__text-style">Let's take a look at the main positioning systems and their features.</p>
+<h3 class="article__title--h3">Inertial positioning system</h3>
+<p class="article__text article__text-style">The most common device is the inertial measurement unit (gyrostabilizer). IMU consists of several gyroscopes and accelerometers. The gyroscope determines the level of inclination, and the accelerometer – how speed has changed according to the change in coordinates.</p>
+<img src="../upload/VR_2.png" alt="" title="Picture from wikipedia .org. Inertial positioning system based on gyrostabilizer, used in Apollo spacecraft" /><div class="article__img-title">Picture from wikipedia .org. Inertial positioning system based on gyrostabilizer, used in Apollo spacecraft</div>
+<p class="article__text article__text-style">The gyrostabilizer can't tell where the object is. It can only determine the acceleration by three coordinates. One way to get the path and coordinates is to integrate accelerations twice. But like any other positioning system, such a system gives a random measurement error that becomes quadratic when integrated. IMU-only systems accumulate these errors, which are never reset. The resulting error is called “drift” of inertial systems.</p>
+<p class="article__text article__text-style">Therefore, virtual reality systems that use only IMU, such as Google Cardboard, give you three out of six degrees of freedom. They only allow you to look around, standing still.</p>
+<p class="article__text article__text-style">Almost all industrial positioning systems have built-in IMU. It is quite stable and can work without visual input, so when the visual sensor of the system is obscured, the system switches to the IMU. When used for short periods of time, IMU positioning systems show little drift that can be disregarded in favor of overall good results.</p>
+<p class="article__text article__text-style">To remove the error of integration IMUs are used with another independent positioning system, which constantly corrects the IMU. These systems work simultaneously  and the final position is calculated on the basis of data from all of them using Kalman filters.</p>
+<h3 class="article__title--h3">Acoustic positioning system</h3>
+<p class="article__text article__text-style">In acoustic positioning systems, several sound sources generate an ultrasonic signal, and the microphone system in the room performs trilateration. The position of the object is calculated from the geometry of the microphones.</p>
+<p class="article__text article__text-style">On the other hand it has some significant disadvantages:</p>
+<ul class="article__list">
+<li class="article__item">The space between the transmitter and receiver should be completely empty not to distort sound waves. That's the reason Acoustic positioning is very rarely used in industrial positioning systems.</li>
+<li class="article__item">Low refresh frequence</li>
+<li class="article__item">Dependence on the environment. The speed of sound wave propagation depends on the temperature and humidity of the room.</li>
+</ul>
+<h3 class="article__title--h3">Magnetic positioning system</h3>
+<p class="article__text article__text-style">The magnetic system is the first positioning system that can be used the virtual reality mass market. In such a system there is a source of electromagnetic field with three orthogonally arranged inductors and each monitored body is equipped with a sensor with three coils. The position is determined by the electromotive force induced in the sensor coils.</p>
+<p class="article__text article__text-style">A similar principle is used in theremin, a musical instrument that produces sounds of different frequency depending on the position of the player's hands relative to the magnetic field around the receiver.
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/q1hBeuak0oQ?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">Magnetic systems are quite accurate, but they only operate at a short distance from the source of electromagnetic field. Because of that fall back modern VR barely uses magnetic positioning, while it's very popular in the medical field because of its high accuracy.</p>
+<h3 class="article__title--h3">Optical positioning system</h3>
+<p class="article__text article__text-style">The most common positioning system at the moment. It works on the same principle as our eyes – the brain receives a stereo image from two sources and creates a three-dimensional image on top of it. Two different image sources allow our brain to assess the position of the object in space.</p>
+<p class="article__text article__text-style">Take a look at <a class="link link--line link--underscored" rel="nofollow" href="https://en.wikipedia.org/wiki/Epipolar_geometry">Epipolar geometry</a> and <a class="link link--line link--underscored" rel="nofollow" href="https://en.wikipedia.org/wiki/Computer_stereo_vision">computer stereo vision</a>" to learn more about stereo images.</p>
+<img src="../upload/VR_3.png" alt="" title="Picture from wikipedia .org" /><div class="article__img-title">Picture from wikipedia .org</div>
+<p class="article__text article__text-style">Optical systems are divided into several subgroups: by the presence of markers and by the location of the camera.</p>
+<h3 class="article__title--h3">Optical positional tracking with markers</h3>
+<p class="article__text article__text-style">Cameras are installed along the perimeter of the room, optical markers are attached to the sensors. Each sensor has its own pattern so that the system can distinguish the sensors from each other.</p>
+<img src="../upload/VR_4.png" alt="" title="Picture from cnet .com" /><div class="article__img-title">Picture from cnet .com</div>
+<p class="article__text article__text-style">Sensors can be passive (reflect light) and active (emit light). Active give more stable tracking and more accurate position determination.</p>
+<h3 class="article__title--h3">Optical positional tracking without markers</h3>
+<p class="article__text article__text-style">In this case, instead of markers with fixed patterns, the system itself tries to find “anchors” on the image. The system determines the selection points (angles and faces) and then correlates the change in position of these points with the IMU data. One of these algorithms we will consider later.</p>
+<img src="../upload/VR_6.png" alt="" title="Picture from venturebeat .com" /><div class="article__img-title">Picture from venturebeat .com</div>
+<h3 class="article__title--h3">Outside-in tracking in VR</h3>
+<p class="article__text article__text-style">Let's move on to the second parameter that categorises optical systems – the position of the camera. In Outside-in systems, objects are tracked with a camera fixed at a stationary location. As long as the objects are within the range of the camera, the positioning works quite well. The classic representative of such a system is Playstation VR.</p>
+<img src="../upload/VR_5.png" alt="" title="Picture from playstation .com" /><div class="article__img-title">Picture from playstation .com</div>
+<h3 class="article__title--h3">Inside-out tracking in VR</h3>
+<p class="article__text article__text-style">In this case, the cameras are installed on the VR-devices. Inside-out devices then gives you a considerably more freedom to move compared to Outside-in devices. Both leading VR headsets, HTC Cosmos and Oculus Quest, mostly use this positional tracking system. </p>
+<img src="../upload/VR.png" alt="" title="Pictures from hi-fi.ru and pisces.bbystatic .com" /><div class="article__img-title">Pictures from hi-fi.ru and pisces.bbystatic .com</div>
+<h2 class="article__title--h2">VR Headsets for gaming</h2>
+<h3 class="article__title--h3">Oculus Rift</h3>
+<img src="../upload/oculus_constellation.png" alt="" title="Photo from http://www.openhmd. net" /><div class="article__img-title">Photo from http://www.openhmd. net</div>
+<p class="article__text article__text-style">Oculus Rift uses the Outside-in positioning method called “constellation.” The headset and controllers have infrared markers invisible to the bare eye. The infrared camera is installed in front of the play area and determines the position of the markers. The resulting image is rendered in the headset for the player to see.</p>
+<p class="article__text article__text-style">Also, the headset and controllers have an IMU installed. The final position of the devices is calculated according to the data from the IMU and the optical sensors.</p>
+<h3 class="article__title--h3">HTC Vive</h3>
+<p class="article__text article__text-style">In the Lighthouse positional  tracking system, sensors are placed inside the headset, in contrast to Rift, where the sensor calculating the position is outside.</p>
+<p class="article__text article__text-style">The play area is surrounded by base stations. HTC Vive headset has a photodiode system that detects infrared radiation emitted from the base stations. Inside the base stations, there are two stepper motors that spin two infrared lasers at a constant speed with a Fresnel lens scattering the laser into a plane.
+The algorithm is as follows:</p>
+<ul class="article__list">
+<li class="article__item">Base station #1 produces a big flash and it signals the other base station to stop working. All photodiodes reset the timer and start the countdown.</li>
+<li class="article__item">When the horizontal laser plane crosses the photodiode, the photodiode remembers the time. Given that the speed of the motor is preset and constant, the device can calculate the angle between the photodiode and the station.</li>
+<li class="article__item">Then the procedure repeats for the vertical plane.</li>
+<li class="article__item">The calculated angles of each photodiode are converted to the position of an imaginary camera, and for that group of photodiodes a PnP problem is solved.</li>
+</ul>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/J54dotTt7k0?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">We used the Lighthouse system for <a class="link link--line link--underscored" href="../thedeep-vr-development-case-study.html">one of our projects</a>, and as it turned out, there are a lot of nuances that worsen the stability of Vive's tracking system:</p>
+<ul class="article__list article__list--numbered">
+<li class="article__item">Direct sunlight entering the play area. We had to work in constant shadows with blinds down.</li>
+<li class="article__item">Presence of reflective surfaces in the play area (mirrors, glass).</li>
+<li class="article__item">Sensitivity electromagnetic noise at a frequency of 2.4 GHz. That kind of interference can be a result of a large number of WiFi routers working around the play area or a broken microwave being nearby. If you are thinking of opening a VR Arcade with HTC Vive, don't do it in a shopping mall or anywhere where many people are likely to use WiFi.</li>
+<li class="article__item">The instability of SteamVR platform. Lighthouse needs SteamVR software for proper functioning, but the platform itself doesn't always work properly.  Usually, to solve positioning problems, you need to turn SteamVR off and on again.</li>
+</ul>
+<h3 class="article__title--h3">Oculus Quest</h3>
+<p class="article__text article__text-style">Quest, similar to HTC Cosmos, use Inside-out optical positioning systems. No additional sensors or stations are required around the play area.</p>
+<p class="article__text article__text-style">Oculus Quest looks magical from the outside. You put your helmet on, and it starts working:</p>
+<ul class="article__list">
+<li class="article__item">You don't need to prepare the room.</li>
+<li class="article__item">You don't need to have a computer connected.</li>
+<li class="article__item">Hence there are no wires (I thought this, although being evident from the above, merits it's proper bullet).</li>
+<li class="article__item">There are almost no restrictions on the area of playing space (I walked out from our office on the sixth-floor to a nearby cafe and Oculus still could track the starting point).</li>
+<li class="article__item">The cost of the device is $400 (compared to almost $3000 total cost of HTC Vive+MSI VR One powering it).</li>
+</ul>
+<p class="article__text article__text-style">On the downside, Oculus Quest has less powerful hardware if compared to a PC so that AAA games won't run. However, as a user, I am thrilled with Oculus Quest.</p>
+<h2 class="article__title--h2">Technologies behind free roam games</h2>
+<p class="article__text article__text-style">In VR games, there are a few movement mechanics: </p>
+<ul class="article__list">
+<li class="article__item">The player can move, and the distance covered by their avatar in VR equals the distance the player covers in the play area. </li>
+<li class="article__item">The player stands still and can teleport their avatar in VR.</li>
+<li class="article__item">The player stands still and can move their avatar backward and forward with controller buttons. 
+The latter option greatly reduces the level of immersion in virtual reality. There are though several technologies to address this issue.</li>
+</ul>
+<h3 class="article__title--h3">Kat VR Treadmill</h3>
+<p class="article__text article__text-style">A Chinese-American company that develops treadmills for virtual reality. You put on special shoes, stand on the treadmill; the treadmill tracks your movements and transfers data to your avatar. Kat VR Mini costs around $5000.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/A3NwsyZB0O8?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">The company is now raising money on <a class="link link--line link--underscored" rel="nofollow" href="https://www.kickstarter.com/projects/katvrsolutions/kat-loco-complete-wearable-locomotion-system-walk-into-vr">Kickstarter</a> for its new product “KAT Loco”. Ankle sensors detect jumping from one foot to another, and that counts as walking.</p>
+<h3 class="article__title--h3">Optitrack motion capture solution</h3>
+<p class="article__text article__text-style"><a class="link link--line link--underscored" rel="nofollow" href="https://optitrack.com/">Optitrack</a> is the leader of free roam solutions on the market used by major VR arcade franchises, like  <a class="link link--line link--underscored" rel="nofollow" href="https://sandboxvr.com/">SandboxVR</a> and <a class="link link--line link--underscored" rel="nofollow" href="https://www.thevoid.com/">TheVoid</a>, use Optitrack.</p>
+<p class="article__text article__text-style">Optitrack cameras are installed throughout the play area to track both movable and immovable objects. Optitrack produces its own cameras to insure a high update frequency and high resolution.</p>
+<img src="../upload/optitrack.png" alt="" title="Picture from https://optitrack .com/" /><div class="article__img-title">Picture from https://optitrack .com/</div>
+<p class="article__text article__text-style">The biggest disadvantage is the cost. An area of 30 by 30 meters for 48 objects (12 people) costs $500.000 as shown in the screenshot of price calculator from the Optitrack website.</p>
+<img src="../upload/optitrack_price.png" alt="" title="Picture from https://optitrack .com/" /><div class="article__img-title">Picture from https://optitrack .com/</div>
+<h3 class="article__title--h3">Simultaneous localization and mapping</h3>
+<p class="article__text article__text-style">An Optitrack alternative is Inside Out systems. Its main representative is <a class="link link--line link--underscored" rel="nofollow" href="https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping">SLAM</a> (Simultaneous localisation and mapping) algorithm that is already used in the latest HTC Vive Cosmos and Oculus Quest. The camera attached to the headset analyzes the environment and builds a map of the room. The controllers work on the IMU and the headset cameras determine the position of the controllers by movement patterns.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/aVdWED6kfKc?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">The greatest thing about  SLAM is the ability to use any room for VR and almost no space restrictions. On the other hand, there is no support for additional items, as there are no static cameras and sensors that can track them.</p>
+<h2 class="article__title--h2">What makes the most immersive VR games</h2>
+<p class="article__text article__text-style">VR used to copy videogames realities where the player was an incorporeal creature lucky to have hands (sometimes hands also were no option).  It didn't influence the gameplay; it just didn't seem very real.
+Now many VR games and applications allow users to see their full-bodied VR avatar and interact with physical objects.</p>
+<h3 class="article__title--h3">VR weapons</h3>
+<p class="article__text article__text-style">HTC has trackers that can be attached to weapons, like baseball bats, guns, and torches. Feeling the weight and momentum of a bat when you swing it gets immersion to the next level.</p>
+<img src="../upload/controller.jpg" alt="" title="Photo from https://www.gomgi .com" /><div class="article__img-title">Photo from https://www.gomgi .com</div>
+<h3 class="article__title--h3">Full body tracking in VR</h3>
+<p class="article__text article__text-style">The kinematic model of a person allows you to see the whole body in VR. Typically, you need sensors are attached to every major joint to create a model, but a VR avatar can also be built with only 5 sensors attached to hands, feet and head. Of course, the more sensors you get the greater the accuracy is.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/l_yD6U247qs?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h3 class="article__title--h3">Haptic gaming vests and suits</h3>
+<p class="article__text article__text-style">Headsets provide input for two of our senses, sight and hearing, and while taste and smell are still off-limits, there is a way to input touch. 
+With a vibration vest on you can feel the blows drawn at you. You might have already heard about the bHaptics company and their devices.</p>
+<img src="../upload/bhaptics_.png" alt="" title="Picture from https://www.bhaptics .com//" /><div class="article__img-title">Picture from https://www.bhaptics .com//</div>
+<p class="article__text article__text-style">In addition to the vest, they develop sleeves for hands, arms, and feet and cushions for the face.</p>
+<p class="article__text article__text-style">Another company is TeslaSuit. Judging by the description, in addition to the feeling of touch, the suit will allow you to feel warmth and cold. The suit is not available even for pre-order yet though.</p>
+<img src="../upload/teslsuit.png" alt="" title="Picture from https://teslasuit .io/" /><div class="article__img-title">Picture from https://teslasuit .io/</div>
+<h3 class="article__title--h3">VR hand gloves</h3>
+<p class="article__text article__text-style">Leap Motion used to develop an infrared sensor that can be attached to any VR headset, which would not only track the position of your hands but the position of your fingers too. There was one restriction, that sort of robbed LeapMotion of its coolness; tracking would only work if you don't have anything in your hands. Also, any non-standard hand positions were tracked extremely poorly and you couldn't use any controllers.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/rnlCGw-0R8g?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">Last year the company was rumored to be sold to Apple, but in the end, the deal did not take place. In May of 2019, LeapMotion was bought by UltraHaptics for $30 million. At the peak of popularity in 2013, Leapmotion estimated at 300 million.</p>
+<p class="article__text article__text-style">The Haptxgloves company develops VR gloves that allow you to feel the weight and volume of objects. So far, they look rather shabby. Early Access is available on the <a class="link link--line link--underscored" rel="nofollow" href="https://haptx.com/">Haptxgloves website</a>. </p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/0WQw4GmFGVg?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h4 class="article__title--h2">Summary</h4>
+<p class="article__text article__text-style">The virtual reality market continues to develop slowly. There are new cheaper and more stable virtual reality systems, and additional equipment allows you to dive into VR even more.</p>
+<p class="article__text article__text-style">Recently we've got my hands on Oculus Quest so that a review will follow soon. Stay tuned!</p>
+                </div>
+        </div>
+        <div class="article__footer container">
+            <div class="row">
+                <div class="article__footer-wrap col-xl-11 offset-md-4 col-md-11 row">
+                    <div class="article__author row">
+                        <img class="article__author-photo" src="../upload/IZ-min_30x30.jpg" alt="Igor Zapletnev" width="30" height="30">
+                    </div>
+
+                    <div class="wrap-author-name">
+                        <img class="article__author-photo article__author-photo__mobile" src="../upload/IZ-min_30x30.jpg" alt="Igor Zapletnev" width="30" height="30">
+                        <div class="article__author-name">Igor Zapletnev</div>
+                    </div>
+
+                    <div class="article__publication-date">
+                        <span class="article__date">Date:</span>
+                        <span>19 Jul 2019</span>
+                    </div>
+
+                    <ul class="tags__list row">
+                        <li class="tag__item tags__title">
+                            Tags:
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../bloge9c6.html?tag=VR">VR,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog424f.html?tag=for%20tech%20enthusiasts">for tech enthusiasts,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog7920.html?tag=for%20engineers">for engineers,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blogc3a7.html?tag=for%20clients">for clients</a>
+                        </li>
+                    </ul>
+
+                    <div class="article__share row">
+                        <ul class="share-socials__list row">
+                            <li class="share-social__item share__title">Share:</li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/vk.svg" alt="Share on vk.com" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/slack.svg" alt="Share on slack" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/discord.svg" alt="Share on discord" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://twitter.com/intent/tweet?text=VR%20full%20body%20tracking%20technologies%0Ahttps%3A%2F%2Fexyte.com%2Fblog%2Ftechnologies-behind-immersive-VR-2%3Futm_source%3Dtwitter%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog">
+<!--                                    <img src="/img/share/twitter.svg" alt="Share on twitter" width="20" height="16">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Share on twitter" width="20" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="#" onclick="FB.ui({method: 'share', href: 'https:&#x2F;&#x2F;exyte.com&#x2F;blog&#x2F;technologies-behind-immersive-VR-2?utm_source&#x3D;facebook&amp;utm_medium&#x3D;referral&amp;utm_campaign&#x3D;website_blog'}, function(response){});return false;">
+                                    <img src="../img/share/facebook.svg" alt="Share on facebook" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fexyte.com%2Fblog%2Ftechnologies-behind-immersive-VR-2%3Futm_source%3Dlinkedin%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=512,toolbar=1,resizable=0'); return false;">
+                                    <img src="../img/share/linkedin.svg" alt="Share on linked in" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fexyte.com%2Fblog%2Ftechnologies-behind-immersive-VR-2%3Futm_source%3Dreddit%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;title=VR%20full%20body%20tracking%20technologies">
+<!--                                    <img src="/img/share/reddit.svg" alt="Share on reddit" width="18" height="18">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5yZWRkaXQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iU2NlbmFyaW9zIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iLWctRXh5dGVfVUkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xODYuMDAwMDAwLCAtNjU3LjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICA8ZyBpZD0icmVkZGl0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA2NTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS4wMDIyMzYwMiwxNy45OTc3NjQgQzQuMDM0MTQzMTIsMTcuOTk3NzY0IDAuMDA2NzA4MDc0NTMsMTMuOTcwMzI4OSAwLjAwNjcwODA3NDUzLDkuMDAyMjM2MDIgQzAuMDA2NzA4MDc0NTMsNC4wMzQxNDMxMiA0LjAzNDE0MzEyLDAuMDA2NzA4MDc0NTMgOS4wMDIyMzYwMiwwLjAwNjcwODA3NDUzIEMxMy45NzAzMjg5LDAuMDA2NzA4MDc0NTMgMTcuOTk3NzY0LDQuMDM0MTQzMTIgMTcuOTk3NzY0LDkuMDAyMjM2MDIgQzE3Ljk5Nzc2NCwxMy45NzAzMjg5IDEzLjk3MDMyODksMTcuOTk3NzY0IDkuMDAyMjM2MDIsMTcuOTk3NzY0IFogTTE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBDMTQuOTc0NjU4NCw4LjI3Nzc2Mzk4IDE0LjM2NjQ1OTYsNy43MTIwNDk2OSAxMy42Mzk3NTE2LDcuNzM2NjQ1OTYgQzEzLjMxNzc2NCw3Ljc0NzgyNjA5IDEzLjAxMTQyODYsNy44Nzk3NTE1NSAxMi43Nzg4ODIsOC4xMDExMTgwMSBDMTEuNzU0NzgyNiw3LjQwMzQ3ODI2IDEwLjU1MTgwMTIsNy4wMjExMTgwMSA5LjMxNTI3OTUsNi45OTQyODU3MSBMOS44OTg4ODE5OSw0LjE4ODA3NDUzIEwxMS44MjQwOTk0LDQuNTkyNzk1MDMgQzExLjg3Nzc2NCw1LjA4Njk1NjUyIDEyLjMyMDQ5NjksNS40NDQ3MjA1IDEyLjgxNDY1ODQsNS4zOTEwNTU5IEMxMy4zMDg4MTk5LDUuMzM3MzkxMyAxMy42NjY1ODM5LDQuODk0NjU4MzkgMTMuNjEyOTE5Myw0LjQwMDQ5Njg5IEMxMy41NTkyNTQ3LDMuOTA2MzM1NCAxMy4xMTY1MjE3LDMuNTQ4NTcxNDMgMTIuNjIyMzYwMiwzLjYwMjIzNjAyIEMxMi4zMzgzODUxLDMuNjMxMzA0MzUgMTIuMDgzNDc4MywzLjc5Njc3MDE5IDExLjk0MjYwODcsNC4wNDI3MzI5MiBMOS43Mzc4ODgyLDMuNjAyMjM2MDIgQzkuNTg4MDc0NTMsMy41Njg2OTU2NSA5LjQzODI2MDg3LDMuNjYyNjA4NyA5LjQwNDcyMDUsMy44MTQ2NTgzOSBDOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE5MTMwNDMgTDguNzQwNjIxMTIsNi45NDA2MjExMiBDNy40ODg0NDcyLDYuOTYwNzQ1MzQgNi4yNjk4MTM2Niw3LjM0NTM0MTYxIDUuMjMyMjk4MTQsOC4wNDc0NTM0MiBDNC43MDQ1OTYyNyw3LjU1MTA1NTkgMy44NzI3OTUwMyw3LjU3NTY1MjE3IDMuMzc2Mzk3NTIsOC4xMDU1OTAwNiBDMi44OCw4LjYzMzI5MTkzIDIuOTA0NTk2MjcsOS40NjUwOTMxNyAzLjQzNDUzNDE2LDkuOTYxNDkwNjggQzMuNTM3MzkxMywxMC4wNTc2Mzk4IDMuNjU1OTAwNjIsMTAuMTQwMzcyNyAzLjc4NzgyNjA5LDEwLjE5ODUwOTMgQzMuNzc4ODgxOTksMTAuMzMwNDM0OCAzLjc3ODg4MTk5LDEwLjQ2MjM2MDIgMy43ODc4MjYwOSwxMC41OTQyODU3IEMzLjc4NzgyNjA5LDEyLjYwODk0NDEgNi4xMzU2NTIxNywxNC4yNDc5NTAzIDkuMDMxMzA0MzUsMTQuMjQ3OTUwMyBDMTEuOTI2OTU2NSwxNC4yNDc5NTAzIDE0LjI3NDc4MjYsMTIuNjExMTgwMSAxNC4yNzQ3ODI2LDEwLjU5NDI4NTcgQzE0LjI4MzcyNjcsMTAuNDYyMzYwMiAxNC4yODM3MjY3LDEwLjMzMDQzNDggMTQuMjc0NzgyNiwxMC4xOTg1MDkzIEMxNC43MjY0NTk2LDkuOTcyNjcwODEgMTUuMDEwNDM0OCw5LjUwNzU3NzY0IDE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBaIE02LjAwNTk2MjczLDkuOTAzMzU0MDQgQzYuMDA1OTYyNzMsOS40MDY5NTY1MiA2LjQxMDY4MzIzLDkuMDAyMjM2MDIgNi45MDcwODA3NSw5LjAwMjIzNjAyIEM3LjQwMzQ3ODI2LDkuMDAyMjM2MDIgNy44MDgxOTg3Niw5LjQwNjk1NjUyIDcuODA4MTk4NzYsOS45MDMzNTQwNCBDNy44MDgxOTg3NiwxMC4zOTk3NTE2IDcuNDAzNDc4MjYsMTAuODA0NDcyIDYuOTA3MDgwNzUsMTAuODA0NDcyIEM2LjQwODQ0NzIsMTAuOCA2LjAwNTk2MjczLDEwLjM5OTc1MTYgNi4wMDU5NjI3Myw5LjkwMzM1NDA0IFogTTExLjIzMTU1MjgsMTIuMzc2Mzk3NSBDMTAuNTkyMDQ5NywxMi44NTcxNDI5IDkuODA5NDQwOTksMTMuMTAzMTA1NiA5LjAwODk0NDEsMTMuMDY5NTY1MiBDOC4yMDg0NDcyLDEzLjEwMzEwNTYgNy40MjU4Mzg1MSwxMi44NTcxNDI5IDYuNzg2MzM1NCwxMi4zNzYzOTc1IEM2LjcwMTM2NjQ2LDEyLjI3MzU0MDQgNi43MTcwMTg2MywxMi4xMTkyNTQ3IDYuODE5ODc1NzgsMTIuMDM0Mjg1NyBDNi45MDkzMTY3NywxMS45NjA0OTY5IDcuMDM2NzcwMTksMTEuOTYwNDk2OSA3LjEyODQ0NzIsMTIuMDM0Mjg1NyBDNy42Njk1NjUyMiwxMi40MzAwNjIxIDguMzI5MTkyNTUsMTIuNjMxMzA0MyA5LDEyLjYgQzkuNjcwODA3NDUsMTIuNjM1Nzc2NCAxMC4zMzI2NzA4LDEyLjQ0MzQ3ODMgMTAuODgwNDk2OSwxMi4wNTIxNzM5IEMxMC45Nzg4ODIsMTEuOTU2MDI0OCAxMS4xMzk4NzU4LDExLjk1ODI2MDkgMTEuMjM2MDI0OCwxMi4wNTY2NDYgQzExLjMzMjE3MzksMTIuMTU1MDMxMSAxMS4zMjk5Mzc5LDEyLjMxNjAyNDggMTEuMjMxNTUyOCwxMi40MTIxNzM5IEwxMS4yMzE1NTI4LDEyLjM3NjM5NzUgWiBNMTEuMDcwNTU5LDEwLjgzNTc3NjQgQzEwLjU3NDE2MTUsMTAuODM1Nzc2NCAxMC4xNjk0NDEsMTAuNDMxMDU1OSAxMC4xNjk0NDEsOS45MzQ2NTgzOSBDMTAuMTY5NDQxLDkuNDM4MjYwODcgMTAuNTc0MTYxNSw5LjAzMzU0MDM3IDExLjA3MDU1OSw5LjAzMzU0MDM3IEMxMS41NjY5NTY1LDkuMDMzNTQwMzcgMTEuOTcxNjc3LDkuNDM4MjYwODcgMTEuOTcxNjc3LDkuOTM0NjU4MzkgQzExLjk5MTgwMTIsMTAuNDMxMDU1OSAxMS42MDQ5Njg5LDEwLjg0OTE5MjUgMTEuMTA4NTcxNCwxMC44NjkzMTY4IEMxMS4wOTI5MTkzLDEwLjg2OTMxNjggMTEuMDc5NTAzMSwxMC44NjkzMTY4IDExLjA2Mzg1MDksMTAuODY5MzE2OCBMMTEuMDcwNTU5LDEwLjgzNTc3NjQgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt="Share on reddit" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://telegram.me/share/url?url=https%3A%2F%2Fexyte.com%2Fblog%2Ftechnologies-behind-immersive-VR-2%3Futm_source%3Dtelegram%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;text=VR%20full%20body%20tracking%20technologies%22">
+                                    <img src="../img/share/telegram.svg" alt="Share on telegram" width="19" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/medium.svg" alt="Share on medium" width="18" height="14">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="singles singles--type-1 container">
+            <div class="row">
+                <div class="single__title-wrap--article offset-md-4 col-md-10">
+                    <h2 class="single__title--article">Read similar articles</h2>
+                </div>
+                <div class="single single--type-1 offset-lg-2 col-lg-4 offset-md-2 col-md-7">
+                    <a href="oculus-quest-review.html"><img class="single__img single__img--type-1" src="../upload/oculus_prev_560x360.png" alt="Blog = Our Oculus Quest review"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="oculus-quest-review.html">Our Oculus Quest review</a></h3>
+                        <p class="single__description">In this blog post we tell why our Virtual Reality department unanimously fell in love with Oculus Quest and out of love with HTC Vive.</p>
+                        <a class="single__link-more link link--line" href="oculus-quest-review.html">Learn more</a>
+                        <span class="single__time-read">6 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-1 col-md-7">
+                    <a href="top-36-tools-for-mobile-development.html"><img class="single__img single__img--type-1" src="../upload/36toolspreview_560x360.png" alt="Blog = Top 36 Mobile App Development Software in 2019"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="top-36-tools-for-mobile-development.html">Top 36 Mobile App Development Software in 2019</a></h3>
+                        <p class="single__description">We&#39;ve made up a list of mobile development tools so you can compare features, prices, and ratings about each tool to choose what fits you.</p>
+                        <a class="single__link-more link link--line" href="top-36-tools-for-mobile-development.html">Learn more</a>
+                        <span class="single__time-read">11 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-2 col-md-7">
+                    <a href="digital-identity-is-killer-dapp.html"><img class="single__img single__img--type-1" src="../upload/digital%20identity_560x360.png" alt="Blog = Digital Identity: Blockchain’s Killer Dapp"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="digital-identity-is-killer-dapp.html">Digital Identity: Blockchain’s Killer Dapp</a></h3>
+                        <p class="single__description">Blockchain is immutable, it cannot be tampered with, and it has levels of permissioned viewing, which allows it a perfect choice for digital identity solutions.</p>
+                        <a class="single__link-more link link--line" href="digital-identity-is-killer-dapp.html">Learn more</a>
+                        <span class="single__time-read">10 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="footer__wrap row">
+        <span class="footer__copyright copyright col-lg-4 order-lg-1 order-4">
+            <span>© Exyte 2020</span>
+        </span>
+        <div class="footer__contact col-lg-3 order-lg-2 order-1">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:sales@exyte.com">sales@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-3 order-lg-3 order-2">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:info@exyte.com">info@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-4 order-lg-4 order-3">
+<!--            <img class="footer__icon" src="/img/icons/map.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEyIDE4Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xMSA2QTUgNSAwIDEgMCAxIDZjMCAxLjc4OCAxLjY2NyA1LjI1MyA1IDEwLjIyM0M5LjMzMyAxMS4yNTMgMTEgNy43ODggMTEgNnpNNiAxOEMyIDEyLjIxIDAgOC4yMSAwIDZhNiA2IDAgMSAxIDEyIDBjMCAyLjIxLTIgNi4yMS02IDEyek02IDhhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0em0wIDFhMyAzIDAgMSAxIDAtNiAzIDMgMCAwIDEgMCA2eiIgb3BhY2l0eT0iLjUiLz4NCjwvc3ZnPg0K" alt="">
+            <a class="footer__link link" target="_ blank" href="https://goo.gl/maps/Bx4XckDoSB2Ah938A" rel="nofollow">408 Broadway, NYC</a>
+        </div>
+        <span class="footer__author col-lg-4 order-lg-5 order-6">
+            <a class="link" target="_ blank" href="https://anthonyslab.com/" rel="nofollow">Anthony’s Lab</a>
+        </span>
+    </div>
+</footer>
+<script src="../js/main.js"></script>
+<!--    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"/>-->
+</body>
+
+<!-- Mirrored from exyte.com/blog/technologies-behind-immersive-VR-2 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:17:07 GMT -->
+</html>

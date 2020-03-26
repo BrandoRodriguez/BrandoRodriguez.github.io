@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from exyte.com/blog/how-does-augmented-reality-work by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85444300-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-85444300-1');
+    </script>
+    <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "../../platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));
+
+
+      twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function () {
+          // dataLayer.push({
+          //   'event': 'socialInteraction',
+          //   'socialNetwork': 'Twitter',
+          //   'socialAction': 'click',
+          //   'socialTarget': window.location.href
+          // });
+        });
+      });
+    </script>
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='../../static.ads-twitter.com/uwt.js',
+        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o278x');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <meta charset="UTF-8">
+    <title>AR Technology: How Does Augmented Reality Work?</title>
+    <meta name="description" content="In this article we take a look at the technologies behind augmented reality, where AR used and how it&#39;s differences from MR and VR.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@exytehq" />
+    <meta name="twitter:creator" content="@exytehq" />
+    <meta property="og:url" content="https://exyte.com/blog/how-does-augmented-reality-work" />
+    <meta property="og:title" content="AR Technology: How Does Augmented Reality Work?" />
+    <meta property="og:description" content="In this article we take a look at the technologies behind augmented reality, where AR used and how it&#39;s differences from MR and VR." />
+    <meta property="og:image" content="https://exyte.com&#x2F;upload&#x2F;preview How does AR work-arcore.jpg" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i&amp;display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/boostrap.css">
+    <link rel="stylesheet" href="../css/exyte.css">
+    <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../img/favicon-96.png" sizes="96x96" type="image/png">
+    <link rel="icon" href="../img/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="canonical" href="how-does-augmented-reality-work.html">
+    <link rel="alternate" hreflang="en" href="how-does-augmented-reality-work.html" />
+    <link rel="alternate" hreflang="x-default" href="how-does-augmented-reality-work.html" />
+    <script type="application/ld+json">
+        { "@context": "https://schema.org",
+            "@type": "Article",
+            "author": [
+                {
+                  "@type": "Person",
+                  "name": "Exyte Team"
+                }
+            ],
+            "headline": "AR Technology: How Does Augmented Reality Work?",
+            "image": "https://exyte.com/upload/preview How does AR work-arcore.jpg",
+            "editor": "Vasilisa Sheromova",
+            "genre": "software applications",
+            "keywords": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Exyte",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://exyte.com/img/logo-sm.sv"
+                }
+            },
+            "url": "https://exyte.com/blog/how-does-augmented-reality-work",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://exyte.com/blog/how-does-augmented-reality-work"
+            },
+            "datePublished": "2019-05-21",
+            "dateCreated": "2019-05-21",
+            "dateModified": "2019-05-21",
+            "description": "In this article we take a look at the technologies behind augmented reality, where AR used and how it&#39;s differences from MR and VR.",
+            "articleBody": "One of the first devices for creating augmented reality was heavy, awkward and
+could crush a person’s head. Hanging from the ceiling on special mounts, it
+resembled a torture instrument from the Middle Ages. Although there are still
+many more improvements to be made, Augmented Reality is becoming cheaper, more
+comfortable, and more accessible for the average person day by day.
+
+Augmented reality (AR) is seen as the next significant technological innovation
+that will impact each and every one of us. Many believe that AR will change the
+way we see the world and remove barriers by creating an additional 3D reality
+that we can take advantage of. In this article, we will look at AR’s key
+features to give you a better understanding of what might be just around the
+corner. 
+
+WHAT IS AUGMENTED REALITY AND HOW DOES IT WORK?
+Augmented reality complements the physical world that we are experiencing in
+real time, by incorporating digital data with the help of portable devices such
+as tablets, smartphones or a special apparatus such as Google Glass or HoloLens.
+At this point, it needs to be mentioned that augmented reality should be
+distinguished from virtual reality and mixed reality. With augmented reality,
+virtual objects are projected onto real environments, while virtual reality is a
+world created by technical means, transmitted to a person through their sensory
+organs. Mixed (aka hybrid) reality combines both approaches.
+
+To make it easy to remember the difference, simply imagine your friend wearing
+VR glasses, helplessly flailing his arms and bumping into walls. As far as AR is
+concerned, think back to 2016 when the whole world was obsessed with PokemonGO.
+
+HOW DOES AR WORK?
+To create an augmented reality, we need to use a processor, display, camera, and
+electronics, which determine the position, such as an accelerometer, GPS and
+compass. For example, touchscreen smartphone has the necessary kit for the owner
+of this gadget to plunge into the world of augmented reality.
+
+Augmented reality applications work as follows:
+
+ * A special marker is used.
+ * A mobile device or computer reads the marker.
+ * The screen displays a layer of additional information.
+
+Pattern recognition is quite straightforward. If an application needs to
+recognize a certain object, it consults a library of photos with this object in
+the server, identifies the general structure, color, and arbitrary parameters,
+assigning this object a specific action when it is detected.
+
+Augmented reality markers are images or small objects that act as visual cues
+for the display of virtual information. Once augmented reality software is
+trained to recognize certain markers, the overlay of visual information will
+occur automatically. 
+
+The use of markers can be best illustrated through its use in films. For Peter
+Jackson&#39;s film trilogy, The Lord of the Rings, the character Gollum was created
+using markers. The monkeys in the most recent Planet of the Apes franchise were
+done in the same way. Actors in these films were required to wear special
+costumes with multiple markers on them that would allow every one of their
+movements to be tracked and transferred to the characters who were displayed
+virtually. 
+
+Now that you know the very basics of augmented reality, it may have become clear
+to you that we cannot put a marker on every object around us. Indeed, there is a
+need for a more advanced augmented reality system.
+
+For this purpose, SLAM comes to the rescue. It is used to build maps in
+uncharted spaces with simultaneous control over the current location and
+distance covered. It is a tool that is well suited to using augmented reality
+systems on the move, as it lets the application know where the user is.
+
+Here it is worth mentioning ARKit and ARCore. They are often referred to as
+SLAM, but in reality, they are its successors. So, let’s get this all
+straightened out.
+
+ARKit is a Visual Inertial Odometry (VIO) system launched by Apple and presented
+as “the biggest AR platform in the world.” VIO is a system that tracks someone’s
+position and movements in their surroundings. The received data is calculated
+twice, in parallel, and then shown on your mobile device’s screen.
+
+Such a two-way approach allows for more precise readings. Firstly, the Visual
+(camera) system tracks someone’s position with the help of a pixel on the camera
+sensor that matches a certain point in the real world. The second feature that
+ensures precision is the Inertial system, which consists of an accelerometer and
+gyroscope and tracks someone’s position. A Kalman Filter decides which system
+has provided more accurate information and publishes the position update via the
+ARKit SDK.
+
+In turn, ARCore is Google’s platform for building augmented reality experiences.
+This system’s processes also consist of 2 essential steps. The first involves
+tracking the position of the mobile device in motion, and the second involves
+building an understanding of the surrounding environment. Considering this
+process, the phone’s camera recognizes particular points and their motion within
+a certain time period. As a result, the phone is able to calculate its position
+and orientation as it moves over distances. Furthermore, ARCore can identify
+flat surfaces and normal lighting. In other words, this system “reads” its
+surroundings to enable users to interact with any digital objects in a way that
+integrates seamlessly with the real world.
+
+HOW IS AR USED?
+The reason why augmented reality is so exciting is that it allows us to do
+day-to-day activities in a simpler way. Let’s look at some augmented reality
+examples that we are sure to see in the near future.
+
+AR IN EDUCATION
+With the help of AR, making education more in-depth and engaging is becoming a
+possibility. With this, students will be able to achieve better outcomes in
+subjects where complex objects often need to be imagined or are only encountered
+via 2D diagrams. Now students have the opportunity to interact with 3D
+visualizations of objects in subjects such as maths and science. Examining every
+detail of a human body or a geometrical shape will become a simple process with
+AR.
+
+AR IN HEALTHCARE
+In addition to 2D illustrative training for medical school students, there is
+now an opportunity to see 3D models of patients. This can help a surgeon to
+react faster and act with greater precision during an operation. Visible anatomy
+using augmented reality is demonstrated by HoloLens’ HoloAnatomy.
+
+AR IN RETAIL
+No longer will a person have to measure the distances between objects in their
+home to see if a new item of furniture will fit or not. With AR, it is possible
+to select an item from an online catalog and virtually position it in your
+house. IKEA implemented this idea back in 2014.
+
+AR IN CONSTRUCTION
+Thanks to AR, visualization in architecture and construction moves to a
+qualitatively new level, allowing us to see the final result at the design
+stage, thereby reducing risks in the production process. The time-consuming
+practice of building model versions of constructions will also be a thing of the
+past. Augmented reality will shape the future of construction. By visualizing
+plans, builders can more easily go through what needs to be done step by step.
+Instead of looking through detailed and complex blueprints, they can take in the
+required information in a shorter space of time. 
+
+AR IN THE WORLD OF ADVERTISING
+The commercial possibilities of augmented reality are so vast that it is almost
+impossible to conceive the boundaries of what is possible. In the advertising
+sphere, AR is proving groundbreaking. In 2009, readers could scan Esquire’s
+cover and see Robert Downey Jr come to life. What’s more, the wine brand “19
+Crimes” allowed its consumers to come face-to-face with the infamous convicts on
+their bottles and hear their stories. 
+
+AR IN THE ENTERTAINMENT INDUSTRY
+Today, the most popular AR game is still PokemonGo. By combining augmented
+reality, geo-tracking and the popular Pokemon brand, it has reached
+unprecedented success. The game had been downloaded more than 800 million times
+by December 2018. Companies such as Lego and Disney have also been active in
+developing games using AR. Major toy manufacturers have expressed their
+intention to be a part of this exciting frontier as well.
+
+AR IN THE MILITARY
+The military has invested a lot in creating helmets which receive real-time
+information from the physical world while soldiers are in fighter planes or
+helicopters, and advise whether the surroundings are safe or not.
+
+AR DEVICES
+Photo from unsplash.comTo experience augmented reality we need a special device.
+There are two options: AR glasses or headsets, and mobile devices.
+
+The most vivid example of AR glasses is Google Glass. The brand of high-tech
+glasses originally excited people as they were able to take photos and shoot
+video on command, all of which was automatically sent to the cloud. 
+
+However, they didn’t become mainstream, mainly due to the high price and
+Google’s failure to convince users that the glasses would be needed on an
+everyday basis. There is, however, a happy ending. Google Glass is used today in
+industrial settings, bringing lots of value to the companies that have acquired
+them.
+
+Microsoft has also attempted to conquer this arena by launching the HoloLens
+headset for business professionals. The headsets have received glowing reviews
+but are still not ideal for daily use. 
+
+Currently, the best chance of AR’s mainstream success lies with the Magic Leap
+headset. This device’s developers improved on all the mistakes made by
+competitors, and have developed a futuristic design similar to what is seen in
+the film Ready Player One. Despite quite a high price and a limited field of
+view, the Magic Leap device feels more comfortable, possesses a more intuitive
+display and offers greater immersion according to numerous reviews on the
+Internet.
+
+For the time being, AR is still mostly found on mobile devices. This is due to
+the convenience they provide a common user with and a ready-made technical base
+mobile app developers deal with. The prevalence of mobile devices means that
+once AR becomes integrated with services we already use, it will also
+automatically become mainstream. 
+
+Aside from the AR gimmicks and games such as PokemonGO, it is obvious that there
+is an increasing amount of applications that want to change our reality, not
+just for novelty’s sake, but to make this world a better place in which to
+exist. At this very moment, you can use Google translate to help you read and
+understand street and shop signs when visiting a foreign country. The Sunseeker
+app has proved its worth for fans of hunting, and the Google Sky Map can foster
+users’ interest in astronomy, facilitating the search for stars and
+constellations. 
+
+AUGMENTED REALITY VS. VIRTUAL REALITY
+With the emergence of technologies that have enabled augmented reality, a
+question arises: what is the difference between an augmented reality and a
+virtual one? Both can change the way we look at the world, and both promise
+tremendous growth. To make it plain to see, the biggest difference between
+augmented and virtual reality is:
+
+ * AR exists at the junction of the real and virtual worlds, while VR is fully
+   computer generated.
+ * AR lets people interact with both worlds and see the difference between them,
+   while with VR it is sometimes difficult to understand what’s real and what’s
+   not.
+ * If you want to experience AR, your smartphone is your enough, while in the
+   case of VR, you always need a special headset.
+
+IS AUGMENTED REALITY THE FUTURE?
+In a nutshell, augmented reality is no longer something futuristic, but a
+reality that is here and now. There are a huge number of opportunities for
+commercial use in the fields of education, industry, medicine, construction,
+commerce and even tourism. If properly implemented and maintained, it can become
+a useful and pleasant supplement to most human day-to-day activities."
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/",
+                        "name": "Blog Exyte"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/how-does-augmented-reality-work",
+                        "name": "AR Technology: How Does Augmented Reality Work?"
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '585984638600036',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+    </script>
+    <script async defer src="../../connect.facebook.net/en_US/sdk.js"></script>
+    <!-- End Facebook SDK -->
+    <div class="page-wrapper page-article">
+    <div class="header-wrapper">
+        <header>
+            <div class="header">
+                <div class="container row">
+                    <div class="logo offset-md-1 col-md-3 col-9">
+                        <a href="../index.html">
+                            <img src="../img/logo-sm.svg" alt="Exyte homepage" width="71" height="20">
+                        </a>
+                    </div><!-- logo -->
+                    <button class="btn-open-menu"><span></span></button>
+                    <nav class="nav row col-md-13">
+                        <ul class="page-nav list">
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../services.html">Services</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../team.html">Team</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../blog.html">Blog</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                            </li>
+                        </ul><!-- page-nav -->
+                        <ul class="social-nav list">
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://instagram.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/instagram.svg" alt="Open Exyte's Instagram in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik02LjY2NyAxMGEzLjMzMyAzLjMzMyAwIDEgMSA2LjY2NyAwIDMuMzMzIDMuMzMzIDAgMCAxLTYuNjY3IDBtLTEuODAyIDBhNS4xMzUgNS4xMzUgMCAxIDAgMTAuMjcgMCA1LjEzNSA1LjEzNSAwIDAgMC0xMC4yNyAwbTkuMjc0LTUuMzM4YTEuMiAxLjIgMCAxIDAgMS4yLTEuMiAxLjIgMS4yIDAgMCAwLTEuMiAxLjJNNS45NiAxOC4xNGMtLjk3NS0uMDQ1LTEuNTA1LS4yMDctMS44NTctLjM0NGEzLjEwOCAzLjEwOCAwIDAgMS0xLjE1LS43NDggMy4wODUgMy4wODUgMCAwIDEtLjc0OC0xLjE1Yy0uMTM3LS4zNTItLjMtLjg4Mi0uMzQ0LTEuODU3LS4wNDktMS4wNTQtLjA1OC0xLjM3LS4wNTgtNC4wNCAwLTIuNjcxLjAxLTIuOTg3LjA1OC00LjA0Mi4wNDQtLjk3NS4yMDgtMS41MDQuMzQ0LTEuODU3LjE4Mi0uNDY3LjM5OC0uOC43NDgtMS4xNS4zNS0uMzUuNjgyLS41NjcgMS4xNS0uNzQ4LjM1Mi0uMTM4Ljg4Mi0uMyAxLjg1Ny0uMzQ0IDEuMDU0LS4wNDkgMS4zNzEtLjA1OCA0LjA0LS4wNTggMi42NyAwIDIuOTg3LjAxIDQuMDQyLjA1OC45NzUuMDQ0IDEuNTA0LjIwOCAxLjg1Ny4zNDQuNDY3LjE4LjguMzk4IDEuMTUuNzQ4LjM1LjM1LjU2Ni42ODMuNzQ4IDEuMTUuMTM3LjM1Mi4zLjg4Mi4zNDQgMS44NTcuMDQ5IDEuMDU1LjA1OCAxLjM3LjA1OCA0LjA0MSAwIDIuNjctLjAxIDIuOTg3LS4wNTggNC4wNDItLjA0NC45NzQtLjIwNyAxLjUwNC0uMzQ0IDEuODU3LS4xODIuNDY2LS4zOTguOC0uNzQ4IDEuMTQ5LS4zNS4zNS0uNjgzLjU2Ni0xLjE1Ljc0OC0uMzUyLjEzNy0uODgyLjMtMS44NTcuMzQ0LTEuMDU0LjA0OC0xLjM3MS4wNTgtNC4wNDIuMDU4LTIuNjcgMC0yLjk4Ni0uMDEtNC4wNC0uMDU4TTUuODc3LjA2QzQuODEzLjExIDQuMDg1LjI3OSAzLjQ1LjUyNkE0LjkwOCA0LjkwOCAwIDAgMCAxLjY4IDEuNjc4IDQuODgzIDQuODgzIDAgMCAwIC41MjUgMy40NUMuMjc4IDQuMDg2LjExIDQuODEzLjA2MSA1Ljg3Ny4wMSA2Ljk0MyAwIDcuMjg0IDAgMTBzLjAxMSAzLjA1Ny4wNiA0LjEyM2MuMDQ5IDEuMDY0LjIxOCAxLjc5MS40NjUgMi40MjdhNC44ODggNC44ODggMCAwIDAgMS4xNTQgMS43NzIgNC45MTQgNC45MTQgMCAwIDAgMS43NzEgMS4xNTNjLjYzNy4yNDcgMS4zNjMuNDE2IDIuNDI3LjQ2NEM2Ljk0NCAxOS45ODggNy4yODUgMjAgMTAgMjBjMi43MTYgMCAzLjA1Ny0uMDExIDQuMTIzLS4wNiAxLjA2NS0uMDQ5IDEuNzkyLS4yMTggMi40MjgtLjQ2NWE0LjkxOCA0LjkxOCAwIDAgMCAxLjc3MS0xLjE1MyA0Ljg5OSA0Ljg5OSAwIDAgMCAxLjE1NC0xLjc3MmMuMjQ3LS42MzYuNDE3LTEuMzYzLjQ2NC0yLjQyNy4wNDktMS4wNjcuMDYtMS40MDcuMDYtNC4xMjNzLS4wMTEtMy4wNTctLjA2LTQuMTIzYy0uMDQ4LTEuMDY0LS4yMTctMS43OTItLjQ2NC0yLjQyN2E0LjkxOCA0LjkxOCAwIDAgMC0xLjE1NC0xLjc3MiA0Ljg5MyA0Ljg5MyAwIDAgMC0xLjc3LTEuMTUzYy0uNjM3LS4yNDctMS4zNjQtLjQxNy0yLjQyOC0uNDY0QzEzLjA1OC4wMSAxMi43MTcgMCAxMC4wMDIgMCA3LjI4NiAwIDYuOTQ1LjAxMSA1Ljg3OC4wNiIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Instagram in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://twitter.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/twitter.svg" alt="Open Exyte's Twitter in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Open Exyte's Twitter in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://github.com/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/github.svg" alt="Open Exyte's Github in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05Ljk5NyAwQzQuNDc3IDAgMCA0LjU5IDAgMTAuMjUyYzAgNC41MyAyLjg2NSA4LjM3MyA2LjgzNyA5LjczLjUuMDk0LjY4My0uMjIzLjY4My0uNDk0IDAtLjI0NS0uMDEtMS4wNTItLjAxNC0xLjkwOS0yLjc4MS42Mi0zLjM2OC0xLjIxLTMuMzY4LTEuMjEtLjQ1NS0xLjE4NS0xLjExLTEuNS0xLjExLTEuNS0uOTA3LS42MzYuMDY4LS42MjMuMDY4LS42MjMgMS4wMDQuMDcyIDEuNTMzIDEuMDU3IDEuNTMzIDEuMDU3Ljg5MiAxLjU2NyAyLjMzOSAxLjExNCAyLjkxLjg1Mi4wODktLjY2My4zNDgtMS4xMTUuNjM0LTEuMzcxLTIuMjItLjI2LTQuNTU1LTEuMTM4LTQuNTU1LTUuMDY3IDAtMS4xMi4zOS0yLjAzNCAxLjAzLTIuNzUyLS4xMDQtLjI1OC0uNDQ2LTEuMy4wOTctMi43MTMgMCAwIC44NC0uMjc2IDIuNzUgMS4wNWE5LjM1NCA5LjM1NCAwIDAgMSAyLjUwMi0uMzQ0Yy44NS4wMDQgMS43MDYuMTE4IDIuNTA1LjM0NSAxLjkwOC0xLjMyNyAyLjc0Ni0xLjA1MSAyLjc0Ni0xLjA1MS41NDQgMS40MTIuMjAyIDIuNDU1LjA5OCAyLjcxMy42NDEuNzE4IDEuMDMgMS42MzMgMS4wMyAyLjc1MiAwIDMuOTM4LTIuMzQgNC44MDUtNC41NjYgNS4wNTkuMzU5LjMxOC42NzguOTQyLjY3OCAxLjg5OCAwIDEuMzcyLS4wMTEgMi40NzYtLjAxMSAyLjgxNCAwIC4yNzMuMTguNTkyLjY4Ny40OTIgMy45Ny0xLjM1NyA2LjgzLTUuMiA2LjgzLTkuNzI4QzE5Ljk5NSA0LjU5IDE1LjUyIDAgOS45OTggMCIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Github in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://clutch.co/profile/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/clutch.svg" alt="Open Exyte's Clutch in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjE4cHgiIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAwIDE4IDIwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNiAoNjc0OTEpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5jbHV0Y2g8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iY2x1dGNoIiBmaWxsPSIjMDAwMDAwIj4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMy41MzA4NjQyLDE0LjEyMzQ1NjggQzEyLjUwMzA3ODYsMTUuMDMxNjczNyAxMS4xNzM5MTQxLDE1LjUyNDYwODggOS44MDI0NjkxMywxNS41MDYxNzI5IEM2LjY0MTk3NTMxLDE1LjUwNjE3MjkgNC4zMjA5ODc2NiwxMy4xODUxODUyIDQuMzIwOTg3NjYsMTAgQzQuMzIwOTg3NjYsNi44MTQ4MTQ4MSA2LjU2NzkwMTIzLDQuNTkyNTkyNTkgOS44MDI0NjkxMyw0LjU5MjU5MjU5IEMxMS4xNzY5ODMsNC41NzQwMDU2IDEyLjUxMTE5NTIsNS4wNTY3Nzk3NCAxMy41NTU1NTU2LDUuOTUwNjE3MjkgTDE0LjI0NjkxMzYsNi41NDMyMDk4OCBMMTcuMzA4NjQyLDMuNDgxNDgxNDggTDE2LjU0MzIwOTksMi43NjU0MzIxIEMxNC42OTEyOTAzLDEuMTEwODgyMzQgMTIuMjg1NTk3MywwLjIxMjA1MTk1MyA5LjgwMjQ2OTEzLDAuMjQ2OTEzNTggQzQuMTIzNDU2NzksMC4yNDY5MTM1OCAwLDQuMzQ1Njc5MDEgMCw5Ljk3NTMwODY0IEMwLDE1LjYwNDkzODIgNC4yMjIyMjIyMiwxOS44MjcxNjA0IDkuODAyNDY5MTMsMTkuODI3MTYwNCBDMTIuMzA5MTUxMiwxOS44NjA3NDEzIDE0LjczNTQzMywxOC45NDMxNjU3IDE2LjU5MjU5MjYsMTcuMjU5MjU5MiBMMTcuMzMzMzMzMywxNi41Njc5MDEyIEwxNC4yMjIyMjIyLDEzLjUwNjE3MjkgTDEzLjUzMDg2NDIsMTQuMTIzNDU2OCBaIiBpZD0iUGF0aCI+PC9wYXRoPg0KICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbCIgY3g9IjkuNjU0MzIwOTkiIGN5PSIxMC4wMjQ2OTE0IiByPSIzLjI4Mzk1MDYyIj48L2NpcmNsZT4NCiAgICAgICAgPC9nPg0KICAgIDwvZz4NCjwvc3ZnPg==" alt="Open Exyte's Clutch in new tab">
+                                </a>
+                            </li>
+                        </ul><!-- social-nav -->
+                    </nav><!-- nav -->
+                </div>
+            </div>
+            <div class="mobile-nav">
+                <ul class="page-nav list">
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../services.html">Services</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../team.html">Team</a>
+                    </li>
+                    <li class="page-nav__item current">
+                        <a class="page-nav__link" href="../blog.html">Blog</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                    </li>
+                </ul><!-- page-nav -->
+            </div>
+        </header>
+    </div>
+    <div class="article page-content">
+        <div class="article__header container">
+            <div class="row">
+                <div class="offset-md-3 col-md-1">
+                    <a class="article__btn-back" href="../blog.html"></a>
+                </div>
+                <div class="col-xl-9 col-md-10">
+                    <h1 class="article__title">AR Technology: How Does Augmented Reality Work?</h1>
+                    <p class="article__description">In this article we take a look at the technologies behind augmented reality, where AR used and how it&#39;s differences from MR and VR.</p>
+                </div>
+            </div>
+        </div>
+        <div class="article__content container">
+            <div class="row">
+                <div class="article__img-wrap offset-xl-3 col-xl-12 offset-md-2 col-md-14">
+                    <img class="article__img" src="../upload/preview%20How%20does%20AR%20work-arcore.jpg" alt="AR Technology: How Does Augmented Reality Work?">
+                </div>
+                <div class="article__text-block offset-md-4 col-md-10">
+                    <p class="article__text article__text-style">One of the first devices for creating augmented reality was heavy, awkward and could crush a person’s head. Hanging from the ceiling on special mounts, it resembled a torture instrument from the Middle Ages. Although there are still many more improvements to be made, Augmented Reality is becoming cheaper, more comfortable, and more accessible for the average person day by day.</p>
+<p class="article__text article__text-style">Augmented reality (AR) is seen as the next significant technological innovation that will impact each and every one of us. Many believe that AR will change the way we see the world and remove barriers by creating an additional 3D reality that we can take advantage of. In this article, we will look at AR’s key features to give you a better understanding of what might be just around the corner. </p>
+<h3 class="article__title--h2">What is Augmented Reality and How Does It Work?</h3>
+<p class="article__text article__text-style"><strong>Augmented reality</strong> complements the physical world that we are experiencing in real time, by incorporating digital data with the help of portable devices such as tablets, smartphones or a special apparatus such as Google Glass or HoloLens. At this point, it needs to be mentioned that augmented reality should be distinguished from virtual reality and mixed reality. With augmented reality, virtual objects are projected onto real environments, while <strong>virtual reality</strong> is a world created by technical means, transmitted to a person through their sensory organs. <strong>Mixed (aka hybrid) reality</strong> combines both approaches.</p>
+<p class="article__text article__text-style">To make it easy to remember the difference, simply imagine your friend wearing VR glasses, helplessly flailing his arms and bumping into walls. As far as AR is concerned, think back to 2016 when the whole world was obsessed with PokemonGO.</p>
+<h2 class="article__title--h2">How does AR work?</h2>
+<p class="article__text article__text-style">To create an augmented reality, we need to use a processor, display, camera, and electronics, which determine the position, such as an accelerometer, GPS and compass. For example, touchscreen smartphone has the necessary kit for the owner of this gadget to plunge into the world of augmented reality.</p>
+<p class="article__text article__text-style">Augmented reality applications work as follows:</p>
+<ul class="article__list">
+<li class="article__item">A special marker is used.</li>
+<li class="article__item">A mobile device or computer reads the marker.</li>
+<li class="article__item">The screen displays a layer of additional information.</li>
+</ul>
+<p class="article__text article__text-style">Pattern recognition is quite straightforward. If an application needs to recognize a certain object, it consults a library of photos with this object in the server, identifies the general structure, color, and arbitrary parameters, assigning this object a specific action when it is detected.</p>
+<p class="article__text article__text-style">Augmented reality markers are images or small objects that act as visual cues for the display of virtual information. Once augmented reality software is trained to recognize certain markers, the overlay of visual information will occur automatically. </p>
+<p class="article__text article__text-style">The use of markers can be best illustrated through its use in films. For Peter Jackson's film trilogy, <em>The Lord of the Rings</em>, the character Gollum was created using markers. The monkeys in the most recent <em>Planet of the Apes</em> franchise were done in the same way. Actors in these films were required to wear special costumes with multiple markers on them that would allow every one of their movements to be tracked and transferred to the characters who were displayed virtually. </p>
+<p class="article__text article__text-style">Now that you know the very basics of augmented reality, it may have become clear to you that we cannot put a marker on every object around us. Indeed, there is a need for a more advanced augmented reality system.</p>
+<p class="article__text article__text-style">For this purpose, <a class="link link--line link--underscored" rel="nofollow" href="https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping">SLAM</a> comes to the rescue. It is used to <a class="link link--line link--underscored" rel="nofollow" href="https://www.youtube.com/watch?v=Q3EMgGI6E5s">build maps</a> in uncharted spaces with simultaneous control over the current location and distance covered. It is a tool that is well suited to using augmented reality systems on the move, as it lets the application know where the user is.</p>
+<p class="article__text article__text-style">Here it is worth mentioning ARKit and ARCore. They are often referred to as SLAM, but in reality, they are its successors. So, let’s get this all straightened out.</p>
+<p class="article__text article__text-style"><a class="link link--line link--underscored" rel="nofollow" href="https://developer.apple.com/arkit/">ARKit</a> is a Visual Inertial Odometry (VIO) system launched by Apple and presented as “the biggest AR platform in the world.” VIO is a system that tracks someone’s position and movements in their surroundings. The received data is calculated twice, in parallel, and then shown on your mobile device’s screen.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/p69QW-6ghSU?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<p class="article__text article__text-style">Such a two-way approach allows for more precise readings. Firstly, the Visual (camera) system tracks someone’s position with the help of a pixel on the camera sensor that matches a certain point in the real world. The second feature that ensures precision is the Inertial system, which consists of an accelerometer and gyroscope and tracks someone’s position. A Kalman Filter decides which system has provided more accurate information and publishes the position update via the ARKit SDK.</p>
+<p class="article__text article__text-style">In turn, <a class="link link--line link--underscored" rel="nofollow" href="https://developers.google.com/ar/discover/">ARCore</a> is Google’s platform for building augmented reality experiences. This system’s processes also consist of 2 essential steps. The first involves tracking the position of the mobile device in motion, and the second involves building an understanding of the surrounding environment.
+Considering this process, the phone’s camera recognizes particular points and their motion within a certain time period. As a result, the phone is able to calculate its position and orientation as it moves over distances.
+Furthermore, ARCore can identify flat surfaces and normal lighting. In other words, this system “reads” its surroundings to enable users to interact with any digital objects in a way that integrates seamlessly with the real world.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/y4bIcUv0lbU?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h2 class="article__title--h2">How is AR used?</h2>
+<p class="article__text article__text-style">The reason why augmented reality is so exciting is that it allows us to do day-to-day activities in a simpler way. Let’s look at some augmented reality examples that we are sure to see in the near future.</p>
+<h4 class="article__title--h3">AR in education</h4>
+<p class="article__text article__text-style">With the help of AR, making education more in-depth and engaging is becoming a possibility. With this, students will be able to achieve better outcomes in subjects where complex objects often need to be imagined or are only encountered via 2D diagrams. Now students have the opportunity to interact with 3D visualizations of objects in subjects such as maths and science. Examining every detail of a human body or a geometrical shape will become a simple process with AR.</p>
+<h4 class="article__title--h3">AR in healthcare</h4>
+<p class="article__text article__text-style">In addition to 2D illustrative training for medical school students, there is now an opportunity to see 3D models of patients. This can help a surgeon to react faster and act with greater precision during an operation. Visible anatomy using augmented reality is demonstrated by HoloLens’ HoloAnatomy.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/h4M6BTYRlKQ?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h4 class="article__title--h3">AR in retail</h4>
+<p class="article__text article__text-style">No longer will a person have to measure the distances between objects in their home to see if a new item of furniture will fit or not. With AR, it is possible to select an item from an online catalog and virtually position it in your house. IKEA implemented this idea back in 2014.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/azqSQX9Pduk?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h4 class="article__title--h3">AR in construction</h4>
+<p class="article__text article__text-style">Thanks to AR, visualization in architecture and construction moves to a qualitatively new level, allowing us to see the final result at the design stage, thereby reducing risks in the production process. The time-consuming practice of building model versions of constructions will also be a thing of the past.
+Augmented reality will shape the future of construction. By visualizing plans, builders can more easily go through what needs to be done step by step. Instead of looking through detailed and complex blueprints, they can take in the required information in a shorter space of time. </p>
+<h4 class="article__title--h3">AR in the world of advertising</h4>
+<p class="article__text article__text-style">The commercial possibilities of augmented reality are so vast that it is almost impossible to conceive the boundaries of what is possible. In the advertising sphere, AR is proving groundbreaking. In 2009, readers could scan Esquire’s cover and see Robert Downey Jr come to life. What’s more, the wine brand “19 Crimes” allowed its consumers to come face-to-face with the infamous convicts on their bottles and hear their stories. </p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/uDxqdrLlDY8?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h4 class="article__title--h3">AR in the entertainment industry</h4>
+<p class="article__text article__text-style">Today, the most popular AR game is still PokemonGo. By combining augmented reality, geo-tracking and the popular Pokemon brand, it has reached unprecedented success. The game had been downloaded more than 800 million times by December 2018. Companies such as Lego and Disney have also been active in developing games using AR. Major toy manufacturers have expressed their intention to be a part of this exciting frontier as well.</p>
+<div class="page__wrap-video"><div class="wrap-video"><iframe src="https://www.youtube.com/embed/LYFk25OQJ_8?rel=0" width="560px" height="315px" frameborder="0" allowfullscreen></iframe></div></div>
+<h4 class="article__title--h3">AR in the military</h4>
+<p class="article__text article__text-style">The military has invested a lot in creating helmets which receive real-time information from the physical world while soldiers are in fighter planes or helicopters, and advise whether the surroundings are safe or not.</p>
+<h2 class="article__title--h2">AR Devices</h2>
+<img src="../upload/bram-van-oost-1245314-unsplash-11.jpg" alt="" title="Photo from unsplash.com" /><div class="article__img-title">Photo from unsplash.com</div>
+<p class="article__text article__text-style">To experience augmented reality we need a special device. There are two options: AR glasses or headsets, and mobile devices.</p>
+<p class="article__text article__text-style">The most vivid example of AR glasses is Google Glass. The brand of high-tech glasses originally excited people as they were able to take photos and shoot video on command, all of which was automatically sent to the cloud. </p>
+<p class="article__text article__text-style">However, they didn’t become mainstream, mainly due to the high price and Google’s failure to convince users that the glasses would be needed on an everyday basis. There is, however, a happy ending. Google Glass is used today in industrial settings, bringing lots of value to the companies that have acquired them.</p>
+<p class="article__text article__text-style">Microsoft has also attempted to conquer this arena by launching the HoloLens headset for business professionals. The headsets have received glowing reviews but are still not ideal for daily use. </p>
+<p class="article__text article__text-style">Currently, the best chance of AR’s mainstream success lies with the Magic Leap headset. This device’s developers improved on all the mistakes made by competitors, and have developed a futuristic design similar to what is seen in the film Ready Player One. Despite quite a high price and a limited field of view, the Magic Leap device feels more comfortable, possesses a more intuitive display and offers greater immersion according to numerous reviews on the Internet.</p>
+<p class="article__text article__text-style">For the time being, AR is still mostly found on mobile devices. This is due to the convenience they provide a common user with and a ready-made technical base mobile app developers deal with. The prevalence of mobile devices means that once AR becomes integrated with services we already use, it will also automatically become mainstream. </p>
+<p class="article__text article__text-style">Aside from the AR gimmicks and games such as PokemonGO, it is obvious that there is an increasing amount of applications that want to change our reality, not just for novelty’s sake, but to make this world a better place in which to exist. At this very moment, you can use Google translate to help you read and understand street and shop signs when visiting a foreign country. The Sunseeker app has proved its worth for fans of hunting, and the Google Sky Map can foster users’ interest in astronomy, facilitating the search for stars and constellations. </p>
+<h2 class="article__title--h2">Augmented Reality vs. Virtual Reality</h2>
+<p class="article__text article__text-style">With the emergence of technologies that have enabled augmented reality, a question arises: what is the difference between an augmented reality and a virtual one? Both can change the way we look at the world, and both promise tremendous growth. To make it plain to see, the biggest difference between augmented and virtual reality is:</p>
+<ul class="article__list">
+<li class="article__item">AR exists at the junction of the real and virtual worlds, while VR is fully computer generated.</li>
+<li class="article__item">AR lets people interact with both worlds and see the difference between them, while with VR it is sometimes difficult to understand what’s real and what’s not.</li>
+<li class="article__item">If you want to experience AR, your smartphone is your enough, while in the case of VR, you always need a special headset.</li>
+</ul>
+<h2 class="article__title--h2">Is Augmented Reality the Future?</h2>
+<p class="article__text article__text-style">In a nutshell, augmented reality is no longer something futuristic, but a reality that is here and now. There are a huge number of opportunities for commercial use in the fields of education, industry, medicine, construction, commerce and even tourism. If properly implemented and maintained, it can become a useful and pleasant supplement to most human day-to-day activities.</p>
+                </div>
+        </div>
+        <div class="article__footer container">
+            <div class="row">
+                <div class="article__footer-wrap col-xl-11 offset-md-4 col-md-11 row">
+                    <div class="article__author row">
+                        <img class="article__author-photo" src="../upload/t-black.png" alt="Exyte Team" width="30" height="30">
+                    </div>
+
+                    <div class="wrap-author-name">
+                        <img class="article__author-photo article__author-photo__mobile" src="../upload/t-black.png" alt="Exyte Team" width="30" height="30">
+                        <div class="article__author-name">Exyte Team</div>
+                    </div>
+
+                    <div class="article__publication-date">
+                        <span class="article__date">Date:</span>
+                        <span>21 May 2019</span>
+                    </div>
+
+                    <ul class="tags__list row">
+                        <li class="tag__item tags__title">
+                            Tags:
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog1972.html?tag=ar">ar,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog0a23.html?tag=mobile">mobile,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog424f.html?tag=for%20tech%20enthusiasts">for tech enthusiasts,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blogc3a7.html?tag=for%20clients">for clients,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog8a20.html?tag=ios">ios,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blogb118.html?tag=android">android</a>
+                        </li>
+                    </ul>
+
+                    <div class="article__share row">
+                        <ul class="share-socials__list row">
+                            <li class="share-social__item share__title">Share:</li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/vk.svg" alt="Share on vk.com" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/slack.svg" alt="Share on slack" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/discord.svg" alt="Share on discord" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://twitter.com/intent/tweet?text=AR%20Technology%3A%20How%20Does%20Augmented%20Reality%20Work%3F%0Ahttps%3A%2F%2Fexyte.com%2Fblog%2Fhow-does-augmented-reality-work%3Futm_source%3Dtwitter%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog">
+<!--                                    <img src="/img/share/twitter.svg" alt="Share on twitter" width="20" height="16">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Share on twitter" width="20" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="#" onclick="FB.ui({method: 'share', href: 'https:&#x2F;&#x2F;exyte.com&#x2F;blog&#x2F;how-does-augmented-reality-work?utm_source&#x3D;facebook&amp;utm_medium&#x3D;referral&amp;utm_campaign&#x3D;website_blog'}, function(response){});return false;">
+                                    <img src="../img/share/facebook.svg" alt="Share on facebook" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fexyte.com%2Fblog%2Fhow-does-augmented-reality-work%3Futm_source%3Dlinkedin%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=512,toolbar=1,resizable=0'); return false;">
+                                    <img src="../img/share/linkedin.svg" alt="Share on linked in" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fexyte.com%2Fblog%2Fhow-does-augmented-reality-work%3Futm_source%3Dreddit%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;title=AR%20Technology%3A%20How%20Does%20Augmented%20Reality%20Work%3F">
+<!--                                    <img src="/img/share/reddit.svg" alt="Share on reddit" width="18" height="18">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5yZWRkaXQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iU2NlbmFyaW9zIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iLWctRXh5dGVfVUkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xODYuMDAwMDAwLCAtNjU3LjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICA8ZyBpZD0icmVkZGl0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA2NTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS4wMDIyMzYwMiwxNy45OTc3NjQgQzQuMDM0MTQzMTIsMTcuOTk3NzY0IDAuMDA2NzA4MDc0NTMsMTMuOTcwMzI4OSAwLjAwNjcwODA3NDUzLDkuMDAyMjM2MDIgQzAuMDA2NzA4MDc0NTMsNC4wMzQxNDMxMiA0LjAzNDE0MzEyLDAuMDA2NzA4MDc0NTMgOS4wMDIyMzYwMiwwLjAwNjcwODA3NDUzIEMxMy45NzAzMjg5LDAuMDA2NzA4MDc0NTMgMTcuOTk3NzY0LDQuMDM0MTQzMTIgMTcuOTk3NzY0LDkuMDAyMjM2MDIgQzE3Ljk5Nzc2NCwxMy45NzAzMjg5IDEzLjk3MDMyODksMTcuOTk3NzY0IDkuMDAyMjM2MDIsMTcuOTk3NzY0IFogTTE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBDMTQuOTc0NjU4NCw4LjI3Nzc2Mzk4IDE0LjM2NjQ1OTYsNy43MTIwNDk2OSAxMy42Mzk3NTE2LDcuNzM2NjQ1OTYgQzEzLjMxNzc2NCw3Ljc0NzgyNjA5IDEzLjAxMTQyODYsNy44Nzk3NTE1NSAxMi43Nzg4ODIsOC4xMDExMTgwMSBDMTEuNzU0NzgyNiw3LjQwMzQ3ODI2IDEwLjU1MTgwMTIsNy4wMjExMTgwMSA5LjMxNTI3OTUsNi45OTQyODU3MSBMOS44OTg4ODE5OSw0LjE4ODA3NDUzIEwxMS44MjQwOTk0LDQuNTkyNzk1MDMgQzExLjg3Nzc2NCw1LjA4Njk1NjUyIDEyLjMyMDQ5NjksNS40NDQ3MjA1IDEyLjgxNDY1ODQsNS4zOTEwNTU5IEMxMy4zMDg4MTk5LDUuMzM3MzkxMyAxMy42NjY1ODM5LDQuODk0NjU4MzkgMTMuNjEyOTE5Myw0LjQwMDQ5Njg5IEMxMy41NTkyNTQ3LDMuOTA2MzM1NCAxMy4xMTY1MjE3LDMuNTQ4NTcxNDMgMTIuNjIyMzYwMiwzLjYwMjIzNjAyIEMxMi4zMzgzODUxLDMuNjMxMzA0MzUgMTIuMDgzNDc4MywzLjc5Njc3MDE5IDExLjk0MjYwODcsNC4wNDI3MzI5MiBMOS43Mzc4ODgyLDMuNjAyMjM2MDIgQzkuNTg4MDc0NTMsMy41Njg2OTU2NSA5LjQzODI2MDg3LDMuNjYyNjA4NyA5LjQwNDcyMDUsMy44MTQ2NTgzOSBDOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE5MTMwNDMgTDguNzQwNjIxMTIsNi45NDA2MjExMiBDNy40ODg0NDcyLDYuOTYwNzQ1MzQgNi4yNjk4MTM2Niw3LjM0NTM0MTYxIDUuMjMyMjk4MTQsOC4wNDc0NTM0MiBDNC43MDQ1OTYyNyw3LjU1MTA1NTkgMy44NzI3OTUwMyw3LjU3NTY1MjE3IDMuMzc2Mzk3NTIsOC4xMDU1OTAwNiBDMi44OCw4LjYzMzI5MTkzIDIuOTA0NTk2MjcsOS40NjUwOTMxNyAzLjQzNDUzNDE2LDkuOTYxNDkwNjggQzMuNTM3MzkxMywxMC4wNTc2Mzk4IDMuNjU1OTAwNjIsMTAuMTQwMzcyNyAzLjc4NzgyNjA5LDEwLjE5ODUwOTMgQzMuNzc4ODgxOTksMTAuMzMwNDM0OCAzLjc3ODg4MTk5LDEwLjQ2MjM2MDIgMy43ODc4MjYwOSwxMC41OTQyODU3IEMzLjc4NzgyNjA5LDEyLjYwODk0NDEgNi4xMzU2NTIxNywxNC4yNDc5NTAzIDkuMDMxMzA0MzUsMTQuMjQ3OTUwMyBDMTEuOTI2OTU2NSwxNC4yNDc5NTAzIDE0LjI3NDc4MjYsMTIuNjExMTgwMSAxNC4yNzQ3ODI2LDEwLjU5NDI4NTcgQzE0LjI4MzcyNjcsMTAuNDYyMzYwMiAxNC4yODM3MjY3LDEwLjMzMDQzNDggMTQuMjc0NzgyNiwxMC4xOTg1MDkzIEMxNC43MjY0NTk2LDkuOTcyNjcwODEgMTUuMDEwNDM0OCw5LjUwNzU3NzY0IDE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBaIE02LjAwNTk2MjczLDkuOTAzMzU0MDQgQzYuMDA1OTYyNzMsOS40MDY5NTY1MiA2LjQxMDY4MzIzLDkuMDAyMjM2MDIgNi45MDcwODA3NSw5LjAwMjIzNjAyIEM3LjQwMzQ3ODI2LDkuMDAyMjM2MDIgNy44MDgxOTg3Niw5LjQwNjk1NjUyIDcuODA4MTk4NzYsOS45MDMzNTQwNCBDNy44MDgxOTg3NiwxMC4zOTk3NTE2IDcuNDAzNDc4MjYsMTAuODA0NDcyIDYuOTA3MDgwNzUsMTAuODA0NDcyIEM2LjQwODQ0NzIsMTAuOCA2LjAwNTk2MjczLDEwLjM5OTc1MTYgNi4wMDU5NjI3Myw5LjkwMzM1NDA0IFogTTExLjIzMTU1MjgsMTIuMzc2Mzk3NSBDMTAuNTkyMDQ5NywxMi44NTcxNDI5IDkuODA5NDQwOTksMTMuMTAzMTA1NiA5LjAwODk0NDEsMTMuMDY5NTY1MiBDOC4yMDg0NDcyLDEzLjEwMzEwNTYgNy40MjU4Mzg1MSwxMi44NTcxNDI5IDYuNzg2MzM1NCwxMi4zNzYzOTc1IEM2LjcwMTM2NjQ2LDEyLjI3MzU0MDQgNi43MTcwMTg2MywxMi4xMTkyNTQ3IDYuODE5ODc1NzgsMTIuMDM0Mjg1NyBDNi45MDkzMTY3NywxMS45NjA0OTY5IDcuMDM2NzcwMTksMTEuOTYwNDk2OSA3LjEyODQ0NzIsMTIuMDM0Mjg1NyBDNy42Njk1NjUyMiwxMi40MzAwNjIxIDguMzI5MTkyNTUsMTIuNjMxMzA0MyA5LDEyLjYgQzkuNjcwODA3NDUsMTIuNjM1Nzc2NCAxMC4zMzI2NzA4LDEyLjQ0MzQ3ODMgMTAuODgwNDk2OSwxMi4wNTIxNzM5IEMxMC45Nzg4ODIsMTEuOTU2MDI0OCAxMS4xMzk4NzU4LDExLjk1ODI2MDkgMTEuMjM2MDI0OCwxMi4wNTY2NDYgQzExLjMzMjE3MzksMTIuMTU1MDMxMSAxMS4zMjk5Mzc5LDEyLjMxNjAyNDggMTEuMjMxNTUyOCwxMi40MTIxNzM5IEwxMS4yMzE1NTI4LDEyLjM3NjM5NzUgWiBNMTEuMDcwNTU5LDEwLjgzNTc3NjQgQzEwLjU3NDE2MTUsMTAuODM1Nzc2NCAxMC4xNjk0NDEsMTAuNDMxMDU1OSAxMC4xNjk0NDEsOS45MzQ2NTgzOSBDMTAuMTY5NDQxLDkuNDM4MjYwODcgMTAuNTc0MTYxNSw5LjAzMzU0MDM3IDExLjA3MDU1OSw5LjAzMzU0MDM3IEMxMS41NjY5NTY1LDkuMDMzNTQwMzcgMTEuOTcxNjc3LDkuNDM4MjYwODcgMTEuOTcxNjc3LDkuOTM0NjU4MzkgQzExLjk5MTgwMTIsMTAuNDMxMDU1OSAxMS42MDQ5Njg5LDEwLjg0OTE5MjUgMTEuMTA4NTcxNCwxMC44NjkzMTY4IEMxMS4wOTI5MTkzLDEwLjg2OTMxNjggMTEuMDc5NTAzMSwxMC44NjkzMTY4IDExLjA2Mzg1MDksMTAuODY5MzE2OCBMMTEuMDcwNTU5LDEwLjgzNTc3NjQgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt="Share on reddit" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://telegram.me/share/url?url=https%3A%2F%2Fexyte.com%2Fblog%2Fhow-does-augmented-reality-work%3Futm_source%3Dtelegram%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;text=AR%20Technology%3A%20How%20Does%20Augmented%20Reality%20Work%3F%22">
+                                    <img src="../img/share/telegram.svg" alt="Share on telegram" width="19" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/medium.svg" alt="Share on medium" width="18" height="14">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="singles singles--type-1 container">
+            <div class="row">
+                <div class="single__title-wrap--article offset-md-4 col-md-10">
+                    <h2 class="single__title--article">Read similar articles</h2>
+                </div>
+                <div class="single single--type-1 offset-lg-2 col-lg-4 offset-md-2 col-md-7">
+                    <a href="augmented-reality-software.html"><img class="single__img single__img--type-1" src="../upload/15_560x360.jpg" alt="Blog = Augmented reality software: ARKit vs. ARCore 2019"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="augmented-reality-software.html">Augmented reality software: ARKit vs. ARCore 2019</a></h3>
+                        <p class="single__description">An overview of functionality and features of two major development tools for augmented reality: Google&#39;s Arcore and Apple&#39;s ARKit.</p>
+                        <a class="single__link-more link link--line" href="augmented-reality-software.html">Learn more</a>
+                        <span class="single__time-read">3 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-1 col-md-7">
+                    <a href="technologies-behind-immersive-VR-2.html"><img class="single__img single__img--type-1" src="../upload/preview_oscar_560x360.png" alt="Blog = VR full body tracking technologies"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="technologies-behind-immersive-VR-2.html">VR full body tracking technologies</a></h3>
+                        <p class="single__description">In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR.</p>
+                        <a class="single__link-more link link--line" href="technologies-behind-immersive-VR-2.html">Learn more</a>
+                        <span class="single__time-read">7 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-2 col-md-7">
+                    <a href="whats-a-good-app-design-practice.html"><img class="single__img single__img--type-1" src="../upload/vrr_560x360.jpg" alt="Blog = Which is a good app design practice?"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="whats-a-good-app-design-practice.html">Which is a good app design practice?</a></h3>
+                        <p class="single__description">If you want an app to be successful, good app design practices are a must have. We&#39;ve listed the design practices we follow when designing apps for our clients.</p>
+                        <a class="single__link-more link link--line" href="whats-a-good-app-design-practice.html">Learn more</a>
+                        <span class="single__time-read">6 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="footer__wrap row">
+        <span class="footer__copyright copyright col-lg-4 order-lg-1 order-4">
+            <span>© Exyte 2020</span>
+        </span>
+        <div class="footer__contact col-lg-3 order-lg-2 order-1">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:sales@exyte.com">sales@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-3 order-lg-3 order-2">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:info@exyte.com">info@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-4 order-lg-4 order-3">
+<!--            <img class="footer__icon" src="/img/icons/map.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEyIDE4Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xMSA2QTUgNSAwIDEgMCAxIDZjMCAxLjc4OCAxLjY2NyA1LjI1MyA1IDEwLjIyM0M5LjMzMyAxMS4yNTMgMTEgNy43ODggMTEgNnpNNiAxOEMyIDEyLjIxIDAgOC4yMSAwIDZhNiA2IDAgMSAxIDEyIDBjMCAyLjIxLTIgNi4yMS02IDEyek02IDhhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0em0wIDFhMyAzIDAgMSAxIDAtNiAzIDMgMCAwIDEgMCA2eiIgb3BhY2l0eT0iLjUiLz4NCjwvc3ZnPg0K" alt="">
+            <a class="footer__link link" target="_ blank" href="https://goo.gl/maps/Bx4XckDoSB2Ah938A" rel="nofollow">408 Broadway, NYC</a>
+        </div>
+        <span class="footer__author col-lg-4 order-lg-5 order-6">
+            <a class="link" target="_ blank" href="https://anthonyslab.com/" rel="nofollow">Anthony’s Lab</a>
+        </span>
+    </div>
+</footer>
+<script src="../js/main.js"></script>
+<!--    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"/>-->
+</body>
+
+<!-- Mirrored from exyte.com/blog/how-does-augmented-reality-work by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:41 GMT -->
+</html>

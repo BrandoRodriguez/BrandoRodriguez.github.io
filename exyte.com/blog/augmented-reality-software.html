@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from exyte.com/blog/augmented-reality-software by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85444300-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-85444300-1');
+    </script>
+    <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "../../platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));
+
+
+      twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function () {
+          // dataLayer.push({
+          //   'event': 'socialInteraction',
+          //   'socialNetwork': 'Twitter',
+          //   'socialAction': 'click',
+          //   'socialTarget': window.location.href
+          // });
+        });
+      });
+    </script>
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='../../static.ads-twitter.com/uwt.js',
+        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o278x');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <meta charset="UTF-8">
+    <title>Augmented reality software: ARKit vs. ARCore 2019</title>
+    <meta name="description" content="An overview of functionality and features of two major development tools for augmented reality: Google&#39;s Arcore and Apple&#39;s ARKit.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@exytehq" />
+    <meta name="twitter:creator" content="@exytehq" />
+    <meta property="og:url" content="https://exyte.com/blog/augmented-reality-software" />
+    <meta property="og:title" content="Augmented reality software: ARKit vs. ARCore 2019" />
+    <meta property="og:description" content="An overview of functionality and features of two major development tools for augmented reality: Google&#39;s Arcore and Apple&#39;s ARKit." />
+    <meta property="og:image" content="https://exyte.com&#x2F;upload&#x2F;15.jpg" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i&amp;display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/boostrap.css">
+    <link rel="stylesheet" href="../css/exyte.css">
+    <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../img/favicon-96.png" sizes="96x96" type="image/png">
+    <link rel="icon" href="../img/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="canonical" href="augmented-reality-software.html">
+    <link rel="alternate" hreflang="en" href="augmented-reality-software.html" />
+    <link rel="alternate" hreflang="x-default" href="augmented-reality-software.html" />
+    <script type="application/ld+json">
+        { "@context": "https://schema.org",
+            "@type": "Article",
+            "author": [
+                {
+                  "@type": "Person",
+                  "name": "Daniil Manin"
+                }
+            ],
+            "headline": "Augmented reality software: ARKit vs. ARCore 2019",
+            "image": "https://exyte.com/upload/15.jpg",
+            "editor": "Vasilisa Sheromova",
+            "genre": "software applications",
+            "keywords": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Exyte",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://exyte.com/img/logo-sm.sv"
+                }
+            },
+            "url": "https://exyte.com/blog/augmented-reality-software",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://exyte.com/blog/augmented-reality-software"
+            },
+            "datePublished": "2019-07-26",
+            "dateCreated": "2019-07-26",
+            "dateModified": "2019-07-26",
+            "description": "An overview of functionality and features of two major development tools for augmented reality: Google&#39;s Arcore and Apple&#39;s ARKit.",
+            "articleBody": "In 2019, it&#39;s very likely you already know what augmented reality (AR) is.
+Provided that I won&#39;t be wasting your time talking about how AR technology
+works. You can read about it here.
+
+What I want to talk about is how two major market players, Apple and Google,
+interpreted AR through their development platforms, ARKit, and ARCore
+correspondingly. First, let&#39;s have a brief background check on both of the
+platforms.
+
+ARKIT BY APPLE
+ARKit is a development kit for iOS apps. Apple introduced ARKit at WWDC&#39;17, and
+almost immediately, it was available for developers worldwide.
+
+As Apple&#39;s SVP of Software Engineering, Craig Federighi, said ARKit is &#39;the
+largest AR platforms in the world,&#39; and by and large, I cannot disagree with
+him. 
+
+Since then ARKit got an upgrade to ARKit Version 2, and it now supports a wide
+range of Apple devices running on iOS 11 or higher starting from iPhone SE to
+iPhone Xs running on iOS 13. By the middle of 2018, AppStore featured
+applications made with ARKit in different categories: productivity, education,
+business, and most of all, games. The overall download of AR-applications has
+exceeded over 13 million times. No wonder, just take a look at one of the
+loveliest apps on AppStore in my personal chart, AR Dragon.
+
+At WWDC&#39;19, Apple announced that only iPhones and iPads that are powered by an
+A12 Bionic processor or newer support ARKit 3. 
+
+The latest and greatest ARKit features only run on iPhone XS, iPhone XS Max,
+iPhone XR, and the 11-inch and 12.9-inch 2018 iPad Pros. Meaning iPhone 6S and
+5th generation iPad&#39;s owners won&#39;t be able to update their AR apps until they
+update their device. That is a significant restriction, but one that makes sense
+when you consider the power required by these new ARKit 3.0 features.
+
+ARCORE BY GOOGLE
+ARcore is a development kit for Android apps. By the time Apple launched its
+ARKit, Google already had some experience with AR technology. Tango, a so-called
+Google&#39;s AR platform, lasted almost 4 years since summer &#39;14 to spring &#39;18 but
+didn&#39;t enjoy the amount of hype ARKit did. Eventually, Google wrapped up Tango
+and launched a whole new AR SDK. On March 1, 2018, ARCore was officially
+released, and Tango was officially buried. However, the first stable version was
+released only in December &#39;18.
+
+One of the most popular applications for Android with ARCore is Google&#39;s 
+Playground. A few words about this application - &quot;Playground is a new mode in
+your camera that helps you create and play with the world around you. &quot;
+
+There&#39;s little known about the next ARCore, and I don&#39;t think that we see
+anything until the fall of 2019. You can follow ARCore on GitHub, check issues,
+release dates, and source code.
+
+ARCORE VS. ARKIT IN 2019
+That&#39;s the exciting part, let&#39;s compare these technologies. You can guess they
+are unlikely to be fundamentally different in operation. ARKit and ARCore use
+visual-inertial odometry (VIO) - it is a difficult concept if you want to go
+deep into it, check out this 15 minutes tutorial for beginners or study this
+paper by Mohamed Aladem and Samir A. Rawashdeh. 
+
+In &quot;simple&quot; terms, Apple says, &quot;This process (VIO) combines information from the
+iOS device&#39;s motion-sensing hardware with computer vision analysis of the scene
+visible to the device&#39;s camera.&quot;
+
+Both technologies use the following features to integrate virtual content into
+the real world:
+
+ * Motion tracking - to track position in the real world.
+ * Environmental understanding - to understand different sizes, locations,
+   angles, forms, points, and plans.
+ * Light estimation - to detect information about the lightingObviously, there
+   are differences in capability between ARKit and ARCore:
+
+ * Google&#39;s SDK tracks more feature points; it expands the mapped area more
+   quickly, then ARKit. 
+ * ARKit detects horizontal and vertical surfaces more accurately, then ARCore. 
+
+These differences are insignificant to an end-user, and you may not notice them
+at all. However, they may add some problems for developers working on the same
+applications and for iOS and Android.
+
+FORMATS OF AR CONTENT
+As long as we perceive a three-dimensional world, we should augment it with
+three-dimensional elements or 3D models.
+
+According to Apple, ARKit supported a lot of different 3D formats:.abc
+.usd(.usda, .usdc) .usdz .ply .obj .stl Additional formats may be supported as
+well, to make sure consult Apple Documentation.
+
+USDZ(an extension for USD, a Pixar animation format) deserves a highlight for
+being a new 3D file format created in partnership with Pixar. Another format
+that&#39;s worthy attention is Collada (.dae), the most popular one.
+
+ARcore supported the following formats: .obj .glTF .fbx Actually, for creating
+3D models for ARKit and ARCore you can use same applications - the most popular
+is Blender and SketchUp providing different formats of 3D models - .obj, .glTF,
+.usdz, .dae
+
+If you want to use the same models for iOS and Android, the best option for you
+is .obj format. There is one more way that might work, which is converting the
+Collada model to glTF. It shouldn&#39;t be difficult considering the number of
+online services and extensions for that, like cesiumjs or blackthread.
+
+CROSS-PLATFORM AR DEVELOPMENT WITH ARCORE
+ARCore has an impressive feature - you can use it on iOS devices! Yes, it isn&#39;t
+easy, but you can apply the same resources, same methods, and the same logic for
+both platforms. 
+
+In my opinion, it&#39;s better to create applications as natively as possible to use
+more features and have higher performance. If you only need a limited number of
+AR functionality and you have no time for the nativity, only then you could
+consider cross-platform development.
+
+PRESENT AND FUTURE OF AR
+How often an ordinary person or even an &quot;advanced user&quot; of modern technology
+faces augmented reality? Almost never. At the moment, this is not our reality,
+pun intended. 
+
+Sadly, many AR experiences feel unnatural, to the point that you have to force
+yourself to use it and pretend it is very comfortable, while it isn&#39;t. Fingers
+crossed for the better, looking at you Apple. Right now right here, we do not
+need AR in our everyday life, and it looks like magic we still haven&#39;t found a
+use for. 
+
+The good news is, a lot of large companies are trying to improve their AR, which
+means AR should become part of our lives at some point. There are various AR
+games, apps for education, navigation, and retail. 
+
+The most promising area is entertainment, the perfect playground for the
+evolution of augmented reality, given the number of users and the creativity
+game development requires. Education is another field that should play a
+significant part in the future of AR technology. One of the greatest things
+about AR is the opportunity to see 3D models of things that are either too small
+or too big for a bare eye. That should help a lot with health sciences and areas
+where the visuals are essential. 
+
+If you&#39;d like to hire us for your project, drop us a line here."
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/",
+                        "name": "Blog Exyte"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/augmented-reality-software",
+                        "name": "Augmented reality software: ARKit vs. ARCore 2019"
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '585984638600036',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+    </script>
+    <script async defer src="../../connect.facebook.net/en_US/sdk.js"></script>
+    <!-- End Facebook SDK -->
+    <div class="page-wrapper page-article">
+    <div class="header-wrapper">
+        <header>
+            <div class="header">
+                <div class="container row">
+                    <div class="logo offset-md-1 col-md-3 col-9">
+                        <a href="../index.html">
+                            <img src="../img/logo-sm.svg" alt="Exyte homepage" width="71" height="20">
+                        </a>
+                    </div><!-- logo -->
+                    <button class="btn-open-menu"><span></span></button>
+                    <nav class="nav row col-md-13">
+                        <ul class="page-nav list">
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../services.html">Services</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../team.html">Team</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../blog.html">Blog</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                            </li>
+                        </ul><!-- page-nav -->
+                        <ul class="social-nav list">
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://instagram.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/instagram.svg" alt="Open Exyte's Instagram in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik02LjY2NyAxMGEzLjMzMyAzLjMzMyAwIDEgMSA2LjY2NyAwIDMuMzMzIDMuMzMzIDAgMCAxLTYuNjY3IDBtLTEuODAyIDBhNS4xMzUgNS4xMzUgMCAxIDAgMTAuMjcgMCA1LjEzNSA1LjEzNSAwIDAgMC0xMC4yNyAwbTkuMjc0LTUuMzM4YTEuMiAxLjIgMCAxIDAgMS4yLTEuMiAxLjIgMS4yIDAgMCAwLTEuMiAxLjJNNS45NiAxOC4xNGMtLjk3NS0uMDQ1LTEuNTA1LS4yMDctMS44NTctLjM0NGEzLjEwOCAzLjEwOCAwIDAgMS0xLjE1LS43NDggMy4wODUgMy4wODUgMCAwIDEtLjc0OC0xLjE1Yy0uMTM3LS4zNTItLjMtLjg4Mi0uMzQ0LTEuODU3LS4wNDktMS4wNTQtLjA1OC0xLjM3LS4wNTgtNC4wNCAwLTIuNjcxLjAxLTIuOTg3LjA1OC00LjA0Mi4wNDQtLjk3NS4yMDgtMS41MDQuMzQ0LTEuODU3LjE4Mi0uNDY3LjM5OC0uOC43NDgtMS4xNS4zNS0uMzUuNjgyLS41NjcgMS4xNS0uNzQ4LjM1Mi0uMTM4Ljg4Mi0uMyAxLjg1Ny0uMzQ0IDEuMDU0LS4wNDkgMS4zNzEtLjA1OCA0LjA0LS4wNTggMi42NyAwIDIuOTg3LjAxIDQuMDQyLjA1OC45NzUuMDQ0IDEuNTA0LjIwOCAxLjg1Ny4zNDQuNDY3LjE4LjguMzk4IDEuMTUuNzQ4LjM1LjM1LjU2Ni42ODMuNzQ4IDEuMTUuMTM3LjM1Mi4zLjg4Mi4zNDQgMS44NTcuMDQ5IDEuMDU1LjA1OCAxLjM3LjA1OCA0LjA0MSAwIDIuNjctLjAxIDIuOTg3LS4wNTggNC4wNDItLjA0NC45NzQtLjIwNyAxLjUwNC0uMzQ0IDEuODU3LS4xODIuNDY2LS4zOTguOC0uNzQ4IDEuMTQ5LS4zNS4zNS0uNjgzLjU2Ni0xLjE1Ljc0OC0uMzUyLjEzNy0uODgyLjMtMS44NTcuMzQ0LTEuMDU0LjA0OC0xLjM3MS4wNTgtNC4wNDIuMDU4LTIuNjcgMC0yLjk4Ni0uMDEtNC4wNC0uMDU4TTUuODc3LjA2QzQuODEzLjExIDQuMDg1LjI3OSAzLjQ1LjUyNkE0LjkwOCA0LjkwOCAwIDAgMCAxLjY4IDEuNjc4IDQuODgzIDQuODgzIDAgMCAwIC41MjUgMy40NUMuMjc4IDQuMDg2LjExIDQuODEzLjA2MSA1Ljg3Ny4wMSA2Ljk0MyAwIDcuMjg0IDAgMTBzLjAxMSAzLjA1Ny4wNiA0LjEyM2MuMDQ5IDEuMDY0LjIxOCAxLjc5MS40NjUgMi40MjdhNC44ODggNC44ODggMCAwIDAgMS4xNTQgMS43NzIgNC45MTQgNC45MTQgMCAwIDAgMS43NzEgMS4xNTNjLjYzNy4yNDcgMS4zNjMuNDE2IDIuNDI3LjQ2NEM2Ljk0NCAxOS45ODggNy4yODUgMjAgMTAgMjBjMi43MTYgMCAzLjA1Ny0uMDExIDQuMTIzLS4wNiAxLjA2NS0uMDQ5IDEuNzkyLS4yMTggMi40MjgtLjQ2NWE0LjkxOCA0LjkxOCAwIDAgMCAxLjc3MS0xLjE1MyA0Ljg5OSA0Ljg5OSAwIDAgMCAxLjE1NC0xLjc3MmMuMjQ3LS42MzYuNDE3LTEuMzYzLjQ2NC0yLjQyNy4wNDktMS4wNjcuMDYtMS40MDcuMDYtNC4xMjNzLS4wMTEtMy4wNTctLjA2LTQuMTIzYy0uMDQ4LTEuMDY0LS4yMTctMS43OTItLjQ2NC0yLjQyN2E0LjkxOCA0LjkxOCAwIDAgMC0xLjE1NC0xLjc3MiA0Ljg5MyA0Ljg5MyAwIDAgMC0xLjc3LTEuMTUzYy0uNjM3LS4yNDctMS4zNjQtLjQxNy0yLjQyOC0uNDY0QzEzLjA1OC4wMSAxMi43MTcgMCAxMC4wMDIgMCA3LjI4NiAwIDYuOTQ1LjAxMSA1Ljg3OC4wNiIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Instagram in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://twitter.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/twitter.svg" alt="Open Exyte's Twitter in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Open Exyte's Twitter in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://github.com/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/github.svg" alt="Open Exyte's Github in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05Ljk5NyAwQzQuNDc3IDAgMCA0LjU5IDAgMTAuMjUyYzAgNC41MyAyLjg2NSA4LjM3MyA2LjgzNyA5LjczLjUuMDk0LjY4My0uMjIzLjY4My0uNDk0IDAtLjI0NS0uMDEtMS4wNTItLjAxNC0xLjkwOS0yLjc4MS42Mi0zLjM2OC0xLjIxLTMuMzY4LTEuMjEtLjQ1NS0xLjE4NS0xLjExLTEuNS0xLjExLTEuNS0uOTA3LS42MzYuMDY4LS42MjMuMDY4LS42MjMgMS4wMDQuMDcyIDEuNTMzIDEuMDU3IDEuNTMzIDEuMDU3Ljg5MiAxLjU2NyAyLjMzOSAxLjExNCAyLjkxLjg1Mi4wODktLjY2My4zNDgtMS4xMTUuNjM0LTEuMzcxLTIuMjItLjI2LTQuNTU1LTEuMTM4LTQuNTU1LTUuMDY3IDAtMS4xMi4zOS0yLjAzNCAxLjAzLTIuNzUyLS4xMDQtLjI1OC0uNDQ2LTEuMy4wOTctMi43MTMgMCAwIC44NC0uMjc2IDIuNzUgMS4wNWE5LjM1NCA5LjM1NCAwIDAgMSAyLjUwMi0uMzQ0Yy44NS4wMDQgMS43MDYuMTE4IDIuNTA1LjM0NSAxLjkwOC0xLjMyNyAyLjc0Ni0xLjA1MSAyLjc0Ni0xLjA1MS41NDQgMS40MTIuMjAyIDIuNDU1LjA5OCAyLjcxMy42NDEuNzE4IDEuMDMgMS42MzMgMS4wMyAyLjc1MiAwIDMuOTM4LTIuMzQgNC44MDUtNC41NjYgNS4wNTkuMzU5LjMxOC42NzguOTQyLjY3OCAxLjg5OCAwIDEuMzcyLS4wMTEgMi40NzYtLjAxMSAyLjgxNCAwIC4yNzMuMTguNTkyLjY4Ny40OTIgMy45Ny0xLjM1NyA2LjgzLTUuMiA2LjgzLTkuNzI4QzE5Ljk5NSA0LjU5IDE1LjUyIDAgOS45OTggMCIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Github in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://clutch.co/profile/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/clutch.svg" alt="Open Exyte's Clutch in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjE4cHgiIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAwIDE4IDIwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNiAoNjc0OTEpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5jbHV0Y2g8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iY2x1dGNoIiBmaWxsPSIjMDAwMDAwIj4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMy41MzA4NjQyLDE0LjEyMzQ1NjggQzEyLjUwMzA3ODYsMTUuMDMxNjczNyAxMS4xNzM5MTQxLDE1LjUyNDYwODggOS44MDI0NjkxMywxNS41MDYxNzI5IEM2LjY0MTk3NTMxLDE1LjUwNjE3MjkgNC4zMjA5ODc2NiwxMy4xODUxODUyIDQuMzIwOTg3NjYsMTAgQzQuMzIwOTg3NjYsNi44MTQ4MTQ4MSA2LjU2NzkwMTIzLDQuNTkyNTkyNTkgOS44MDI0NjkxMyw0LjU5MjU5MjU5IEMxMS4xNzY5ODMsNC41NzQwMDU2IDEyLjUxMTE5NTIsNS4wNTY3Nzk3NCAxMy41NTU1NTU2LDUuOTUwNjE3MjkgTDE0LjI0NjkxMzYsNi41NDMyMDk4OCBMMTcuMzA4NjQyLDMuNDgxNDgxNDggTDE2LjU0MzIwOTksMi43NjU0MzIxIEMxNC42OTEyOTAzLDEuMTEwODgyMzQgMTIuMjg1NTk3MywwLjIxMjA1MTk1MyA5LjgwMjQ2OTEzLDAuMjQ2OTEzNTggQzQuMTIzNDU2NzksMC4yNDY5MTM1OCAwLDQuMzQ1Njc5MDEgMCw5Ljk3NTMwODY0IEMwLDE1LjYwNDkzODIgNC4yMjIyMjIyMiwxOS44MjcxNjA0IDkuODAyNDY5MTMsMTkuODI3MTYwNCBDMTIuMzA5MTUxMiwxOS44NjA3NDEzIDE0LjczNTQzMywxOC45NDMxNjU3IDE2LjU5MjU5MjYsMTcuMjU5MjU5MiBMMTcuMzMzMzMzMywxNi41Njc5MDEyIEwxNC4yMjIyMjIyLDEzLjUwNjE3MjkgTDEzLjUzMDg2NDIsMTQuMTIzNDU2OCBaIiBpZD0iUGF0aCI+PC9wYXRoPg0KICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbCIgY3g9IjkuNjU0MzIwOTkiIGN5PSIxMC4wMjQ2OTE0IiByPSIzLjI4Mzk1MDYyIj48L2NpcmNsZT4NCiAgICAgICAgPC9nPg0KICAgIDwvZz4NCjwvc3ZnPg==" alt="Open Exyte's Clutch in new tab">
+                                </a>
+                            </li>
+                        </ul><!-- social-nav -->
+                    </nav><!-- nav -->
+                </div>
+            </div>
+            <div class="mobile-nav">
+                <ul class="page-nav list">
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../services.html">Services</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../team.html">Team</a>
+                    </li>
+                    <li class="page-nav__item current">
+                        <a class="page-nav__link" href="../blog.html">Blog</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                    </li>
+                </ul><!-- page-nav -->
+            </div>
+        </header>
+    </div>
+    <div class="article page-content">
+        <div class="article__header container">
+            <div class="row">
+                <div class="offset-md-3 col-md-1">
+                    <a class="article__btn-back" href="../blog.html"></a>
+                </div>
+                <div class="col-xl-9 col-md-10">
+                    <h1 class="article__title">Augmented reality software: ARKit vs. ARCore 2019</h1>
+                    <p class="article__description">An overview of functionality and features of two major development tools for augmented reality: Google&#39;s Arcore and Apple&#39;s ARKit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="article__content container">
+            <div class="row">
+                <div class="article__img-wrap offset-xl-3 col-xl-12 offset-md-2 col-md-14">
+                    <img class="article__img" src="../upload/15.jpg" alt="">
+                </div>
+                <div class="article__text-block offset-md-4 col-md-10">
+                    <p class="article__text article__text-style">In 2019, it's very likely you already know what augmented reality (AR) is. Provided that I won't be wasting your time talking about how AR technology works. You can read about it <a class="link link--line link--underscored" href="how-does-augmented-reality-work.html">here</a>.</p>
+<p class="article__text article__text-style">What I want to talk about is how two major market players, Apple and Google, interpreted AR through their development platforms, ARKit, and ARCore correspondingly.
+First, let's have a brief background check on both of the platforms.</p>
+<h2 class="article__title--h2">ARKit by Apple</h2>
+<p class="article__text article__text-style">ARKit is a development kit for iOS apps. Apple introduced ARKit at WWDC'17, and almost immediately, it was available for developers worldwide.</p>
+<p class="article__text article__text-style">As Apple's SVP of Software Engineering, Craig Federighi, said  ARKit is 'the largest AR platforms in the world,' and by and large, I cannot disagree with him. </p>
+<p class="article__text article__text-style">Since then ARKit got an upgrade to ARKit Version 2, and it now supports a wide range of Apple devices running on iOS 11 or higher starting from iPhone SE to iPhone Xs running on iOS 13.
+By the middle of 2018,  AppStore featured applications made with ARKit in different categories: productivity, education, business, and most of all, games. The overall download of AR-applications has exceeded over 13 million times. No wonder, just take a look at one of the loveliest apps on AppStore in my personal chart, <a class="link link--line link--underscored" rel="nofollow" href="https://itunes.apple.com/us/app/ar-dragon/id1270046606">AR Dragon</a>.</p>
+<img src="../upload/mobile-app-success-story-ar-dragon-update-min-1024x76.jpg" alt="" />
+<p class="article__text article__text-style">At WWDC'19, Apple announced that only iPhones and iPads that are powered by an A12 Bionic processor or newer support ARKit 3. </p>
+<p class="article__text article__text-style">The latest and greatest ARKit features only run on iPhone XS, iPhone XS Max, iPhone XR, and the 11-inch and 12.9-inch 2018 iPad Pros. Meaning iPhone 6S and 5th generation iPad's owners won't be able to update their AR apps until they update their device. That is a significant restriction, but one that makes sense when you consider the power required by these new ARKit 3.0 features.</p>
+<h2 class="article__title--h2">ARCore by Google</h2>
+<p class="article__text article__text-style">ARcore is a development kit for Android apps. By the time Apple launched its ARKit, Google already had some experience with AR technology. Tango, a so-called Google's AR platform, lasted almost 4 years since summer '14 to spring '18 but didn't enjoy the amount of hype ARKit did. Eventually, Google wrapped up  Tango and launched a whole new AR SDK. On March  1, 2018,  ARCore was officially released, and Tango was officially buried. However, the first stable version was released only in December '18.</p>
+<p class="article__text article__text-style">One of the most popular applications for Android with ARCore is Google's  <a class="link link--line link--underscored" rel="nofollow" href="https://play.google.com/store/apps/details?id=com.google.vr.apps.ornament">Playground</a>.
+A few words about this application - "Playground is a new mode in your camera that helps you create and play with the world around you. "</p>
+<p class="article__text article__text-style">There's little known about the next ARCore, and  I don't think that we see anything until the fall of 2019. You can follow ARCore on <a class="link link--line link--underscored" href="https://github.com/google-ar/arcore-android-sdk">GitHub</a>, check issues, release dates, and source code.</p>
+<h2 class="article__title--h2">ARCore vs. ARKit in 2019</h2>
+<p class="article__text article__text-style">That's the exciting part, let's compare these technologies. You can guess they are unlikely to be fundamentally different in operation. ARKit and ARCore use visual-inertial odometry (VIO) - it is a difficult concept if you want to go deep into it, check out this 15 minutes tutorial for beginners or study this paper by Mohamed Aladem and Samir A. Rawashdeh. </p>
+<p class="article__text article__text-style">In "simple" terms, Apple says, "This process (VIO) combines information from the iOS device's motion-sensing hardware with computer vision analysis of the scene visible to the device's camera."</p>
+<p class="article__text article__text-style">Both technologies use the following features to integrate virtual content into the real world:</p>
+<ul class="article__list article__list--numbered">
+<li class="article__item">Motion tracking - to track position in the real world.</li>
+<li class="article__item">Environmental understanding - to understand different sizes, locations, angles, forms, points, and plans.</li>
+<li class="article__item">Light estimation - to detect information about the lighting 
+<img src="../upload/LightEstimation.jpg" alt="pic from developer.google.com" />
+Obviously, there are differences in capability between ARKit and ARCore:</li>
+</ul>
+<ul class="article__list">
+<li class="article__item">Google's SDK tracks more feature points; it expands the mapped area more quickly, then ARKit.  </li>
+<li class="article__item">ARKit detects horizontal and vertical surfaces more accurately, then ARCore.   </li>
+</ul>
+<p class="article__text article__text-style">These differences are insignificant to an end-user, and you may not notice them at all. However, they may add some problems for developers working on the same applications and for iOS and Android.</p>
+<h2 class="article__title--h2">Formats of AR content</h2>
+<p class="article__text article__text-style">As long as we perceive a three-dimensional world, we should augment it with three-dimensional elements or 3D models.</p>
+<p class="article__text article__text-style">According to Apple, ARKit supported a lot of different 3D formats:.abc .usd(.usda, .usdc) .usdz .ply .obj .stl 
+Additional formats may be supported as well, to make sure consult <a class="link link--line link--underscored" rel="nofollow" href="https://developer.apple.com/documentation/arkit">Apple Documentation</a>.</p>
+<p class="article__text article__text-style">USDZ(an extension for USD, a Pixar animation format) deserves a highlight for being a new 3D file format created in partnership with Pixar. Another format that's worthy attention is Collada (.dae), the most popular one. 
+<img src="../upload/arkit2_lifestyle-room_06042018_big.jpg.large.jpg" alt="" /></p>
+<p class="article__text article__text-style">ARcore supported the following formats: .obj .glTF .fbx
+Actually, for creating 3D models for ARKit and ARCore you can use same applications - the most popular is <a class="link link--line link--underscored" rel="nofollow" href="https://www.blender.org/">Blender</a> and <a class="link link--line link--underscored" rel="nofollow" href="https://www.sketchup.com/">SketchUp</a> providing different formats of 3D models - .obj, .glTF, .usdz, .dae</p>
+<p class="article__text article__text-style">If you want to use the same models for iOS and Android, the best option for you is .obj format. 
+There is one more way that might work, which is converting the Collada model to glTF. It shouldn't be difficult considering the number of online services and extensions for that, like <a class="link link--line link--underscored" rel="nofollow" href="https://cesiumjs.org/convertmodel.html">cesiumjs</a> or <a class="link link--line link--underscored" rel="nofollow" href="https://blackthread.io/gltf-converter/">blackthread</a>.</p>
+<h2 class="article__title--h2">Cross-platform AR development with ARCore</h2>
+<p class="article__text article__text-style">ARCore has an impressive feature - you can use it on iOS devices! Yes, it isn't easy, but you can apply the same resources, same methods, and the same logic for both platforms. </p>
+<p class="article__text article__text-style">In my opinion, it's better to create applications as natively as possible to use more features and have higher performance. If you only need a limited number of AR functionality and you have no time for the nativity, only then you could consider cross-platform development.</p>
+<h2 class="article__title--h2">Present and future of AR</h2>
+<p class="article__text article__text-style">How often an ordinary person or even an "advanced user" of modern technology faces augmented reality? Almost never. At the moment, this is not our reality, pun intended. </p>
+<p class="article__text article__text-style">Sadly, many AR experiences feel unnatural, to the point that you have to force yourself to use it and pretend it is very comfortable, while it isn't. Fingers crossed for the better, looking at you Apple.
+Right now right here, we do not need AR in our everyday life, and it looks like magic we still haven't found a use for. </p>
+<p class="article__text article__text-style">The good news is, a lot of large companies are trying to improve their AR, which means AR should become part of our lives at some point. There are various AR games, apps for education, navigation, and retail. </p>
+<p class="article__text article__text-style">The most promising area is entertainment, the perfect playground for the evolution of augmented reality, given the number of users and the creativity game development requires. 
+Education is another field that should play a significant part in the future of AR technology. One of the greatest things about AR is the opportunity to see 3D models of things that are either too small or too big for a bare eye. That should help a lot with health sciences and areas where the visuals are essential. </p>
+<p class="article__text article__text-style">If you'd like to hire us for your project, drop us a line <a class="link link--line link--underscored" href="../mobile-development-services.html">here</a>.</p>
+                </div>
+        </div>
+        <div class="article__footer container">
+            <div class="row">
+                <div class="article__footer-wrap col-xl-11 offset-md-4 col-md-11 row">
+                    <div class="article__author row">
+                        <img class="article__author-photo" src="../upload/DM-min_30x30.jpg" alt="Daniil Manin" width="30" height="30">
+                    </div>
+
+                    <div class="wrap-author-name">
+                        <img class="article__author-photo article__author-photo__mobile" src="../upload/DM-min_30x30.jpg" alt="Daniil Manin" width="30" height="30">
+                        <div class="article__author-name">Daniil Manin</div>
+                    </div>
+
+                    <div class="article__publication-date">
+                        <span class="article__date">Date:</span>
+                        <span>26 Jul 2019</span>
+                    </div>
+
+                    <ul class="tags__list row">
+                        <li class="tag__item tags__title">
+                            Tags:
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog424f.html?tag=for%20tech%20enthusiasts">for tech enthusiasts,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog0a23.html?tag=mobile">mobile,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog3aba.html?tag=iOS">iOS,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog994f.html?tag=Android">Android</a>
+                        </li>
+                    </ul>
+
+                    <div class="article__share row">
+                        <ul class="share-socials__list row">
+                            <li class="share-social__item share__title">Share:</li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/vk.svg" alt="Share on vk.com" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/slack.svg" alt="Share on slack" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/discord.svg" alt="Share on discord" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://twitter.com/intent/tweet?text=Augmented%20reality%20software%3A%20ARKit%20vs.%20ARCore%202019%0Ahttps%3A%2F%2Fexyte.com%2Fblog%2Faugmented-reality-software%3Futm_source%3Dtwitter%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog">
+<!--                                    <img src="/img/share/twitter.svg" alt="Share on twitter" width="20" height="16">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Share on twitter" width="20" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="#" onclick="FB.ui({method: 'share', href: 'https:&#x2F;&#x2F;exyte.com&#x2F;blog&#x2F;augmented-reality-software?utm_source&#x3D;facebook&amp;utm_medium&#x3D;referral&amp;utm_campaign&#x3D;website_blog'}, function(response){});return false;">
+                                    <img src="../img/share/facebook.svg" alt="Share on facebook" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fexyte.com%2Fblog%2Faugmented-reality-software%3Futm_source%3Dlinkedin%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=512,toolbar=1,resizable=0'); return false;">
+                                    <img src="../img/share/linkedin.svg" alt="Share on linked in" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fexyte.com%2Fblog%2Faugmented-reality-software%3Futm_source%3Dreddit%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;title=Augmented%20reality%20software%3A%20ARKit%20vs.%20ARCore%202019">
+<!--                                    <img src="/img/share/reddit.svg" alt="Share on reddit" width="18" height="18">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5yZWRkaXQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iU2NlbmFyaW9zIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iLWctRXh5dGVfVUkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xODYuMDAwMDAwLCAtNjU3LjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICA8ZyBpZD0icmVkZGl0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA2NTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS4wMDIyMzYwMiwxNy45OTc3NjQgQzQuMDM0MTQzMTIsMTcuOTk3NzY0IDAuMDA2NzA4MDc0NTMsMTMuOTcwMzI4OSAwLjAwNjcwODA3NDUzLDkuMDAyMjM2MDIgQzAuMDA2NzA4MDc0NTMsNC4wMzQxNDMxMiA0LjAzNDE0MzEyLDAuMDA2NzA4MDc0NTMgOS4wMDIyMzYwMiwwLjAwNjcwODA3NDUzIEMxMy45NzAzMjg5LDAuMDA2NzA4MDc0NTMgMTcuOTk3NzY0LDQuMDM0MTQzMTIgMTcuOTk3NzY0LDkuMDAyMjM2MDIgQzE3Ljk5Nzc2NCwxMy45NzAzMjg5IDEzLjk3MDMyODksMTcuOTk3NzY0IDkuMDAyMjM2MDIsMTcuOTk3NzY0IFogTTE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBDMTQuOTc0NjU4NCw4LjI3Nzc2Mzk4IDE0LjM2NjQ1OTYsNy43MTIwNDk2OSAxMy42Mzk3NTE2LDcuNzM2NjQ1OTYgQzEzLjMxNzc2NCw3Ljc0NzgyNjA5IDEzLjAxMTQyODYsNy44Nzk3NTE1NSAxMi43Nzg4ODIsOC4xMDExMTgwMSBDMTEuNzU0NzgyNiw3LjQwMzQ3ODI2IDEwLjU1MTgwMTIsNy4wMjExMTgwMSA5LjMxNTI3OTUsNi45OTQyODU3MSBMOS44OTg4ODE5OSw0LjE4ODA3NDUzIEwxMS44MjQwOTk0LDQuNTkyNzk1MDMgQzExLjg3Nzc2NCw1LjA4Njk1NjUyIDEyLjMyMDQ5NjksNS40NDQ3MjA1IDEyLjgxNDY1ODQsNS4zOTEwNTU5IEMxMy4zMDg4MTk5LDUuMzM3MzkxMyAxMy42NjY1ODM5LDQuODk0NjU4MzkgMTMuNjEyOTE5Myw0LjQwMDQ5Njg5IEMxMy41NTkyNTQ3LDMuOTA2MzM1NCAxMy4xMTY1MjE3LDMuNTQ4NTcxNDMgMTIuNjIyMzYwMiwzLjYwMjIzNjAyIEMxMi4zMzgzODUxLDMuNjMxMzA0MzUgMTIuMDgzNDc4MywzLjc5Njc3MDE5IDExLjk0MjYwODcsNC4wNDI3MzI5MiBMOS43Mzc4ODgyLDMuNjAyMjM2MDIgQzkuNTg4MDc0NTMsMy41Njg2OTU2NSA5LjQzODI2MDg3LDMuNjYyNjA4NyA5LjQwNDcyMDUsMy44MTQ2NTgzOSBDOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE5MTMwNDMgTDguNzQwNjIxMTIsNi45NDA2MjExMiBDNy40ODg0NDcyLDYuOTYwNzQ1MzQgNi4yNjk4MTM2Niw3LjM0NTM0MTYxIDUuMjMyMjk4MTQsOC4wNDc0NTM0MiBDNC43MDQ1OTYyNyw3LjU1MTA1NTkgMy44NzI3OTUwMyw3LjU3NTY1MjE3IDMuMzc2Mzk3NTIsOC4xMDU1OTAwNiBDMi44OCw4LjYzMzI5MTkzIDIuOTA0NTk2MjcsOS40NjUwOTMxNyAzLjQzNDUzNDE2LDkuOTYxNDkwNjggQzMuNTM3MzkxMywxMC4wNTc2Mzk4IDMuNjU1OTAwNjIsMTAuMTQwMzcyNyAzLjc4NzgyNjA5LDEwLjE5ODUwOTMgQzMuNzc4ODgxOTksMTAuMzMwNDM0OCAzLjc3ODg4MTk5LDEwLjQ2MjM2MDIgMy43ODc4MjYwOSwxMC41OTQyODU3IEMzLjc4NzgyNjA5LDEyLjYwODk0NDEgNi4xMzU2NTIxNywxNC4yNDc5NTAzIDkuMDMxMzA0MzUsMTQuMjQ3OTUwMyBDMTEuOTI2OTU2NSwxNC4yNDc5NTAzIDE0LjI3NDc4MjYsMTIuNjExMTgwMSAxNC4yNzQ3ODI2LDEwLjU5NDI4NTcgQzE0LjI4MzcyNjcsMTAuNDYyMzYwMiAxNC4yODM3MjY3LDEwLjMzMDQzNDggMTQuMjc0NzgyNiwxMC4xOTg1MDkzIEMxNC43MjY0NTk2LDkuOTcyNjcwODEgMTUuMDEwNDM0OCw5LjUwNzU3NzY0IDE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBaIE02LjAwNTk2MjczLDkuOTAzMzU0MDQgQzYuMDA1OTYyNzMsOS40MDY5NTY1MiA2LjQxMDY4MzIzLDkuMDAyMjM2MDIgNi45MDcwODA3NSw5LjAwMjIzNjAyIEM3LjQwMzQ3ODI2LDkuMDAyMjM2MDIgNy44MDgxOTg3Niw5LjQwNjk1NjUyIDcuODA4MTk4NzYsOS45MDMzNTQwNCBDNy44MDgxOTg3NiwxMC4zOTk3NTE2IDcuNDAzNDc4MjYsMTAuODA0NDcyIDYuOTA3MDgwNzUsMTAuODA0NDcyIEM2LjQwODQ0NzIsMTAuOCA2LjAwNTk2MjczLDEwLjM5OTc1MTYgNi4wMDU5NjI3Myw5LjkwMzM1NDA0IFogTTExLjIzMTU1MjgsMTIuMzc2Mzk3NSBDMTAuNTkyMDQ5NywxMi44NTcxNDI5IDkuODA5NDQwOTksMTMuMTAzMTA1NiA5LjAwODk0NDEsMTMuMDY5NTY1MiBDOC4yMDg0NDcyLDEzLjEwMzEwNTYgNy40MjU4Mzg1MSwxMi44NTcxNDI5IDYuNzg2MzM1NCwxMi4zNzYzOTc1IEM2LjcwMTM2NjQ2LDEyLjI3MzU0MDQgNi43MTcwMTg2MywxMi4xMTkyNTQ3IDYuODE5ODc1NzgsMTIuMDM0Mjg1NyBDNi45MDkzMTY3NywxMS45NjA0OTY5IDcuMDM2NzcwMTksMTEuOTYwNDk2OSA3LjEyODQ0NzIsMTIuMDM0Mjg1NyBDNy42Njk1NjUyMiwxMi40MzAwNjIxIDguMzI5MTkyNTUsMTIuNjMxMzA0MyA5LDEyLjYgQzkuNjcwODA3NDUsMTIuNjM1Nzc2NCAxMC4zMzI2NzA4LDEyLjQ0MzQ3ODMgMTAuODgwNDk2OSwxMi4wNTIxNzM5IEMxMC45Nzg4ODIsMTEuOTU2MDI0OCAxMS4xMzk4NzU4LDExLjk1ODI2MDkgMTEuMjM2MDI0OCwxMi4wNTY2NDYgQzExLjMzMjE3MzksMTIuMTU1MDMxMSAxMS4zMjk5Mzc5LDEyLjMxNjAyNDggMTEuMjMxNTUyOCwxMi40MTIxNzM5IEwxMS4yMzE1NTI4LDEyLjM3NjM5NzUgWiBNMTEuMDcwNTU5LDEwLjgzNTc3NjQgQzEwLjU3NDE2MTUsMTAuODM1Nzc2NCAxMC4xNjk0NDEsMTAuNDMxMDU1OSAxMC4xNjk0NDEsOS45MzQ2NTgzOSBDMTAuMTY5NDQxLDkuNDM4MjYwODcgMTAuNTc0MTYxNSw5LjAzMzU0MDM3IDExLjA3MDU1OSw5LjAzMzU0MDM3IEMxMS41NjY5NTY1LDkuMDMzNTQwMzcgMTEuOTcxNjc3LDkuNDM4MjYwODcgMTEuOTcxNjc3LDkuOTM0NjU4MzkgQzExLjk5MTgwMTIsMTAuNDMxMDU1OSAxMS42MDQ5Njg5LDEwLjg0OTE5MjUgMTEuMTA4NTcxNCwxMC44NjkzMTY4IEMxMS4wOTI5MTkzLDEwLjg2OTMxNjggMTEuMDc5NTAzMSwxMC44NjkzMTY4IDExLjA2Mzg1MDksMTAuODY5MzE2OCBMMTEuMDcwNTU5LDEwLjgzNTc3NjQgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt="Share on reddit" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://telegram.me/share/url?url=https%3A%2F%2Fexyte.com%2Fblog%2Faugmented-reality-software%3Futm_source%3Dtelegram%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;text=Augmented%20reality%20software%3A%20ARKit%20vs.%20ARCore%202019%22">
+                                    <img src="../img/share/telegram.svg" alt="Share on telegram" width="19" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/medium.svg" alt="Share on medium" width="18" height="14">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="singles singles--type-1 container">
+            <div class="row">
+                <div class="single__title-wrap--article offset-md-4 col-md-10">
+                    <h2 class="single__title--article">Read similar articles</h2>
+                </div>
+                <div class="single single--type-1 offset-lg-2 col-lg-4 offset-md-2 col-md-7">
+                    <a href="how-does-augmented-reality-work.html"><img class="single__img single__img--type-1" src="../upload/preview%20How%20does%20AR%20work-arcore_560x360.jpg" alt="Blog = AR Technology: How Does Augmented Reality Work?"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="how-does-augmented-reality-work.html">AR Technology: How Does Augmented Reality Work?</a></h3>
+                        <p class="single__description">In this article we take a look at the technologies behind augmented reality, where AR used and how it&#39;s differences from MR and VR.</p>
+                        <a class="single__link-more link link--line" href="how-does-augmented-reality-work.html">Learn more</a>
+                        <span class="single__time-read">6 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-1 col-md-7">
+                    <a href="whats-a-good-app-design-practice.html"><img class="single__img single__img--type-1" src="../upload/vrr_560x360.jpg" alt="Blog = Which is a good app design practice?"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="whats-a-good-app-design-practice.html">Which is a good app design practice?</a></h3>
+                        <p class="single__description">If you want an app to be successful, good app design practices are a must have. We&#39;ve listed the design practices we follow when designing apps for our clients.</p>
+                        <a class="single__link-more link link--line" href="whats-a-good-app-design-practice.html">Learn more</a>
+                        <span class="single__time-read">6 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-2 col-md-7">
+                    <a href="technologies-behind-immersive-VR-2.html"><img class="single__img single__img--type-1" src="../upload/preview_oscar_560x360.png" alt="Blog = VR full body tracking technologies"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="technologies-behind-immersive-VR-2.html">VR full body tracking technologies</a></h3>
+                        <p class="single__description">In this article we take a brief look at the history of VR equipment evolution and development of the technologies behind immersive VR.</p>
+                        <a class="single__link-more link link--line" href="technologies-behind-immersive-VR-2.html">Learn more</a>
+                        <span class="single__time-read">7 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="footer__wrap row">
+        <span class="footer__copyright copyright col-lg-4 order-lg-1 order-4">
+            <span>© Exyte 2020</span>
+        </span>
+        <div class="footer__contact col-lg-3 order-lg-2 order-1">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:sales@exyte.com">sales@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-3 order-lg-3 order-2">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:info@exyte.com">info@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-4 order-lg-4 order-3">
+<!--            <img class="footer__icon" src="/img/icons/map.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEyIDE4Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xMSA2QTUgNSAwIDEgMCAxIDZjMCAxLjc4OCAxLjY2NyA1LjI1MyA1IDEwLjIyM0M5LjMzMyAxMS4yNTMgMTEgNy43ODggMTEgNnpNNiAxOEMyIDEyLjIxIDAgOC4yMSAwIDZhNiA2IDAgMSAxIDEyIDBjMCAyLjIxLTIgNi4yMS02IDEyek02IDhhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0em0wIDFhMyAzIDAgMSAxIDAtNiAzIDMgMCAwIDEgMCA2eiIgb3BhY2l0eT0iLjUiLz4NCjwvc3ZnPg0K" alt="">
+            <a class="footer__link link" target="_ blank" href="https://goo.gl/maps/Bx4XckDoSB2Ah938A" rel="nofollow">408 Broadway, NYC</a>
+        </div>
+        <span class="footer__author col-lg-4 order-lg-5 order-6">
+            <a class="link" target="_ blank" href="https://anthonyslab.com/" rel="nofollow">Anthony’s Lab</a>
+        </span>
+    </div>
+</footer>
+<script src="../js/main.js"></script>
+<!--    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"/>-->
+</body>
+
+<!-- Mirrored from exyte.com/blog/augmented-reality-software by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:35 GMT -->
+</html>

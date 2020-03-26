@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from exyte.com/blog/swiftui-and-our-open-source-framework by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85444300-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-85444300-1');
+    </script>
+    <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "../../platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      }(document, "script", "twitter-wjs"));
+
+
+      twttr.ready(function (twttr) {
+        twttr.events.bind('tweet', function () {
+          // dataLayer.push({
+          //   'event': 'socialInteraction',
+          //   'socialNetwork': 'Twitter',
+          //   'socialAction': 'click',
+          //   'socialTarget': window.location.href
+          // });
+        });
+      });
+    </script>
+    <!-- Twitter universal website tag code -->
+    <script>
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='../../static.ads-twitter.com/uwt.js',
+        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init','o278x');
+      twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <meta charset="UTF-8">
+    <title>How SwiftUI Replaced our Open Source Framework</title>
+    <meta name="description" content="Interview with our CTO about his favourite iOS graphics library that went almost useless the minute Apple releases their SwiftUI. ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@exytehq" />
+    <meta name="twitter:creator" content="@exytehq" />
+    <meta property="og:url" content="https://exyte.com/blog/swiftui-and-our-open-source-framework" />
+    <meta property="og:title" content="How SwiftUI Replaced our Open Source Framework" />
+    <meta property="og:description" content="Interview with our CTO about his favourite iOS graphics library that went almost useless the minute Apple releases their SwiftUI. " />
+    <meta property="og:image" content="https://exyte.com&#x2F;upload&#x2F;macaw.jpg" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i&amp;display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/boostrap.css">
+    <link rel="stylesheet" href="../css/exyte.css">
+    <link rel="icon" href="../img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../img/favicon-96.png" sizes="96x96" type="image/png">
+    <link rel="icon" href="../img/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="canonical" href="swiftui-and-our-open-source-framework.html">
+    <link rel="alternate" hreflang="en" href="swiftui-and-our-open-source-framework.html" />
+    <link rel="alternate" hreflang="x-default" href="swiftui-and-our-open-source-framework.html" />
+    <script type="application/ld+json">
+        { "@context": "https://schema.org",
+            "@type": "Article",
+            "author": [
+                {
+                  "@type": "Person",
+                  "name": "Yuri Strot"
+                }
+            ],
+            "headline": "How SwiftUI Replaced our Open Source Framework",
+            "image": "https://exyte.com/upload/macaw.jpg",
+            "editor": "Vasilisa Sheromova",
+            "genre": "software applications",
+            "keywords": "iOS, SwiftUI, UI, Apple, Open Source project",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Exyte",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://exyte.com/img/logo-sm.sv"
+                }
+            },
+            "url": "https://exyte.com/blog/swiftui-and-our-open-source-framework",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://exyte.com/blog/swiftui-and-our-open-source-framework"
+            },
+            "datePublished": "2019-12-19",
+            "dateCreated": "2019-12-19",
+            "dateModified": "2019-12-19",
+            "description": "Interview with our CTO about his favourite iOS graphics library that went almost useless the minute Apple releases their SwiftUI. ",
+            "articleBody": "It is an interview about an open-source development and SwiftUI, answered by a
+CTO of an app development firm, conducted by our marketing team. The story may
+be interesting for those who work with SwiftUI or develop their open source
+project. 
+
+When you develop an open source projects, you can move as fast as you want,
+experiment, and try new interesting, innovative approaches. Years later,
+technology giants will skim the best of approaches tried by open source
+community and offer their implementation, which will be much more solid and
+stable. 
+
+The goal of open source projects is to form new directions, and then die under
+the onslaught of more thorough solutions from the giants of the market. We can
+only adapt and move on, trying something new and thought-provoking.
+
+WHEN AND WHY DID YOU DECIDE TO START AN OPEN-SOURCE PROJECT?
+In 2015 we started working with the iOS market. At that time, we already had a
+solid background in Desktop&#x2F;Web technologies and experience with modern graphics
+libraries like JavaFX&#x2F;WPF&#x2F;Qt&#x2F;etc. How surprised we were when find there was no
+good framework to work with vector graphics in iOS, and as a consequence, there
+was no good SVG support. So we decided to create an open-source framework to
+fill this gap.
+
+I called the project Macaw. It started in 2015 as a framework for an easy and
+convenient UI construction. Now Macaw can work with vector graphics, animation,
+declarative API, and SVG support. If you need to make a beautiful chart or 
+custom control, the easiest way to do it is with Macaw.
+
+Slider control made with MacawYOU HAVE BEEN DEVELOPING YOUR GRAPHICS LIBRARY FOR
+FOUR YEARS WHEN APPLE ANNOUNCED ITS SOLUTION TO GRAPHICS IN IOS, RIGHT?
+Yes, Macaw used to be a popular open source library for vector graphics and UI
+with almost 5K stars on GitHub, but that was before SwiftUI was released. I
+watched WWDC’19 live, and as soon as SwiftUI was announced, I dashed to my
+laptop to check how much it overlaps with Macaw. 
+
+Quite soon I found out that SwiftUI covered 90% of Macaw’s features. I spent the
+next few days studying SwiftUI, scrutinizing the documentation, investigating
+the framework and trying to understand how good it was.
+
+I felt bitter seeing Macaw go obsolete in just one night after we worked on it
+for years. But on the other hand, we did a free open source project as we
+pleased and when we wanted, and Apple probably spent tons of resources on 
+SwiftUI. Surely, Apple&#39;s framework is a huge step forward compared to what Macaw 
+was. 
+
+WHAT IS SWIFTUI, AND WHY YOU THINK APPLE CREATED IT?
+SwiftUI is a great framework for building a user interface. It is built on
+modern principles: declarative syntax, simple and convenient API, WYSIWYG
+editor, etc. It also includes work with vector graphics, scene graphs,
+animations, and all that we had in Macaw. 
+
+Except maybe for SVG, Macaw still beats SwiftUI in terms of parsing SVG images,
+maybe it is due to the fact that Apple isn’t trying to make an SVG-parser. Yet.
+
+Stages of perfecting Macaw&#39;s SVG rendering SO YOU THOUGHT ABOUT SWIFTUI&#39;S FUNCTIONALITY FOUR YEARS BEFORE IT WAS
+IMPLEMENTED BY APPLE?
+In fact, the idea of such a universal and convenient framework for building user
+interfaces was already there when I got interested in UI development back in
+2008. That was the age of WPF and JavaFX, when tools for UI building only
+appeared for Desktop (on .NET and Java platforms, respectively). Even then, I
+remember having an idle minute with a cup of tea looking at these libraries and
+thinking that a fair number of things could have been done better. 
+
+I first tried my hand at writing a graphics library in 2014 when we [at Exyte]
+were making a library for Java called Sweet. In 2016, Sweet was in a way more
+similar to SwiftUI - there was not only vector graphics, but also widgets,
+layout, bindings, live editing, etc. One-year-old Macaw then had nothing but
+plans of having those features.
+
+BEING A HUGE STEP FORWARD, WILL SWIFTUI REPLACE UIKIT&#x2F;APPKIT&#x2F;WATCHKIT?
+SwiftUI is a full-fledged graphics library and it will replace the rest of the
+UI libraries on Apple platforms at some point. I think in a couple of years, we
+all will use SwiftUI for most projects, but earlier frameworks won’t just
+disappear all of a sudden. 
+
+The iOS community has already witnessed a similar situation with Objective-C. 
+Swift has been released in 2014 , yet there are many applications that still run
+on Objective-C, and the transition hasn&#39;t been completed yet. 
+
+IF UIKIT IS HERE TO STAY FOR AT LEAST A FEW YEARS, CAN WE USE SWIFTUI AND UIKIT 
+SIMULTANEOUSLY?
+Yes, you can use views from SwiftUI in UIKit and vice versa, which is an
+important step in the transition from UIKit to SwiftUI. What it means is that
+you don&#39;t have to rewrite the application from scratch to use SwiftUI features,
+you can just describe all the new components in the interface on SwiftUI and
+integrate them into your UIKit-based application. 
+
+For example:
+
+CAN YOU USE AUTO LAYOUT IN SWIFTUI ?
+No, you cannot. Although some parts of SwiftUI do use Auto Layout deep under the
+hood, but developers have no access to it.
+
+I must say that while other mobile platforms have also begun to adopt Auto
+Layout, only iOS had this constraint-based approach as the main one. Leaving
+Auto Layout behind was a logical step in the transition from storyboards to
+declarative UI, because writing constraints in the code would be too
+time-consuming.
+
+But at the same time, I believe that Apple&#39;s current approach with stacks is
+also just an intermediate stage. I find it much more convenient to work with
+layouts when they are separate from the main UI, using something similar to CSS,
+for example, where widgets only define the hierarchy. I believe Apple will come
+to that later.
+
+NEVERTHELESS APPLE TRIED TO PROVIDE AN EXHAUSTIVE DOCUMENTATION, THERE ARE STILL
+SOME QUESTIONS. FOR EXAMPLE, WHAT IS &quot;SOME&quot; KEYWORD AND HOW THE SYNTAX INSIDE {}
+BRACES WORKS.
+Oh, this is an interesting story; Apple has done a really good job here. You
+see, the goal of SwiftUI&#39;s declarative UI is to simplify and shorten the code as
+much as possible.
+
+Remember how UIKit is used and how hard it is to read? Many graphics library
+developers resort to developing their own DSLs to avoid that. For example, react 
+has JSX to avoid describing UI in pure JavaScript. But I think this approach is
+quite controversial too since using more than one language per project is bad
+practice and really complicates things.
+
+Apple solved that problem by integrating declarativity right into Swift. some 
+keyword allows you to use generics inside the View without taking them outside
+when you need just to reference the View. By the way, we did not use any
+generics in Macaw; otherwise, no declarative syntax would have worked.
+
+For example, in Macaw if you want to create a container with some content, you
+write:
+
+Specifically to simplify this syntax we added extension group():
+
+Swift has Function Builders for this so that you can use the traditional
+declarative syntax:
+
+It is as simple and readable as possible.
+
+The same goes for State variables (or bindings). They work so transparently that
+you don&#39;t even think about listening to model changes and updating the UI
+because SwiftUI does everything for you.
+
+ONE OF MACAW&#39;S KEY FEATURES WAS ANIMATION. HOW ARE THINGS WITH ANIMATION IN 
+SWIFTUI?
+Animation made with MacawIn Macaw, the animation was easy and convenient if compared to animations in 
+UIKit. In SwiftUI, it is even easier thanks to the variables built into Swift 
+state. 
+
+It is a great improvement compared to UIKit, where the animation was very
+complex, you had to bother with layers, think about a bunch of unnecessary
+details, etc. while you should have been able to build animation by simply
+changing the model indicating how to get to the final value (optionally setting
+time, easing, etc.).
+
+Animation made with SwiftUIIS THERE ANYTHING THAT MACAW CAN DO, BUT SWIFTUI
+CAN&#39;T?
+There are two main reasons to use Macaw instead of SwiftUI right now. First, 
+Macaw works for all versions of iOS and macOS. Second, it has an SVG parser that
+is unlikely to appear in SwiftUI as it is a whole different story. There are
+also some minor features, but I doubt we have to wait long before SwiftUI covers
+them too.
+
+WHAT DIFFICULTIES CAN ARISE IN MASTERING AND USING SWIFTUI, BASED ON THE
+EXPERIENCE OF DEVELOPING MACAW?
+The second difficult task (after actually creating the library) was explaining
+to the community how to use it, because Macaw approaches interface design in a
+way that is different from UIKit and similar libraries. In that way, SwiftUI is
+very similar to Macaw. 
+
+I respect and admire Apple here for immediately presenting a huge number of
+tutorials and documentation that explain their new approach to UI design. The
+community is also actively involved in highlighting all the features of the new
+framework. So I think SwiftUI would escape the problems Macaw had. 
+
+WHAT WILL BECOME OF MACAW?
+Macaw has a lot of users, and until SwiftUI works on 99% of phones, we&#39;ll keep
+supporting it. Again, we still have the best SVG parser in iOS. But I think as
+soon as SwiftUI covers all of Macaw&#39;s functionality, we will transfer SVG parser
+to SwiftUI and simply port Macaw to new versions of Swift. 
+
+ABOUT THE AUTHOR
+Yuri Strot, CTO, Exyte. I have been professionally engaged in IT for more than
+15 years. Before Exyte, I worked for several companies including Instantiations
+and API.AI which were acquired by Google. 
+
+I have experience in many different areas, such as backend, blockchain, AR &#x2F; VR.
+But what I spend the most time on for the past four years has been Swift and iOS
+. Apart from developing the iOS app as a part of the business, I am also an
+open-source evangelist and take part in a few projects on Swift."
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/",
+                        "name": "Blog Exyte"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item":
+                    {
+                        "@id": "https://exyte.com/blog/swiftui-and-our-open-source-framework",
+                        "name": "How SwiftUI Replaced our Open Source Framework"
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '585984638600036',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+    </script>
+    <script async defer src="../../connect.facebook.net/en_US/sdk.js"></script>
+    <!-- End Facebook SDK -->
+    <div class="page-wrapper page-article">
+    <div class="header-wrapper">
+        <header>
+            <div class="header">
+                <div class="container row">
+                    <div class="logo offset-md-1 col-md-3 col-9">
+                        <a href="../index.html">
+                            <img src="../img/logo-sm.svg" alt="Exyte homepage" width="71" height="20">
+                        </a>
+                    </div><!-- logo -->
+                    <button class="btn-open-menu"><span></span></button>
+                    <nav class="nav row col-md-13">
+                        <ul class="page-nav list">
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../services.html">Services</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../team.html">Team</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../blog.html">Blog</a>
+                            </li>
+                            <li class="page-nav__item">
+                                <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                            </li>
+                        </ul><!-- page-nav -->
+                        <ul class="social-nav list">
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://instagram.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/instagram.svg" alt="Open Exyte's Instagram in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik02LjY2NyAxMGEzLjMzMyAzLjMzMyAwIDEgMSA2LjY2NyAwIDMuMzMzIDMuMzMzIDAgMCAxLTYuNjY3IDBtLTEuODAyIDBhNS4xMzUgNS4xMzUgMCAxIDAgMTAuMjcgMCA1LjEzNSA1LjEzNSAwIDAgMC0xMC4yNyAwbTkuMjc0LTUuMzM4YTEuMiAxLjIgMCAxIDAgMS4yLTEuMiAxLjIgMS4yIDAgMCAwLTEuMiAxLjJNNS45NiAxOC4xNGMtLjk3NS0uMDQ1LTEuNTA1LS4yMDctMS44NTctLjM0NGEzLjEwOCAzLjEwOCAwIDAgMS0xLjE1LS43NDggMy4wODUgMy4wODUgMCAwIDEtLjc0OC0xLjE1Yy0uMTM3LS4zNTItLjMtLjg4Mi0uMzQ0LTEuODU3LS4wNDktMS4wNTQtLjA1OC0xLjM3LS4wNTgtNC4wNCAwLTIuNjcxLjAxLTIuOTg3LjA1OC00LjA0Mi4wNDQtLjk3NS4yMDgtMS41MDQuMzQ0LTEuODU3LjE4Mi0uNDY3LjM5OC0uOC43NDgtMS4xNS4zNS0uMzUuNjgyLS41NjcgMS4xNS0uNzQ4LjM1Mi0uMTM4Ljg4Mi0uMyAxLjg1Ny0uMzQ0IDEuMDU0LS4wNDkgMS4zNzEtLjA1OCA0LjA0LS4wNTggMi42NyAwIDIuOTg3LjAxIDQuMDQyLjA1OC45NzUuMDQ0IDEuNTA0LjIwOCAxLjg1Ny4zNDQuNDY3LjE4LjguMzk4IDEuMTUuNzQ4LjM1LjM1LjU2Ni42ODMuNzQ4IDEuMTUuMTM3LjM1Mi4zLjg4Mi4zNDQgMS44NTcuMDQ5IDEuMDU1LjA1OCAxLjM3LjA1OCA0LjA0MSAwIDIuNjctLjAxIDIuOTg3LS4wNTggNC4wNDItLjA0NC45NzQtLjIwNyAxLjUwNC0uMzQ0IDEuODU3LS4xODIuNDY2LS4zOTguOC0uNzQ4IDEuMTQ5LS4zNS4zNS0uNjgzLjU2Ni0xLjE1Ljc0OC0uMzUyLjEzNy0uODgyLjMtMS44NTcuMzQ0LTEuMDU0LjA0OC0xLjM3MS4wNTgtNC4wNDIuMDU4LTIuNjcgMC0yLjk4Ni0uMDEtNC4wNC0uMDU4TTUuODc3LjA2QzQuODEzLjExIDQuMDg1LjI3OSAzLjQ1LjUyNkE0LjkwOCA0LjkwOCAwIDAgMCAxLjY4IDEuNjc4IDQuODgzIDQuODgzIDAgMCAwIC41MjUgMy40NUMuMjc4IDQuMDg2LjExIDQuODEzLjA2MSA1Ljg3Ny4wMSA2Ljk0MyAwIDcuMjg0IDAgMTBzLjAxMSAzLjA1Ny4wNiA0LjEyM2MuMDQ5IDEuMDY0LjIxOCAxLjc5MS40NjUgMi40MjdhNC44ODggNC44ODggMCAwIDAgMS4xNTQgMS43NzIgNC45MTQgNC45MTQgMCAwIDAgMS43NzEgMS4xNTNjLjYzNy4yNDcgMS4zNjMuNDE2IDIuNDI3LjQ2NEM2Ljk0NCAxOS45ODggNy4yODUgMjAgMTAgMjBjMi43MTYgMCAzLjA1Ny0uMDExIDQuMTIzLS4wNiAxLjA2NS0uMDQ5IDEuNzkyLS4yMTggMi40MjgtLjQ2NWE0LjkxOCA0LjkxOCAwIDAgMCAxLjc3MS0xLjE1MyA0Ljg5OSA0Ljg5OSAwIDAgMCAxLjE1NC0xLjc3MmMuMjQ3LS42MzYuNDE3LTEuMzYzLjQ2NC0yLjQyNy4wNDktMS4wNjcuMDYtMS40MDcuMDYtNC4xMjNzLS4wMTEtMy4wNTctLjA2LTQuMTIzYy0uMDQ4LTEuMDY0LS4yMTctMS43OTItLjQ2NC0yLjQyN2E0LjkxOCA0LjkxOCAwIDAgMC0xLjE1NC0xLjc3MiA0Ljg5MyA0Ljg5MyAwIDAgMC0xLjc3LTEuMTUzYy0uNjM3LS4yNDctMS4zNjQtLjQxNy0yLjQyOC0uNDY0QzEzLjA1OC4wMSAxMi43MTcgMCAxMC4wMDIgMCA3LjI4NiAwIDYuOTQ1LjAxMSA1Ljg3OC4wNiIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Instagram in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://twitter.com/exytehq" rel="nofollow">
+<!--                                    <img src="/img/icons/twitter.svg" alt="Open Exyte's Twitter in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Open Exyte's Twitter in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://github.com/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/github.svg" alt="Open Exyte's Github in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4NCiAgICA8cGF0aCBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05Ljk5NyAwQzQuNDc3IDAgMCA0LjU5IDAgMTAuMjUyYzAgNC41MyAyLjg2NSA4LjM3MyA2LjgzNyA5LjczLjUuMDk0LjY4My0uMjIzLjY4My0uNDk0IDAtLjI0NS0uMDEtMS4wNTItLjAxNC0xLjkwOS0yLjc4MS42Mi0zLjM2OC0xLjIxLTMuMzY4LTEuMjEtLjQ1NS0xLjE4NS0xLjExLTEuNS0xLjExLTEuNS0uOTA3LS42MzYuMDY4LS42MjMuMDY4LS42MjMgMS4wMDQuMDcyIDEuNTMzIDEuMDU3IDEuNTMzIDEuMDU3Ljg5MiAxLjU2NyAyLjMzOSAxLjExNCAyLjkxLjg1Mi4wODktLjY2My4zNDgtMS4xMTUuNjM0LTEuMzcxLTIuMjItLjI2LTQuNTU1LTEuMTM4LTQuNTU1LTUuMDY3IDAtMS4xMi4zOS0yLjAzNCAxLjAzLTIuNzUyLS4xMDQtLjI1OC0uNDQ2LTEuMy4wOTctMi43MTMgMCAwIC44NC0uMjc2IDIuNzUgMS4wNWE5LjM1NCA5LjM1NCAwIDAgMSAyLjUwMi0uMzQ0Yy44NS4wMDQgMS43MDYuMTE4IDIuNTA1LjM0NSAxLjkwOC0xLjMyNyAyLjc0Ni0xLjA1MSAyLjc0Ni0xLjA1MS41NDQgMS40MTIuMjAyIDIuNDU1LjA5OCAyLjcxMy42NDEuNzE4IDEuMDMgMS42MzMgMS4wMyAyLjc1MiAwIDMuOTM4LTIuMzQgNC44MDUtNC41NjYgNS4wNTkuMzU5LjMxOC42NzguOTQyLjY3OCAxLjg5OCAwIDEuMzcyLS4wMTEgMi40NzYtLjAxMSAyLjgxNCAwIC4yNzMuMTguNTkyLjY4Ny40OTIgMy45Ny0xLjM1NyA2LjgzLTUuMiA2LjgzLTkuNzI4QzE5Ljk5NSA0LjU5IDE1LjUyIDAgOS45OTggMCIvPg0KPC9zdmc+DQo=" alt="Open Exyte's Github in new tab">
+                                </a>
+                            </li>
+                            <li class="social-nav__item">
+                                <a target="_ blank" href="https://clutch.co/profile/exyte" rel="nofollow">
+<!--                                    <img src="/img/icons/clutch.svg" alt="Open Exyte's Clutch in new tab">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjE4cHgiIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAwIDE4IDIwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNiAoNjc0OTEpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5jbHV0Y2g8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iY2x1dGNoIiBmaWxsPSIjMDAwMDAwIj4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMy41MzA4NjQyLDE0LjEyMzQ1NjggQzEyLjUwMzA3ODYsMTUuMDMxNjczNyAxMS4xNzM5MTQxLDE1LjUyNDYwODggOS44MDI0NjkxMywxNS41MDYxNzI5IEM2LjY0MTk3NTMxLDE1LjUwNjE3MjkgNC4zMjA5ODc2NiwxMy4xODUxODUyIDQuMzIwOTg3NjYsMTAgQzQuMzIwOTg3NjYsNi44MTQ4MTQ4MSA2LjU2NzkwMTIzLDQuNTkyNTkyNTkgOS44MDI0NjkxMyw0LjU5MjU5MjU5IEMxMS4xNzY5ODMsNC41NzQwMDU2IDEyLjUxMTE5NTIsNS4wNTY3Nzk3NCAxMy41NTU1NTU2LDUuOTUwNjE3MjkgTDE0LjI0NjkxMzYsNi41NDMyMDk4OCBMMTcuMzA4NjQyLDMuNDgxNDgxNDggTDE2LjU0MzIwOTksMi43NjU0MzIxIEMxNC42OTEyOTAzLDEuMTEwODgyMzQgMTIuMjg1NTk3MywwLjIxMjA1MTk1MyA5LjgwMjQ2OTEzLDAuMjQ2OTEzNTggQzQuMTIzNDU2NzksMC4yNDY5MTM1OCAwLDQuMzQ1Njc5MDEgMCw5Ljk3NTMwODY0IEMwLDE1LjYwNDkzODIgNC4yMjIyMjIyMiwxOS44MjcxNjA0IDkuODAyNDY5MTMsMTkuODI3MTYwNCBDMTIuMzA5MTUxMiwxOS44NjA3NDEzIDE0LjczNTQzMywxOC45NDMxNjU3IDE2LjU5MjU5MjYsMTcuMjU5MjU5MiBMMTcuMzMzMzMzMywxNi41Njc5MDEyIEwxNC4yMjIyMjIyLDEzLjUwNjE3MjkgTDEzLjUzMDg2NDIsMTQuMTIzNDU2OCBaIiBpZD0iUGF0aCI+PC9wYXRoPg0KICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbCIgY3g9IjkuNjU0MzIwOTkiIGN5PSIxMC4wMjQ2OTE0IiByPSIzLjI4Mzk1MDYyIj48L2NpcmNsZT4NCiAgICAgICAgPC9nPg0KICAgIDwvZz4NCjwvc3ZnPg==" alt="Open Exyte's Clutch in new tab">
+                                </a>
+                            </li>
+                        </ul><!-- social-nav -->
+                    </nav><!-- nav -->
+                </div>
+            </div>
+            <div class="mobile-nav">
+                <ul class="page-nav list">
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../services.html">Services</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../team.html">Team</a>
+                    </li>
+                    <li class="page-nav__item current">
+                        <a class="page-nav__link" href="../blog.html">Blog</a>
+                    </li>
+                    <li class="page-nav__item">
+                        <a class="page-nav__link" href="../contacts.html">Contacts</a>
+                    </li>
+                </ul><!-- page-nav -->
+            </div>
+        </header>
+    </div>
+    <div class="article page-content">
+        <div class="article__header container">
+            <div class="row">
+                <div class="offset-md-3 col-md-1">
+                    <a class="article__btn-back" href="../blog.html"></a>
+                </div>
+                <div class="col-xl-9 col-md-10">
+                    <h1 class="article__title">How SwiftUI Replaced our Open Source Framework</h1>
+                    <p class="article__description">Interview with our CTO about his favourite iOS graphics library that went almost useless the minute Apple releases their SwiftUI. </p>
+                </div>
+            </div>
+        </div>
+        <div class="article__content container">
+            <div class="row">
+                <div class="article__img-wrap offset-xl-3 col-xl-12 offset-md-2 col-md-14">
+                    <img class="article__img" src="../upload/macaw.jpg" alt="">
+                </div>
+                <div class="article__text-block offset-md-4 col-md-10">
+                    <p class="article__text article__text-style">It is an interview about an open-source development and <em>SwiftUI</em>, answered by a CTO of an <a class="link link--line link--underscored" href="../mobile-development-services.html">app development</a> firm, conducted by our marketing team. The story may be interesting for those who work with <em>SwiftUI</em> or develop their open source project. </p>
+<p class="article__text article__text-style">When you develop an open source projects, you can move as fast as you want, experiment, and try new interesting, innovative approaches. Years later, technology giants will skim the best of approaches tried by open source community and offer their implementation, which will be much more solid and stable. </p>
+<p class="article__text article__text-style">The goal of open source projects is to form new directions, and then die under the onslaught of more thorough solutions from the giants of the market. We can only adapt and move on, trying something new and thought-provoking.</p>
+<h3 class="article__title--h3">When and why did you decide to start an open-source project?</h3>
+<p class="article__text article__text-style">In 2015 we started working with the <em>iOS</em> market. At that time, we already had a solid background in Desktop/Web technologies and experience with modern graphics libraries like <em>JavaFX/WPF/Qt/</em>etc. How surprised we were when find there was no good framework to work with vector graphics in <em>iOS</em>, and as a consequence, there was no good SVG support. So we decided to create an open-source framework to fill this gap.</p>
+<p class="article__text article__text-style">I called the project <a class="link link--line link--underscored" rel="nofollow" href="https://github.com/exyte/Macaw"><em>Macaw</em></a>. It started in 2015 as a framework for an easy and convenient UI construction. Now <em>Macaw</em> can work with vector graphics, animation, declarative API, and SVG support. If you need to make a beautiful chart or <a class="link link--line link--underscored" href="swiftui-tutorial-slider-control.html">custom control</a>, the easiest way to do it is with <em>Macaw</em>.</p>
+<img src="../upload/1576752671988-liquid_swipe_brighter-compressed.gif" alt="" title="Slider control made with Macaw" /><div class="article__img-title">Slider control made with Macaw</div>
+<h3 class="article__title--h3">You have been developing your graphics library for four years when <em>Apple</em> announced its solution to graphics in <em>iOS</em>, right?</h3>
+<p class="article__text article__text-style">Yes, <em>Macaw</em> used to be a popular open source library for vector graphics and UI with almost 5K stars on <em>GitHub</em>, but that was before <em>SwiftUI</em> was released. I watched <em>WWDC</em>’19 live, and as soon as <em>SwiftUI</em> was announced, I dashed to my laptop to check how much it overlaps with Macaw. </p>
+<p class="article__text article__text-style">Quite soon I found out that <em>SwiftUI</em> covered 90% of <em>Macaw</em>’s features. I spent the next few days studying <em>SwiftUI</em>, scrutinizing the documentation, investigating the framework and trying to understand how good it was.</p>
+<p class="article__text article__text-style">I felt bitter seeing Macaw go obsolete in just one night after we worked on it for years. But on the other hand, we did a free open source project as we pleased and when we wanted, and Apple probably spent tons of resources on <em>SwiftUI</em>. Surely, <em>Apple</em>'s framework is a huge step forward compared to what <em>Macaw</em> was. </p>
+<h3 class="article__title--h3">What is <em>SwiftUI</em>, and why you think <em>Apple</em> created it?</h3>
+<p class="article__text article__text-style"><em>SwiftUI</em> is a great framework for building a user interface. It is built on modern principles: declarative syntax, simple and convenient API, WYSIWYG editor, etc. It also includes work with vector graphics, scene graphs, animations, and all that we had in <em>Macaw</em>. </p>
+<p class="article__text article__text-style">Except maybe for SVG, <em>Macaw</em> still beats <em>SwiftUI</em> in terms of parsing SVG images, maybe it is due to the fact  that Apple isn’t trying to make an SVG-parser. Yet.</p>
+<img src="../upload/kit.gif" alt="" title="Stages of perfecting Macaw's SVG rendering " /><div class="article__img-title">Stages of perfecting Macaw's SVG rendering </div>
+<h3 class="article__title--h3">So you thought about <em>SwiftUI</em>'s functionality four years before it was implemented by <em>Apple</em>?</h3>
+<p class="article__text article__text-style">In fact, the idea of such a universal and convenient framework for building user interfaces was already there when I got interested in UI development back in 2008. That was the age of WPF and JavaFX, when tools for UI building only appeared for Desktop (on .NET and Java platforms, respectively). Even then, I remember having an idle minute with a cup of tea looking at these libraries and thinking that a fair number of things could have been done better. </p>
+<p class="article__text article__text-style">I first tried my hand at writing a graphics library in 2014 when we [at <em>Exyte</em>] were making a library for <em>Java</em> called <a class="link link--line link--underscored" rel="nofollow" href="https://www.infoq.com/presentations/ui-eclipse-rcp/"><em>Sweet</em></a>. In 2016, <em>Sweet</em> was in a way more similar to <em>SwiftUI</em> - there was not only vector graphics, but also widgets, layout, bindings, live editing, etc. One-year-old <em>Macaw</em> then had nothing but plans of having those features.</p>
+<h3 class="article__title--h3">Being a huge step forward, will <em>SwiftUI</em> replace <em>UIKit/AppKit/WatchKit</em>?</h3>
+<p class="article__text article__text-style"><em>SwiftUI</em> is a full-fledged graphics library and it will replace the rest of the UI libraries on <em>Apple</em> platforms at some point. I think in a couple of years, we all will use <em>SwiftUI</em> for most projects, but earlier frameworks won’t just disappear all of a sudden. </p>
+<p class="article__text article__text-style">The <em>iOS</em> community has already witnessed a similar situation with <em>Objective-C</em>. <em>Swift</em> has been released in 2014 , yet there are many applications that still run on <em>Objective-C</em>, and the transition hasn't been completed yet. </p>
+<h3 class="article__title--h3">If <em>UIKit</em> is here to stay for at least a few years, can we use <em>SwiftUI</em> and <em>UIKit</em> simultaneously?</h3>
+<p class="article__text article__text-style">Yes, you can use views from <em>SwiftUI</em> in <em>UIKit</em> and vice versa, which is an important step in the transition from <em>UIKit</em> to <em>SwiftUI</em>. What it means is that you don't have to rewrite the application from scratch to use <em>SwiftUI</em> features, you can just describe all the new components in the interface on <em>SwiftUI</em> and integrate them into your <em>UIKit</em>-based application. </p>
+<p class="article__text article__text-style">For example:
+<div class="article__gist"><script src="../../gist.github.com/basilche/6b95641c702dee1b8f537b1e5db4347c.js"></script></div></p>
+<h3 class="article__title--h3">Can you use Auto Layout in <em>SwiftUI</em> ?</h3>
+<p class="article__text article__text-style">No, you cannot. Although some parts of SwiftUI do use Auto Layout deep under the hood, but developers have no access to it.</p>
+<p class="article__text article__text-style">I must say that while other mobile platforms have also begun to adopt Auto Layout, only <em>iOS</em> had this constraint-based approach as the main one. Leaving Auto Layout behind was a logical step in the transition from storyboards to declarative UI, because writing constraints in the code would be too time-consuming.</p>
+<p class="article__text article__text-style">But at the same time, I believe that <em>Apple</em>'s current approach with stacks is also just an intermediate stage. I find it much more convenient to work with layouts when they are separate from the main UI, using something similar to CSS, for example, where widgets only define the hierarchy. I believe Apple will come to that later.</p>
+<h3 class="article__title--h3">Nevertheless Apple tried to provide an exhaustive documentation, there are still some questions. For example, what is "some" keyword and how the syntax inside {} braces works.</h3>
+<p class="article__text article__text-style">Oh, this is an interesting story; <em>Apple</em> has done a really good job here. You see, the goal of <em>SwiftUI</em>'s declarative UI is to simplify and shorten the code as much as possible.</p>
+<p class="article__text article__text-style">Remember how UIKit is used and how hard it is to read? Many graphics library developers resort to developing their own <em>DSLs</em> to avoid that. For example, <em>react</em> has <em>JSX</em> to avoid describing UI in pure <em>JavaScript</em>. But I think this approach is quite controversial too since using more than one language per project is bad practice and really complicates things.</p>
+<p class="article__text article__text-style">Apple solved that problem by integrating declarativity right into <em>Swift</em>. <code>some</code> keyword allows you to use generics inside the <code>View</code> without taking them outside when you need just to reference the <code>View</code>. By the way, we did not use any generics in <em>Macaw</em>; otherwise, no declarative syntax would have worked.</p>
+<p class="article__text article__text-style">For example, in <em>Macaw</em> if you want to create a container with some content, you write:</p>
+<div class="article__gist"><script src="../../gist.github.com/basilche/990725c0a2cc3812d330bfcdbed472d8.js"></script></div>
+<p class="article__text article__text-style">Specifically to simplify this syntax we added extension <code>group()</code>:</p>
+<div class="article__gist"><script src="../../gist.github.com/basilche/e3e016afd3661a6010c43c107a9beee0.js"></script></div>
+<p class="article__text article__text-style"><em>Swift</em> has Function Builders for this so that you can use the traditional declarative syntax:</p>
+<div class="article__gist"><script src="../../gist.github.com/basilche/2e604def9f159f0978fc595b6407c1ed.js"></script></div>
+<p class="article__text article__text-style">It is as simple and readable as possible.</p>
+<p class="article__text article__text-style">The same goes for <code>State</code> variables (or bindings). They work so transparently that you don't even think about listening to model changes and updating the UI because <em>SwiftUI</em> does everything for you.</p>
+<h3 class="article__title--h3">One of <em>Macaw</em>'s key features was animation. How are things with animation in <em>SwiftUI</em>?</h3>
+<img src="../upload/macaw_example.gif" alt="" title="Animation made with Macaw" /><div class="article__img-title">Animation made with Macaw</div>
+<p class="article__text article__text-style">In <em>Macaw</em>, the animation was easy and convenient if compared to animations in <em>UIKit</em>. <a class="link link--line link--underscored" href="replicating-apple-card-application-using-swiftui.html">In <em>SwiftUI</em></a>, it is even easier thanks to the variables built into <em>Swift</em> state. </p>
+<p class="article__text article__text-style">It is a great improvement compared to <em>UIKit</em>, where the animation was very complex, you had to bother with layers, think about a bunch of unnecessary details, etc. while you should have been able to build animation by simply changing the model indicating how to get to the final value (optionally setting time, easing, etc.).</p>
+<img src="../upload/Replicating_apple_card.gif" alt="" title="Animation made with SwiftUI" /><div class="article__img-title">Animation made with SwiftUI</div>
+<h3 class="article__title--h3">Is there anything that Macaw can do, but SwiftUI can't?</h3>
+<p class="article__text article__text-style">There are two main reasons to use Macaw instead of <em>SwiftUI</em> right now. First, <em>Macaw</em> works for all versions of <em>iOS</em> and <em>macOS</em>. Second, it has an SVG parser that is unlikely to appear in <em>SwiftUI</em> as it is a whole different story. There are also some minor features, but I doubt we have to wait long before <em>SwiftUI</em> covers them too.</p>
+<h3 class="article__title--h3">What difficulties can arise in mastering and using SwiftUI, based on the experience of developing Macaw?</h3>
+<p class="article__text article__text-style">The second difficult task (after actually creating the library) was explaining to the community how to use it, because <em>Macaw</em> approaches interface design in a way that is different from <em>UIKit</em> and similar libraries. In that way, <em>SwiftUI</em> is very similar to <em>Macaw</em>. </p>
+<p class="article__text article__text-style">I respect and admire <em>Apple</em> here for immediately presenting a huge number of tutorials and documentation that explain their new approach to UI design. The community is also actively involved in highlighting all the features of the new framework. So I think <em>SwiftUI</em> would escape the problems <em>Macaw</em> had. </p>
+<h3 class="article__title--h3">What will become of Macaw?</h3>
+<p class="article__text article__text-style"><em>Macaw</em> has a lot of users, and until <em>SwiftUI</em> works on 99% of phones, we'll keep supporting it. Again, we still have the best SVG parser in <em>iOS</em>. But I think as soon as <em>SwiftUI</em> covers all of <em>Macaw</em>'s functionality, we will transfer SVG parser to <em>SwiftUI</em> and simply port <em>Macaw</em> to new versions of <em>Swift</em>. </p>
+<h3 class="article__title--h3">About the author</h3>
+<p class="article__text article__text-style">Yuri Strot, CTO, <em>Exyte</em>. I have been professionally engaged in IT for more than 15 years. Before <em>Exyte</em>, I worked for several companies including Instantiations and API.AI which were acquired by <em>Google</em>. </p>
+<p class="article__text article__text-style">I have experience in many different areas, such as backend, blockchain, AR / VR. But what I spend the most time on for the past four years has been <em>Swift</em> and <em>iOS</em>. Apart from developing the <em>iOS</em> app as a part of the business, I am also an open-source evangelist and take part in a few projects on <em>Swift</em>.</p>
+                </div>
+        </div>
+        <div class="article__footer container">
+            <div class="row">
+                <div class="article__footer-wrap col-xl-11 offset-md-4 col-md-11 row">
+                    <div class="article__author row">
+                        <img class="article__author-photo" src="../upload/YS-min_30x30.jpg" alt="Yuri Strot" width="30" height="30">
+                    </div>
+
+                    <div class="wrap-author-name">
+                        <img class="article__author-photo article__author-photo__mobile" src="../upload/YS-min_30x30.jpg" alt="Yuri Strot" width="30" height="30">
+                        <div class="article__author-name">Yuri Strot</div>
+                    </div>
+
+                    <div class="article__publication-date">
+                        <span class="article__date">Date:</span>
+                        <span>19 Dec 2019</span>
+                    </div>
+
+                    <ul class="tags__list row">
+                        <li class="tag__item tags__title">
+                            Tags:
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog3aba.html?tag=iOS">iOS,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../bloge518.html?tag=SwiftUI">SwiftUI,</a>
+                        </li>
+                        <li class="tag__item">
+                            <a class="link link--line" href="../blog7920.html?tag=for%20engineers">for engineers</a>
+                        </li>
+                    </ul>
+
+                    <div class="article__share row">
+                        <ul class="share-socials__list row">
+                            <li class="share-social__item share__title">Share:</li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/vk.svg" alt="Share on vk.com" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/slack.svg" alt="Share on slack" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/discord.svg" alt="Share on discord" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://twitter.com/intent/tweet?text=How%20SwiftUI%20Replaced%20our%20Open%20Source%20Framework%0Ahttps%3A%2F%2Fexyte.com%2Fblog%2Fswiftui-and-our-open-source-framework%3Futm_source%3Dtwitter%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog">
+<!--                                    <img src="/img/share/twitter.svg" alt="Share on twitter" width="20" height="16">-->
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTE2LjMzMy4wMDRWMGgxLjE0NmwuNDIuMDg0Yy4yOC4wNTYuNTMzLjEyNy43Ni4yMTZhNS4zNSA1LjM1IDAgMCAxIC42NjEuMzExYy4yMTMuMTE4LjQwNi4yMzguNTguMzZhMy41OSAzLjU5IDAgMCAxIC40NjMuMzg3Yy4xMzYuMTM4LjM0Ny4xNzIuNjMzLjEwN2E4LjY3IDguNjcgMCAwIDAgLjkyNi0uMjc4bC45OC0uNC41OS0uMjgyLjExLS4wNjcuMDAzLS4wMDYuMDktLjA0NC4wMDMtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LjAyMi0uMDA3LjAyMi0uMDA0LS4wMDQuMDMzLS4wMDcuMDMzLS4wMjIuMDY3LS4wMjIuMDQ0LS4wMS4wMzNjLS4wMS4wMy0uMDE3LjA2LS4wMjIuMDktLjAwNy4wMzctLjA3Ny4xODQtLjIxLjQ0M3MtLjI5OC41MjItLjQ5Ni43OS0uMzc3LjQ2Ny0uNTMzLjYwM2wtLjMxNi4yOWEuOTUuOTUgMCAwIDEtLjE4Ny4xNTZsLS4xMS4wNzItLjA0NC4wMjItLjAwMy4wMDctLjAxMy4wMS0uMDA0LjAwNy0uMDQ0LjAyMi0uMDA0LjAwNy0uMDEzLjAxLS4wMS4wMTMtLjAxMy4wMS0uMDA0LjAwN2guMTFsLjYxNy0uMTMzYy40MS0uMDkuODA0LS4xOTYgMS4xOC0uMzIybC42OTYtLjIzMy4wMjItLjAxLjAyLS4wMS4wNDQtLjAyMi4wNDQtLjAwNi4wNDMtLjAwNHYuMDQ0bC0uMDEuMDA0LS4wMS4wMDctLjAwNC4wMDctLjAxMy4wMS0uMDEuMDEzLS4wMTMuMDEtLjAwNC4wMDctLjAwMy4wMDctLjAwNy4wMDQtLjAyMi4wNDQtLjAwNy4wMDMtLjI4LjM3OC0uMjk4LjM3OGMtLjAxNC4wMDQtLjAzNi4wMjctLjA2Mi4wNjdzLS4xOC4yMDYtLjQ2Ny40OTRsLS44NDIuNzdjLS4yNzYuMjI3LS40MTYuNTA2LS40Mi44MzZsLS4wNSAxLjExM2MtLjAzLjQxNC0uMDg0Ljg2Mi0uMTY3IDEuMzQ0cy0uMjA0IDEuMDIzLS4zNzMgMS42My0uMzc1IDEuMTk4LS42MTggMS43NzctLjQ5NiAxLjA5NC0uNzYgMS41NTNhMTQuOTggMTQuOTggMCAwIDEtMS40IDIuMDY0IDEzLjExIDEzLjExIDAgMCAxLS44NjQuOTVsLS41NzIuNTc4YTEzLjk2IDEzLjk2IDAgMCAxLS40MzMuMzYzbC0uODE0LjYzNi0uNzk4LjUyNi0uODc4LjQ4MmExMC40IDEwLjQgMCAwIDEtMS4xMDcuNTA2bC0xLjI1Ni40MzNhMTEuNDYgMTEuNDYgMCAwIDEtMS4yNzkuMzExbC0xLjQuMTktLjc4Mi4wNzdWMjBINi45ODd2LS4wMWwtLjE4Ny0uMDEtLjMxLS4wMjItLjkxNC0uMTIyLTEuMjQ0LS4yMjItMS4zNDYtLjQyMmExMy4wMyAxMy4wMyAwIDAgMS0xLjUyOC0uNjI4bC0uNzkzLS40LS4zNTctLjIwMy0uMi0uMTIyLS4wMDQtLjAwNy0uMDEzLS4wMS0uMDA0LS4wMDctLjA0NC0uMDIyLS4wMDMtLjAwNy0uMDEzLS4wMS0uMDEtLjAxMy0uMDA3LS4wMDRIMHYtLjA0NGwuMDIyLjAwNC4wMjIuMDA3LjEuMDFjLjA2Ny4wMDguMjQ2LjAyLjU0LjAzMyAxLjA3LjA1IDIuMTQzLS4wNzMgMy4xNzQtLjM2Ny40NDMtLjExNi44NzYtLjI2NiAxLjI5Ni0uNDQ4bC44MzgtLjM5Yy4yNi0uMTQzLjUxLS4zLjc1My0uNDdsLjUwOC0uMzQ0LjAwNC0uMDA3LjAwNy0uMDA0LjAwNi0uMDA0LjAxLS4wMTMuMDEzLS4wMS4wMDQtLjAwNy4wMjItLjAwNy4wMjItLjAwNC4wMDQtLjAyMi4wMDctLjAyMi4wMDctLjAwNC4wMDQtLjAwNy0uMTc3LS4wMS0uMzQtLjAyMmEzLjI5IDMuMjkgMCAwIDEtLjUxOS0uMSA0Ljk1IDQuOTUgMCAwIDEtLjc2LS4yNjcgNS44NSA1Ljg1IDAgMCAxLS43OTMtLjQyMWMtLjE5OC0uMTE4LS4zODQtLjI1NC0uNTU4LS40MDZsLS40NC0uNDUzYTQuNDkgNC40OSAwIDAgMS0uNDY3LS42MDYgNS40NiA1LjQ2IDAgMCAxLS4zOC0uNzE4bC0uMTgyLS40MDMtLjAyMi0uMDY3LS4wMDctLjAyMi0uMDA0LS4wMjIuMDMzLjAwNC4wMzMuMDA3LjI0Mi4wMzNjLjE2LjAyMi40MTQuMDMuNzYuMDIybC43MTctLjA0NC4yNDItLjA0NC4wNDQtLjAxLjA1Ni0uMDEuMDU0LS4wMS4wMDQtLjAwNy4wMTMtLjAxLjAwNC0uMDA3LS4xMzMtLjAzMy0uMDQzLS4wMS0uMDQ0LS4wMS0uMTUzLS4wNDQtLjU5Ni0uMjQ0YTQuNTQgNC41NCAwIDAgMS0uNzcxLS40MTFjLS4xOTItLjEzMy0uMzc0LS4yOC0uNTQ3LS40MzctLjIwMi0uMTkzLS4zOTItLjQtLjU2Ny0uNjE3LS4yMTctLjI3LS40MDItLjU2NS0uNTUtLjg3OC0uMTUtLjMwNS0uMjczLS42MjUtLjM2My0uOTUzLS4wOC0uMzAyLS4xMzQtLjYxLS4xNi0uOTIybC0uMDQtLjQ2Ni4wMjIuMDA0LjAyMi4wMDcuMDY3LjAzMy4wMi4wMS4zNDIuMTU2Yy4yMjguMTAzLjUxLjE5Mi44NDguMjY3bC42MDcuMTIyLjEuMDFoLjE5OGwtLjAwNC0uMDA4LS4wMTMtLjAxLS4wMS0uMDEzLS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwNC0uMDA3LS4wMTMtLjAxLS4wMDQtLjAwNy0uMDQ0LS4wMjItLjAwMy0uMDA3LS4xOS0uMTRhMi45IDIuOSAwIDAgMS0uMzgtLjM2MmwtLjM5Ny0uNDY3YTMuNiAzLjYgMCAwIDEtLjM1Mi0uNTIxYy0uMTIzLS4yMjgtLjIzMi0uNDY0LS4zMjctLjcwNi0uMjE4LS41NDYtLjM0LTEuMTI3LS4zNTctMS43MTQtLjAwOC0uMjggMC0uNTIyLjAyMi0uNzJzLjA2Ni0uNDI2LjEzLS42NzhhNS4zIDUuMyAwIDAgMSAuMjg3LS43OThsLjE4OC0uNDIyTDEuNjY0LjkgMS42Ny45MDZsLjAxLS4wMTMuMDA3LS4wMDMuMDA3LjAwNC4wMDQuMDA3LjAwMy4wMDcuMDEzLjAxLjAxLjAxMy4wMDcuMDA0LjAyMi4wNDQuMDA3LjAwNC4wMDQuMDA3LjI5OC4zMzMuNzA2Ljc0My40NS40MjdjLjAzLjAxLjA2Ny4wNDQuMTEuMXMuMi4xODcuNDQuMzkzYTEzLjQ5IDEzLjQ5IDAgMCAwIC45ODEuNzIyYy40MDQuMjczLjg1Mi41NDMgMS4zNDQuODFhMTMuMDkgMTMuMDkgMCAwIDAgMS41ODcuNzIybDEuMTkuNDIyYy4yMjguMDY3LjYxNy4xNSAxLjE2OC4yNTZsMS4yNDQuMi41NzQuMDUuMTU0LjAwNC0uMDA0LS4wMzMtLjAwNy0uMDMzLS4wNDQtLjI3OGE1LjMxIDUuMzEgMCAwIDEtLjA0NC0uNzc3IDUuMDcgNS4wNyAwIDAgMSAuMDc4LS45MjJjLjA1LS4yOC4xMjgtLjU2Ni4yMy0uODUzcy4yMDMtLjUyLjMwMi0uNjk2YTYuODkgNi44OSAwIDAgMSAuMzkyLS41OTJjLjE2LS4yMjIuMzctLjQ1LjYyOC0uNjlzLjU1LS40NDcuODgyLS42MzIuNjM2LS4zMjYuOTE0LS40MjIuNTE0LS4xNTguNzA2LS4xOWwuMjg3LS4wNVYuMDA0eiIgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+" alt="Share on twitter" width="20" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="#" onclick="FB.ui({method: 'share', href: 'https:&#x2F;&#x2F;exyte.com&#x2F;blog&#x2F;swiftui-and-our-open-source-framework?utm_source&#x3D;facebook&amp;utm_medium&#x3D;referral&amp;utm_campaign&#x3D;website_blog'}, function(response){});return false;">
+                                    <img src="../img/share/facebook.svg" alt="Share on facebook" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fexyte.com%2Fblog%2Fswiftui-and-our-open-source-framework%3Futm_source%3Dlinkedin%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=512,toolbar=1,resizable=0'); return false;">
+                                    <img src="../img/share/linkedin.svg" alt="Share on linked in" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fexyte.com%2Fblog%2Fswiftui-and-our-open-source-framework%3Futm_source%3Dreddit%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;title=How%20SwiftUI%20Replaced%20our%20Open%20Source%20Framework">
+<!--                                    <img src="/img/share/reddit.svg" alt="Share on reddit" width="18" height="18">-->
+                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5yZWRkaXQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iU2NlbmFyaW9zIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iLWctRXh5dGVfVUkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xODYuMDAwMDAwLCAtNjU3LjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICA8ZyBpZD0icmVkZGl0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA2NTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS4wMDIyMzYwMiwxNy45OTc3NjQgQzQuMDM0MTQzMTIsMTcuOTk3NzY0IDAuMDA2NzA4MDc0NTMsMTMuOTcwMzI4OSAwLjAwNjcwODA3NDUzLDkuMDAyMjM2MDIgQzAuMDA2NzA4MDc0NTMsNC4wMzQxNDMxMiA0LjAzNDE0MzEyLDAuMDA2NzA4MDc0NTMgOS4wMDIyMzYwMiwwLjAwNjcwODA3NDUzIEMxMy45NzAzMjg5LDAuMDA2NzA4MDc0NTMgMTcuOTk3NzY0LDQuMDM0MTQzMTIgMTcuOTk3NzY0LDkuMDAyMjM2MDIgQzE3Ljk5Nzc2NCwxMy45NzAzMjg5IDEzLjk3MDMyODksMTcuOTk3NzY0IDkuMDAyMjM2MDIsMTcuOTk3NzY0IFogTTE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBDMTQuOTc0NjU4NCw4LjI3Nzc2Mzk4IDE0LjM2NjQ1OTYsNy43MTIwNDk2OSAxMy42Mzk3NTE2LDcuNzM2NjQ1OTYgQzEzLjMxNzc2NCw3Ljc0NzgyNjA5IDEzLjAxMTQyODYsNy44Nzk3NTE1NSAxMi43Nzg4ODIsOC4xMDExMTgwMSBDMTEuNzU0NzgyNiw3LjQwMzQ3ODI2IDEwLjU1MTgwMTIsNy4wMjExMTgwMSA5LjMxNTI3OTUsNi45OTQyODU3MSBMOS44OTg4ODE5OSw0LjE4ODA3NDUzIEwxMS44MjQwOTk0LDQuNTkyNzk1MDMgQzExLjg3Nzc2NCw1LjA4Njk1NjUyIDEyLjMyMDQ5NjksNS40NDQ3MjA1IDEyLjgxNDY1ODQsNS4zOTEwNTU5IEMxMy4zMDg4MTk5LDUuMzM3MzkxMyAxMy42NjY1ODM5LDQuODk0NjU4MzkgMTMuNjEyOTE5Myw0LjQwMDQ5Njg5IEMxMy41NTkyNTQ3LDMuOTA2MzM1NCAxMy4xMTY1MjE3LDMuNTQ4NTcxNDMgMTIuNjIyMzYwMiwzLjYwMjIzNjAyIEMxMi4zMzgzODUxLDMuNjMxMzA0MzUgMTIuMDgzNDc4MywzLjc5Njc3MDE5IDExLjk0MjYwODcsNC4wNDI3MzI5MiBMOS43Mzc4ODgyLDMuNjAyMjM2MDIgQzkuNTg4MDc0NTMsMy41Njg2OTU2NSA5LjQzODI2MDg3LDMuNjYyNjA4NyA5LjQwNDcyMDUsMy44MTQ2NTgzOSBDOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE2ODk0NDEgOS40MDQ3MjA1LDMuODE5MTMwNDMgTDguNzQwNjIxMTIsNi45NDA2MjExMiBDNy40ODg0NDcyLDYuOTYwNzQ1MzQgNi4yNjk4MTM2Niw3LjM0NTM0MTYxIDUuMjMyMjk4MTQsOC4wNDc0NTM0MiBDNC43MDQ1OTYyNyw3LjU1MTA1NTkgMy44NzI3OTUwMyw3LjU3NTY1MjE3IDMuMzc2Mzk3NTIsOC4xMDU1OTAwNiBDMi44OCw4LjYzMzI5MTkzIDIuOTA0NTk2MjcsOS40NjUwOTMxNyAzLjQzNDUzNDE2LDkuOTYxNDkwNjggQzMuNTM3MzkxMywxMC4wNTc2Mzk4IDMuNjU1OTAwNjIsMTAuMTQwMzcyNyAzLjc4NzgyNjA5LDEwLjE5ODUwOTMgQzMuNzc4ODgxOTksMTAuMzMwNDM0OCAzLjc3ODg4MTk5LDEwLjQ2MjM2MDIgMy43ODc4MjYwOSwxMC41OTQyODU3IEMzLjc4NzgyNjA5LDEyLjYwODk0NDEgNi4xMzU2NTIxNywxNC4yNDc5NTAzIDkuMDMxMzA0MzUsMTQuMjQ3OTUwMyBDMTEuOTI2OTU2NSwxNC4yNDc5NTAzIDE0LjI3NDc4MjYsMTIuNjExMTgwMSAxNC4yNzQ3ODI2LDEwLjU5NDI4NTcgQzE0LjI4MzcyNjcsMTAuNDYyMzYwMiAxNC4yODM3MjY3LDEwLjMzMDQzNDggMTQuMjc0NzgyNiwxMC4xOTg1MDkzIEMxNC43MjY0NTk2LDkuOTcyNjcwODEgMTUuMDEwNDM0OCw5LjUwNzU3NzY0IDE1LjAwMTQ5MDcsOS4wMDIyMzYwMiBaIE02LjAwNTk2MjczLDkuOTAzMzU0MDQgQzYuMDA1OTYyNzMsOS40MDY5NTY1MiA2LjQxMDY4MzIzLDkuMDAyMjM2MDIgNi45MDcwODA3NSw5LjAwMjIzNjAyIEM3LjQwMzQ3ODI2LDkuMDAyMjM2MDIgNy44MDgxOTg3Niw5LjQwNjk1NjUyIDcuODA4MTk4NzYsOS45MDMzNTQwNCBDNy44MDgxOTg3NiwxMC4zOTk3NTE2IDcuNDAzNDc4MjYsMTAuODA0NDcyIDYuOTA3MDgwNzUsMTAuODA0NDcyIEM2LjQwODQ0NzIsMTAuOCA2LjAwNTk2MjczLDEwLjM5OTc1MTYgNi4wMDU5NjI3Myw5LjkwMzM1NDA0IFogTTExLjIzMTU1MjgsMTIuMzc2Mzk3NSBDMTAuNTkyMDQ5NywxMi44NTcxNDI5IDkuODA5NDQwOTksMTMuMTAzMTA1NiA5LjAwODk0NDEsMTMuMDY5NTY1MiBDOC4yMDg0NDcyLDEzLjEwMzEwNTYgNy40MjU4Mzg1MSwxMi44NTcxNDI5IDYuNzg2MzM1NCwxMi4zNzYzOTc1IEM2LjcwMTM2NjQ2LDEyLjI3MzU0MDQgNi43MTcwMTg2MywxMi4xMTkyNTQ3IDYuODE5ODc1NzgsMTIuMDM0Mjg1NyBDNi45MDkzMTY3NywxMS45NjA0OTY5IDcuMDM2NzcwMTksMTEuOTYwNDk2OSA3LjEyODQ0NzIsMTIuMDM0Mjg1NyBDNy42Njk1NjUyMiwxMi40MzAwNjIxIDguMzI5MTkyNTUsMTIuNjMxMzA0MyA5LDEyLjYgQzkuNjcwODA3NDUsMTIuNjM1Nzc2NCAxMC4zMzI2NzA4LDEyLjQ0MzQ3ODMgMTAuODgwNDk2OSwxMi4wNTIxNzM5IEMxMC45Nzg4ODIsMTEuOTU2MDI0OCAxMS4xMzk4NzU4LDExLjk1ODI2MDkgMTEuMjM2MDI0OCwxMi4wNTY2NDYgQzExLjMzMjE3MzksMTIuMTU1MDMxMSAxMS4zMjk5Mzc5LDEyLjMxNjAyNDggMTEuMjMxNTUyOCwxMi40MTIxNzM5IEwxMS4yMzE1NTI4LDEyLjM3NjM5NzUgWiBNMTEuMDcwNTU5LDEwLjgzNTc3NjQgQzEwLjU3NDE2MTUsMTAuODM1Nzc2NCAxMC4xNjk0NDEsMTAuNDMxMDU1OSAxMC4xNjk0NDEsOS45MzQ2NTgzOSBDMTAuMTY5NDQxLDkuNDM4MjYwODcgMTAuNTc0MTYxNSw5LjAzMzU0MDM3IDExLjA3MDU1OSw5LjAzMzU0MDM3IEMxMS41NjY5NTY1LDkuMDMzNTQwMzcgMTEuOTcxNjc3LDkuNDM4MjYwODcgMTEuOTcxNjc3LDkuOTM0NjU4MzkgQzExLjk5MTgwMTIsMTAuNDMxMDU1OSAxMS42MDQ5Njg5LDEwLjg0OTE5MjUgMTEuMTA4NTcxNCwxMC44NjkzMTY4IEMxMS4wOTI5MTkzLDEwLjg2OTMxNjggMTEuMDc5NTAzMSwxMC44NjkzMTY4IDExLjA2Mzg1MDksMTAuODY5MzE2OCBMMTEuMDcwNTU5LDEwLjgzNTc3NjQgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt="Share on reddit" width="18" height="18">
+                                </a>
+                            </li>
+                            <li class="share-social__item">
+                                <a href="https://telegram.me/share/url?url=https%3A%2F%2Fexyte.com%2Fblog%2Fswiftui-and-our-open-source-framework%3Futm_source%3Dtelegram%26utm_medium%3Dreferral%26utm_campaign%3Dwebsite_blog&amp;text=How%20SwiftUI%20Replaced%20our%20Open%20Source%20Framework%22">
+                                    <img src="../img/share/telegram.svg" alt="Share on telegram" width="19" height="16">
+                                </a>
+                            </li>
+                            <li class="share-social__item share-social__item--hidden">
+                                <a href="#">
+                                    <img src="../img/share/medium.svg" alt="Share on medium" width="18" height="14">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="singles singles--type-1 container">
+            <div class="row">
+                <div class="single__title-wrap--article offset-md-4 col-md-10">
+                    <h2 class="single__title--article">Read similar articles</h2>
+                </div>
+                <div class="single single--type-1 offset-lg-2 col-lg-4 offset-md-2 col-md-7">
+                    <a href="swiftui-tutorial-slider-control.html"><img class="single__img single__img--type-1" src="../upload/liquidswipe_560x360.png" alt="Blog = SwiftUI Tutorial for Slider Control"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="swiftui-tutorial-slider-control.html">SwiftUI Tutorial for Slider Control</a></h3>
+                        <p class="single__description">In this article we try out SwiftUI for creating a liquid-like motion graphics with spring animation. We chose a flow of several sequential screens as our canvas.</p>
+                        <a class="single__link-more link link--line" href="swiftui-tutorial-slider-control.html">Learn more</a>
+                        <span class="single__time-read">6 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-1 col-md-7">
+                    <a href="swiftui-tutorial-replicating-activity-application.html"><img class="single__img single__img--type-1" src="../upload/Main_560x360.png" alt="Blog = SwiftUI Tutorial: Replicating the Activity Application"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="swiftui-tutorial-replicating-activity-application.html">SwiftUI Tutorial: Replicating the Activity Application</a></h3>
+                        <p class="single__description">This article is the third one in the Replicating series where we recreate UI elements of high-quality apps. Here we take a look at Apple’s Activity app.</p>
+                        <a class="single__link-more link link--line" href="swiftui-tutorial-replicating-activity-application.html">Learn more</a>
+                        <span class="single__time-read">4 min read</span>
+                    </div>
+                </div>
+                <div class="single single--type-1 offset-lg-1 col-lg-4 offset-md-2 col-md-7">
+                    <a href="replicating-apple-card-application-using-swiftui.html"><img class="single__img single__img--type-1" src="../upload/xxx_560x360.png" alt="Blog = SwiftUI Tutorial: Replicating the Apple Card Application"></a>
+                    <div class="single-text single__text--type-1">
+                        <h3 class="single__title single__title--type-1"><a class="link" href="replicating-apple-card-application-using-swiftui.html">SwiftUI Tutorial: Replicating the Apple Card Application</a></h3>
+                        <p class="single__description"> This article is the second one in the Replicating series where we recreate UI elements of high-quality apps. Here we take a look at Apple Card app.</p>
+                        <a class="single__link-more link link--line" href="replicating-apple-card-application-using-swiftui.html">Learn more</a>
+                        <span class="single__time-read">3 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="footer__wrap row">
+        <span class="footer__copyright copyright col-lg-4 order-lg-1 order-4">
+            <span>© Exyte 2020</span>
+        </span>
+        <div class="footer__contact col-lg-3 order-lg-2 order-1">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:sales@exyte.com">sales@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-3 order-lg-3 order-2">
+<!--            <img class="footer__icon" src="/img/icons/email.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE4IDE0Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xNS45OSAxLjI2MkExLjk5IDEuOTkgMCAwIDAgMTUgMUgzYy0uMzYgMC0uNjk4LjA5NS0uOTkuMjYyTDkgNy44MTVsNi45OS02LjU1M3ptLjcxOC42OTdMOSA5LjE4NSAxLjI5MiAxLjk2QTEuOTkgMS45OSAwIDAgMCAxIDN2OGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2ExLjk5IDEuOTkgMCAwIDAtLjI5Mi0xLjA0MXpNMyAwaDEyYTMgMyAwIDAgMSAzIDN2OGEzIDMgMCAwIDEtMyAzSDNhMyAzIDAgMCAxLTMtM1YzYTMgMyAwIDAgMSAzLTN6IiBvcGFjaXR5PSIuNSIvPg0KPC9zdmc+DQo=" alt="">
+            <a class="footer__link link" href="mailto:info@exyte.com">info@exyte.com</a>
+        </div>
+        <div class="footer__contact col-lg-4 order-lg-4 order-3">
+<!--            <img class="footer__icon" src="/img/icons/map.svg" alt="">-->
+            <img class="footer__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEyIDE4Ij4NCiAgICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xMSA2QTUgNSAwIDEgMCAxIDZjMCAxLjc4OCAxLjY2NyA1LjI1MyA1IDEwLjIyM0M5LjMzMyAxMS4yNTMgMTEgNy43ODggMTEgNnpNNiAxOEMyIDEyLjIxIDAgOC4yMSAwIDZhNiA2IDAgMSAxIDEyIDBjMCAyLjIxLTIgNi4yMS02IDEyek02IDhhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0em0wIDFhMyAzIDAgMSAxIDAtNiAzIDMgMCAwIDEgMCA2eiIgb3BhY2l0eT0iLjUiLz4NCjwvc3ZnPg0K" alt="">
+            <a class="footer__link link" target="_ blank" href="https://goo.gl/maps/Bx4XckDoSB2Ah938A" rel="nofollow">408 Broadway, NYC</a>
+        </div>
+        <span class="footer__author col-lg-4 order-lg-5 order-6">
+            <a class="link" target="_ blank" href="https://anthonyslab.com/" rel="nofollow">Anthony’s Lab</a>
+        </span>
+    </div>
+</footer>
+<script src="../js/main.js"></script>
+<!--    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"/>-->
+</body>
+
+<!-- Mirrored from exyte.com/blog/swiftui-and-our-open-source-framework by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2020 02:15:54 GMT -->
+</html>
