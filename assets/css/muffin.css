@@ -276,7 +276,7 @@ a {
 }
 .hamburger {
   position: fixed;
-  top: 13px;
+  top: 7px;
   right: 25px;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
