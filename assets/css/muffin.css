@@ -169,10 +169,10 @@
     margin-left: auto;
   }
 }
-ol, ul, dl {
+/* ol, ul, dl {
   margin-top: 0;
   margin-bottom: 1rem;
-}
+} */
 a {
   cursor: pointer;
   text-decoration: none;
