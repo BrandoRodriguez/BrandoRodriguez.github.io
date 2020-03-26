@@ -1104,8 +1104,8 @@ a {
 }
 .websitesSection .content .number h2 {
   color: #35e8c6;
-  font-family: 'Circe-Light', sans-serif;
-  font-weight: inherit;
+  font-family: 'Istok Web', sans-serif;
+  font-weight: 700;
   font-size: 150px;
   line-height: 150px;
   z-index: 1;
@@ -1305,8 +1305,8 @@ a {
   display: table-cell;
   vertical-align: middle;
   font-size: 120px;
-  font-family: 'Circe-Light', sans-serif;
-  font-weight: inherit;
+  font-family: 'Istok Web', sans-serif;
+  font-weight: 700;
   color: #35e8c6;
   padding-right: 40px;
   position: relative;
@@ -1353,8 +1353,8 @@ a {
   display: table-cell;
   vertical-align: middle;
   font-size: 120px;
-  font-family: 'Circe-Light', sans-serif;
-  font-weight: inherit;
+  font-family: 'Istok Web', sans-serif;
+  font-weight: 700;
   color: #35e8c6;
   padding-left: 40px;
   position: relative;
