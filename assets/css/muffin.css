@@ -1831,7 +1831,7 @@ a {
 .muffinSlider .muffinSlide .headline h1 {
   font-size: 50px;
   font-family: 'Circe-Light', sans-serif;
-  font-weight: inherit;
+  font-weight: 700;
 }
 .muffinSlider .muffinSlide .headline .button {
   padding: 40px 0 0 0;
