@@ -3197,9 +3197,11 @@ a {
   }
   .muffinSlider .slick-prev {
     top: 9px !important;
+    margin-right: -10px;
   }
   .muffinSlider .slick-next {
     top: 9px !important;
+    margin-right: -10px;
   }
   @keyframes preloader {
     from {
