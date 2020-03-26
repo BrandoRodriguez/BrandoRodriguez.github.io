@@ -140,14 +140,9 @@
 
 @media (max-width: 806px){
   .social-nav__item1 {
-    margin-right: -15px;
-  }}
-  .social-nav__item1 {
-    margin-left: 49px;
+    margin-left: 15px;
   }
-  .social-nav__item1 {
-    margin-left: 49px;
-  }
+  
 .row, .list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3950,4 +3945,4 @@ iframe.likeMuffin {
     right: 20px;
     z-index: 100;
     width: 110px;
-}
+}}
