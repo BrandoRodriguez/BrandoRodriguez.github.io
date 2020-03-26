@@ -59,11 +59,9 @@
 }
 .header1 {
   position: fixed;
-  z-index: 10;
   top: 914PX;
   left: 0;
   width: 100%;
-  margin-bottom: auto;
   padding-top: 26px;
   padding-bottom: 27px;
   /* background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% ); */
@@ -74,12 +72,11 @@
 @media (max-width: 1600px){
   .header1 {
     position: fixed;
-    z-index: 10;
     top: 914PX;
     left: 0;
     width: 100%;
-    margin-bottom: auto;
     padding-top: 26px;
+  padding-bottom: 27px;
     /* background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% ); */
     line-height: 1;
     height: 50px;
@@ -89,12 +86,11 @@
 @media (max-width: 360px){
   .header1 {
     position: fixed;
-    z-index: 600;
     top: 586PX;
     left: 0;
     width: 100%;
     padding-top: 26px;
-    padding-bottom: 27px;
+  padding-bottom: 27px;
     /* background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% ); */
     line-height: 1;
     height: 50px;
@@ -118,8 +114,6 @@
   -ms-flex: 0 0 30%;
   flex: 0 0 30%;
   width: 30%;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
 }
 @media (max-width: 806px){
 .social-nav__item {
