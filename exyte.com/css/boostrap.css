@@ -566,6 +566,8 @@
     -ms-flex: 0 0 72.222215%;
     flex: 0 0 72.222215%;
     width: 72.222215%;
+    margin-top: -10px;
+    
   }
   .col-md-14 {
     -ms-flex: 0 0 77.77777%;
@@ -678,9 +680,11 @@
   }
   .offset-md-1 {
     margin-left: 5.555555%;
+    margin-top: -7px;
   }
   .offset-md-2 {
     margin-left: 11.11111%;
+    
   }
   .offset-md-3 {
     margin-left: 16.666665%;

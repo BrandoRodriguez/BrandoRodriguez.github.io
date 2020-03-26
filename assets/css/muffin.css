@@ -42,6 +42,106 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: auto;
+  padding-top: 26px;
+  padding-bottom: 27px;
+  background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% );
+  line-height: 1;
+  height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.social-nav {
+  position: relative;
+  top: -23px;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  width: 30%;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+} 
+@media (max-width: 806px){
+.social-nav__item {
+  margin-right: -15px;
+  margin-right: 60px;
+}}
+.social-nav__item {
+  margin-left: 49px;
+  transition: opacity 0.35s;
+}
+.social-nav__item {
+  margin-left: 49px;
+  transition: opacity 0.35s;
+}
+.row, .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.container {
+  width: 100%;
+  margin-right: -605px;
+  margin-left: auto;
+}
+@media (min-width: 360px){
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (min-width: 1600px){
+  .container {
+    width: 100%;
+    margin-right: -605px;
+    margin-left: auto;
+  }
+}
+ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media (max-width: 575px){
+.page-home .contact, .container {
+  padding-left: 30px;
+  padding-right: 30px;
+}}
+.social-nav__item:first-of-type {
+  margin-left: 0;
+}
+@media (max-width: 1199px){
+.social-nav__item {
+  margin-left: 22px;
+}}
+.list {
+  padding-left: 0;
+  list-style: none;
+}
+button,
+.btn{
+  fill: #35e8c6;
+
+}
+
+button:hover,
+.btn:hover {
+  fill: #fff;
+
+}
 a,
 a:hover,
 a:active,
@@ -171,8 +271,8 @@ a {
 }
 .menuMobile .logo img {
   width: 65px;
-  margin-left: 15px;
-  margin-top: 6.5px;
+  margin-left: 150px;
+
 }
 .hamburger {
   position: fixed;
@@ -3096,10 +3196,10 @@ a {
     width: 30px !important;
   }
   .muffinSlider .slick-prev {
-    top: 16px !important;
+    top: 9px !important;
   }
   .muffinSlider .slick-next {
-    top: 16px !important;
+    top: 9px !important;
   }
   @keyframes preloader {
     from {
