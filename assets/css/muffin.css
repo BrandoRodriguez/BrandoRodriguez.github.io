@@ -1932,7 +1932,7 @@ a {
 .muffinSlider .muffinSlide .headline h1 {
   font-size: 50px;
   font-family: 'Circe-Light', sans-serif;
-  font-weight: 700;
+  font-weight: inherit;
 }
 .muffinSlider .muffinSlide .headline .button {
   padding: 40px 0 0 0;
@@ -3170,7 +3170,7 @@ a {
     padding: 30px 0 15px 0;
   }
   .muffinSlider .muffinSlide .headline h1 {
-    font-size: 24px;
+    font-size: 15px;
   }
   .muffinSlider .muffinSlide .headline .button {
     padding: 50px 0 0 0;
@@ -3862,7 +3862,7 @@ a {
 }
 @media screen and (max-height: 735px) and (orientation: portrait) {
   .muffinSlider .muffinSlide .headline {
-    padding: 120px 0 30px 0 !important;
+    padding: 70px 0 30px 0 !important;
   }
 }
 
