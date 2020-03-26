@@ -1844,8 +1844,8 @@ a {
   padding: 15px 30px 14px 0;
   text-align: center;
   width: 190px;
-  font-size: 14px;
-  color: #034437;
+  font-size: 17px;
+  color: #fff;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -o-border-radius: 30px;
@@ -1853,7 +1853,7 @@ a {
 }
 .muffinSlider .muffinSlide .headline .button a span {
   position: absolute;
-  top: 19px;
+  top: 22px;
   right: 35px;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
