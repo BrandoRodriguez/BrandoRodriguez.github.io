@@ -3196,11 +3196,11 @@ a {
     width: 30px !important;
   }
   .muffinSlider .slick-prev {
-    top: 250px !important;
+    top: 220px !important;
     margin-right: 200px;
   }
   .muffinSlider .slick-next {
-    top: 250px !important;
+    top: 220px !important;
   }
   @keyframes preloader {
     from {
