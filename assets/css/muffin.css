@@ -3940,4 +3940,10 @@ a {
     width: 100% !important;
     text-align: right !important;
 }
-
+iframe.likeMuffin {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 110px;
+}
