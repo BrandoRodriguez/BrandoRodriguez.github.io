@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Playfair+Display|Poppins:300,500&amp;subset=latin-ext');
-@charset "utf-8";
 .fIstok {
   font-family: 'Istok Web', sans-serif;
   font-weight: 700;
@@ -144,7 +143,9 @@ a {
   display: none;
 }
 .menuMobile .logo img {
-  width: 140px;
+  width: 65px;
+  margin-left: 15px;
+  margin-top: 6.5px;
 }
 .hamburger {
   position: fixed;
@@ -356,7 +357,7 @@ a {
   z-index: 10;
 }
 .sidebar .logo img {
-  width: 135px;
+  width: 100px;
 }
 .sidebar .scrollDown {
   position: absolute;
@@ -1857,7 +1858,7 @@ a {
   width: 40px !important;
   height: 40px !important;
   display: block !important;
-  background: url(../images/prevCircle.svg) center center no-repeat;
+  background: url(https://muffingroup.com/assets/images/prevCircle.svg) center center no-repeat;
   border: solid 2px #35e8c6;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -1883,7 +1884,7 @@ a {
   height: 40px !important;
   padding-left: 75px !important;
   display: block !important;
-  background: url(../images/nextCircle.svg) 30px center no-repeat;
+  background: url(https://muffingroup.com/assets/images/nextCircle.svg) 30px center no-repeat;
   border: solid 2px #35e8c6;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -2396,7 +2397,7 @@ a {
     width: 32px !important;
     height: 32px !important;
     padding-left: 55px !important;
-    background: url(../images/nextCircle.svg) 22px center no-repeat;
+    background: url(https://muffingroup.com/assets/images/nextCircle.svg) 22px center no-repeat;
   }
   @keyframes preloader {
     from {
