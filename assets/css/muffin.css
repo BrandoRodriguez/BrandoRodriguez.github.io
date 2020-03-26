@@ -64,7 +64,7 @@
   left: 0;
   width: 100%;
   margin-bottom: auto;
-  padding-top: 26px;
+  padding-top: 0;
   padding-bottom: 27px;
   /* background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% ); */
   line-height: 1;
@@ -79,7 +79,7 @@
     left: 0;
     width: 100%;
     margin-bottom: auto;
-    padding-top: 26px;
+    padding-top: 0;
     padding-bottom: 27px;
     /* background: linear-gradient( 0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 90% ); */
     line-height: 1;
