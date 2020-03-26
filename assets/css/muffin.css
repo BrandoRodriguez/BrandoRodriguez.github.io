@@ -106,6 +106,7 @@
 .social-nav {
   position: relative;
   top: -23px;
+  right: 75px;
   -ms-flex: 0 0 30%;
   flex: 0 0 30%;
   width: 30%;
