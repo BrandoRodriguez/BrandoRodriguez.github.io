@@ -73,7 +73,7 @@ input:-webkit-autofill {
 body,
 html {
   background: #192538;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 500;
   color: #ffffff;
   padding: 0;
@@ -263,7 +263,9 @@ a {
   width: 100%;
 }
 .menuMobilePopup .menuMobilePopupContainer .menuMobilePopupMiddle .mobileHeader .logo img {
-  width: 140px;
+  width: 65px;
+  margin-left: 15px;
+  margin-top: 6.5px;
 }
 .menuMobilePopup .menuMobilePopupContainer .menuMobilePopupMiddle .mobileHeader .menuMobilePopupClose {
   position: absolute;
@@ -384,7 +386,7 @@ a {
   z-index: 10;
 }
 .sidebar .logo img {
-  width: 100px;
+  width: 82px;
 }
 .sidebar .scrollDown {
   position: absolute;
@@ -394,7 +396,7 @@ a {
   text-align: center;
 }
 .sidebar .scrollDown a {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 300;
 }
 .sidebar .scrollDown a span {
@@ -736,7 +738,7 @@ a {
 .whySection .whyTable .whyColumnLeft h2 {
   font-size: 50px;
   line-height: 60px;
-  font-family: 'Istok Web', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 700;
 }
 .whySection .whyTable .whyColumnCenter {
@@ -855,7 +857,7 @@ a {
   vertical-align: middle;
   padding-left: 30px;
   font-size: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family:'Circe-Light', sans-serif;
   font-weight: 300;
 }
 .whySection .icons .iconRow.icon1 .circle img {
@@ -970,7 +972,7 @@ a {
 .clientsSection .subTitle {
   padding: 30px 0 50px;
   text-align: center;
-  font-family: 'Istok Web', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 700;
   font-size: 50px;
 }
@@ -984,7 +986,7 @@ a {
   padding: 0 110px;
   line-height: 30px;
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 400;
   font-size: 17px;
   min-height: 150px;
@@ -1101,8 +1103,8 @@ a {
 }
 .websitesSection .content .number h2 {
   color: #35e8c6;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
   font-size: 150px;
   line-height: 150px;
   z-index: 1;
@@ -1167,8 +1169,8 @@ a {
   font-size: 50px;
   position: relative;
   z-index: 1;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
   line-height: 54px;
 }
 .websitesSection .content .button {
@@ -1215,8 +1217,8 @@ a {
   font-size: 50px;
   margin: 0;
   padding: 0 0 80px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
 }
 .premiumSection .items {
   font-size: 0;
@@ -1243,7 +1245,7 @@ a {
 .premiumSection .items .item .itemContainer .title {
   color: #35e8c6;
   font-size: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 300;
   padding-top: 5px;
 }
@@ -1280,8 +1282,8 @@ a {
 .whoSection h2 {
   font-size: 50px;
   line-height: 60px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
   text-align: center;
   padding-bottom: 60px;
 }
@@ -1302,8 +1304,8 @@ a {
   display: table-cell;
   vertical-align: middle;
   font-size: 120px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
   color: #35e8c6;
   padding-right: 40px;
   position: relative;
@@ -1350,8 +1352,8 @@ a {
   display: table-cell;
   vertical-align: middle;
   font-size: 120px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight: inherit;
   color: #35e8c6;
   padding-left: 40px;
   position: relative;
@@ -1513,8 +1515,8 @@ a {
 .contactSection h2 {
   font-size: 50px;
   line-height: 60px;
-  font-family: 'Istok Web', sans-serif;
-  font-weight: 700;
+  font-family: 'Circe-Light', sans-serif;
+  font-weight:inherit;
   text-align: center;
   padding-bottom: 60px;
 }
@@ -1709,7 +1711,7 @@ a {
 .contactSection .links .column a {
   color: #ffffff;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 300;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
@@ -1724,7 +1726,7 @@ a {
   padding: 0 0 80px 0;
   text-align: center;
   color: #3a547a;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe-Light', sans-serif;
   font-weight: 300;
 }
 .contactSection .copyright a {
@@ -1816,7 +1818,7 @@ a {
   color: #ffffff;
 }
 .muffinSlider .muffinSlide .navigation .column.active .number div {
-  border: solid 2px #ffffff;
+  border: solid 2px #35e8c6;
 }
 .muffinSlider .muffinSlide .navigation .column.active .preloader div span {
   width: 0;
