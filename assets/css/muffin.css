@@ -386,7 +386,8 @@ a {
   z-index: 10;
 }
 .sidebar .logo img {
-  width: 82px;
+  width: 75px;
+  margin-top: 45px;
 }
 .sidebar .scrollDown {
   position: absolute;
@@ -3585,7 +3586,7 @@ a {
     padding-left: 40px !important;
   }
   .whySection .leftSvg {
-    top: 120px !important;
+    top: 150px !important;
   }
   .whySection .leftSvg svg {
     width: 200px;
