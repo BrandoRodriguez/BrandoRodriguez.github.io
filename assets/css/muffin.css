@@ -177,7 +177,7 @@ a {
 .hamburger {
   position: fixed;
   top: 13px;
-  right: 15px;
+  right: 25px;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   z-index: 999;
@@ -211,7 +211,7 @@ a {
   margin: 14px 0 0 0;
 }
 .hamburger a svg line {
-  stroke: #034437;
+  stroke: #fff;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
@@ -270,7 +270,7 @@ a {
 .menuMobilePopup .menuMobilePopupContainer .menuMobilePopupMiddle .mobileHeader .menuMobilePopupClose {
   position: absolute;
   top: 13px;
-  right: 15px;
+  right: 25px;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   background: #35e8c6;
@@ -297,7 +297,7 @@ a {
   margin: 14px 0 0 0;
 }
 .menuMobilePopup .menuMobilePopupContainer .menuMobilePopupMiddle .mobileHeader .menuMobilePopupClose a svg line {
-  stroke: #034437;
+  stroke: #fff;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
