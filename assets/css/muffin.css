@@ -90,7 +90,7 @@
 @media (max-width: 360px){
   .header1 {
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     top: 400PX;
     left: 0;
     width: 100%;
