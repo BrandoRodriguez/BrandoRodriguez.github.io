@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Be Theme Blog</title>
+	<atom:link href="https://muffingroup.com/blog/feed/" rel="self" type="application/rss+xml" />
+	<link>https://muffingroup.com/blog</link>
+	<description>Where web designers come for inspiration</description>
+	<lastBuildDate>Tue, 17 Mar 2020 08:41:33 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>How to fix &#8220;the link you followed has expired&#8221; error</title>
+		<link>https://muffingroup.com/blog/how-to-fix-the-link-you-followed-has-expired-error/</link>
+				<pubDate>Wed, 25 Mar 2020 10:38:17 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5760</guid>
+				<description><![CDATA[<p>The error, the link you followed has expired, can prevent you from trying out a new theme, installing a plugin, or uploading a file.</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-fix-the-link-you-followed-has-expired-error/">How to fix &#8220;the link you followed has expired&#8221; error</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+The error, the link you followed has expired, can prevent you from trying out a new theme, installing a plugin, or uploading a file.</p>
+<p>When you are trying to get a document published a series of error messages can appear; Sorry, document preview session has expired. Then WordPress theme upload error. It’s important to know why these errors occur and what to do about them.</p>
+<p>In short, the link you followed has expired will appear when you attempt to upload themes, install plugins or attach documents that are too big, or they’re taking too much time. They exceed the WordPress default upload limits.</p>
+<p>WordPress takes this measure to keep your website safe and its performance optimal.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/link-followed-error.jpg"  alt="link-followed-error How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+There are ways to work around these error messages without harming your site. WordPress will keep it safe. You need to increase the default upload limits.</p>
+<p>There are three different effective solutions to prevent the “link you followed has expired” from appearing on your WordPress dashboard.</p>
+<h2>The Link You Followed Has Expired. Why? 3 possible reasons</h2>
+<p>&nbsp;</p>
+<h3>Reason #1</h3>
+<p>Your hosting service providers restrict the size of files you may upload and your file exceeds the limit.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/hosting.jpg"  alt="hosting How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+A memory exhausted error and memory execution time exceeded error will appear. For themes and plugins, the link you followed has expired error will appear because the upload size is limited by default.</p>
+<h3>Reason #2</h3>
+<p>You can upload up to 100mb at a time with managed WordPress hosting providers<br />
+no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/hosting1.jpg"  alt="hosting1 How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+A smaller shared hosting plan will not allow you to upload larger themes and plugins within your WordPress admin area. Your scripts will run too long and will get aborted. In this case, only your web hosting provider can increase the upload limit.</p>
+<h3>Reason #3</h3>
+<p>Your website limits the execution time</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/coding.jpg"  alt="coding How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+Regardless of the size limit, when the script runs for too long the memory exhausted or maximum execution time exceeded error will appear.</p>
+<h2>Strategy for countering the link you followed has expired</h2>
+<p>Armed with this knowledge you now want to upload a WordPress theme or plugin without triggering the link expired error and fix the link you followed has expired:</p>
+<p>3 Solutions</p>
+<p>If the first solution does not work, undo the changes you made to the core files and try the second or third method.</p>
+<p>Before you start, It’s important to back up your site, and store copies of your files.</p>
+<h3>Solution 1: Add code to your php file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/functions-php-1.jpg"  alt="functions-php-1 How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+This is the easiest but most restricted action. Restricted because the changes you will make are connected with your present WordPress theme. You will have to redo this procedure when changing the theme, so if you change your themes frequently, the other two solutions will work better.</p>
+<p>Go to root directory&gt;&gt;wp_content&gt;&gt;themes</p>
+<p>Open php file of your present theme</p>
+<p>Add the following code to your WordPress theme’s php file. Don’t set the limits too high or you will open the door for hackers or bugs that slow down the script process and bring your site to a standstill!</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;@ini_set( \'upload_max_size\' , \'120M\' );&lt;/p&gt;
+&lt;p&gt;@ini_set( \'post_max_size\', \'120M\');&lt;/p&gt;
+&lt;p&gt;@ini_set( \'max_execution_time\', \'300\' );&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>Save the changes</p>
+<h3>2. Edit the .htaccess file to increase the upload limit</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/cpanel1.jpg"  alt="cpanel1 How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+You will add or remove details from the core files of WordPress, using the CPanel.</p>
+<p>First,login to the CPanel (type yourwebsite.com/cpanel).</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/cpanel.jpg"  alt="cpanel How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+To log in, use the CPanel username and password that you’ll find in the welcome email from your hosting provider.</p>
+<p>Find and open File Manager</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/edit-htaccess-file.jpg"  alt="edit-htaccess-file How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+Open the File Manager app and select the public.html folder.</p>
+<p>Copy and paste this code</p>
+<p>Right-click on the .htaccess file and select Edit. Go to the bottom of your .htaccess file and paste this code:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;php_value upload_max_filesize 128M&lt;/p&gt;
+&lt;p&gt;php_value post_max_size 128M&lt;/p&gt;
+&lt;p&gt;php_value max_execution_time 300&lt;/p&gt;
+&lt;p&gt;php_value max_input_time 300&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>Click Save</p>
+<h3>3. Create a PHP.ini file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/php-ini.jpg"  alt="php-ini How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+The .htaccess file may be hidden by your file management software or sometimes it doesn’t exist yet because a file permissions issue stopped your WordPress site from generating one. You can manually create the .htaccess file including the necessary code.</p>
+<p>If you are using a dedicated WordPress hosting plan, it’s preferable to edit the PHP.ini file instead. Access your WordPress site’s root folder then use FTP or the File Manager app in your hosting account’s CPanel dashboard.</p>
+<p>The PHP.ini file probably won’t exist if you are using a shared hosting package. You can check this in your public.html folder.</p>
+<p>If you can’t find the PHP.ini file</p>
+<p>Create a blankini file on your computer, before uploading the new file to your server</p>
+<p>On a blank Notepad paste this code:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;upload_max_filesize = 128M&lt;/p&gt;
+&lt;p&gt;post_max_size = 12M&lt;/p&gt;
+&lt;p&gt;max_execution_time = 300&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>Save the Notepad file as ini and choose “All Files”</p>
+<p>Upload the file: access the html folder on your server and upload the PHP.ini file</p>
+<h3>Interesting to know: What does ‘press this’ mean on WordPress?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/press-this.jpg"  alt="press-this How to fix &quot;the link you followed has expired&quot; error"  /></p>
+<p>Desc<br />
+This WordPress feature isn\&#8217;t another method to fix the link expired problem however it’s good to know there are other ways to share something of interest on Your WordPress website.</p>
+<p>Press This is a content sharing tool. Since the WordPress 4.2 update, sharing content via Press This has become very easy and fast, even on your mobile and tablet. You can clip text, images, and videos from other websites and share them on your WP website.</p>
+<p>Press This gives credit to the source you are linking to so there is no need to worry about copyright.</p>
+<p>To access Press This, go to Available Tools on your WP dashboard.</p>
+<h3>Ending thoughts on how to fix the link you followed has expired issue</h3>
+<p>WordPress is the most popular website builder around, and is safer than smaller competitors. To keep you protected from malicious attacks, WordPress prefers to be over-protective so the error, the link you followed has expired will appear if necessary.</p>
+<p>Check the maximum file upload size limit on beforehand by going to Media » Add New page so you know what to expect.</p>
+<p>You can expect to have trouble uploading when:</p>
+<p>The error occurs when your upload exceeds WordPress’s default limit</p>
+<p>If you are using a smaller shared hosting plan, uploading larger themes and plugins will be a problem</p>
+<p>When scripts run for too long, they will exceed the maximum allowed execution time</p>
+<p>These 3 methods will fix the problem:</p>
+<p>Add code to your php file</p>
+<p>Edit the .htaccess file to increase the upload limit</p>
+<p>Create a ini file</p>
+<p>It’s quite easy to fix the link you followed has expired error in WordPress. Then you will be able to upload large files, themes, and plugins through the WordPress dashboard.</p>
+<p>Remember that if you are on a shared hosting package, you need to contact your web hosting provider to increase the limit for you.</p>
+<p>If you enjoyed reading this article about how to fix the link you followed has expired error in WordPress, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/wordpress-memory-limit/">How to increase the WordPress memory limit</a></p>
+<p><a href="https://muffingroup.com/blog/current-wordpress-version/">How to see the current WordPress version you have</a></p>
+<p><a href="https://muffingroup.com/blog/an-error-occurred-while-processing-this-directive/">An error occurred while processing this directive</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-fix-the-link-you-followed-has-expired-error/">How to fix &#8220;the link you followed has expired&#8221; error</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to downgrade WordPress (Easy to follow guide)</title>
+		<link>https://muffingroup.com/blog/downgrade-wordpress/</link>
+				<pubDate>Mon, 23 Mar 2020 10:00:11 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5747</guid>
+				<description><![CDATA[<p>Updates usually keep our mobile, laptop, social media or our websites safe. Old versions of software may cause problems with security and prevent us from maintaining the latest improvements. </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/downgrade-wordpress/">How to downgrade WordPress (Easy to follow guide)</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Updates usually keep our mobile, laptop, social media or our websites safe. Old versions of software may cause problems with security and prevent us from maintaining the latest improvements. The consequences can be slower performances, and features that stop working.</p>
+<p>Upgrading to a relatively risk-free version is the main reason for updates, including WordPress.</p>
+<p>However at times, the update can be inconvenient, slow us down and may even appear to sabotage our website. Usually, though, it is not the update that is actually interfering with the website..</p>
+<p>So we need to know what to do, and in this case the best way to fix the safety problem is to temporarily downgrade WordPress to a previous version.</p>
+<h3>Why downgrade WordPress &#8211; temporarily?</h3>
+<p>When we know why our website stops working as it should, we will understand the logic of rolling back WordPress.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/plugins.jpg"  alt="plugins How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc<br />
+The causes of this problem are usually:</p>
+<p>Plugins. Previously installed plugins may be incompatible with the updated WordPress. They can make our updated WordPress site act strangely. Plugins are not tested as thoroughly as the core code and problems may still arise even when the plugin is updated. It is possible to downgrade the plugin, either by itself or along with the WordPress downgrade. It is not necessary to downgrade the entire website.</p>
+<p>Themes. A theme can have incompatibility issues too and requires a temporary WordPress downgrade.</p>
+<p>If WordPress\&#8217;s core code is causing problems or our theme is incompatible, to secure the website, it is best to downgrade WordPress in order to protect the WordPress Core, the content files, and the database.</p>
+<p>After the problems are fixed you can reinstall the updated version to have a refreshed core and updatable plugins and themes.</p>
+<p>The security patches that come with the upgrade will restore the website’s performance, its functions and keep it safe.</p>
+<h3>How to manually downgrade WordPress in 8 easy steps</h3>
+<p>If the theme or the WordPress Core is causing trouble, it’s wise to temporarily downgrade WordPress to the previous version. You can accept the newest <a href="https://muffingroup.com/blog/current-wordpress-version/">WordPress version</a> when the bug is fixed.</p>
+<p>As always, we first back up WordPress and its database using a web host or a plugin for WordPress or copy the files and store them on our computer via FTP.</p>
+<p>Next, download a recent previous version of WordPress. This is safer than opting for a potentially faulty older Go to WordPress releases and choose the most recent old version of WordPress.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/deactivate-plugin.jpg"  alt="deactivate-plugin How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc</p>
+<p>If it’s possible to log into our site, deactivate the plugins via the plugins page on the dashboard by changing the plugin folder name.</p>
+<p>After deactivating all plugins, log out</p>
+<p>Now locate the WordPress files using an FTP client like <a href="http://filezilla-project.org/">FileZilla</a>.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/ftp.jpg"  alt="ftp How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc</p>
+<p>The FTP software will take you to the WordPress directory where the wp-admin &amp; wp-includes folders can be deleted. In order to keep the theme, plugins and uploaded files you need to leave wp-content intact.</p>
+<p>To complete the downgrade, go to the folder where the old WordPress version is kept. Using the FTP client, transfer the previous version with all its components, except the wp-content folder, to the WordPress website.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/overwrite.jpg"  alt="overwrite How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc</p>
+<p>Log into the WordPress dashboard, and click on the Update WordPress Database message and run the installed old version. Then once the issue is fixed, update to the new version via the updates screen in the dashboard.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/update.jpg"  alt="update How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc<br />
+It’s recommended to disable automatic updates when you’ve finished, to prevent WordPress from installing another version. In the wp-config.php file add:</p>
+<pre>“define( \'AUTOMATIC_UPDATER_DISABLED\', true );”</pre>
+
+<h3>Can the WordPress rollback plugin be used instead?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/rollback.jpg"  alt="rollback How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc<br />
+WordPress rollback plugin and WordPress downgrade plugin are not the same thing.</p>
+<p>WordPress rollback plugin (or WP rollback plugin) fixes problems with plugins and looks for an older version of a WordPress plugin to use or reverts a WordPress theme to previous action. It has nothing to do with downgrading your WordPress website or rolling back a WordPress update. The WP Downgrade plugin is used for that.</p>
+<h3>How to downgrade WordPress using the WordPress Downgrade plugin</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-downgrade-plugin.jpg"  alt="wp-downgrade-plugin How to downgrade WordPress (Easy to follow guide)"  /><br />
+<a href="https://wordpress.org/plugins/wp-downgrade/">https://wordpress.org/plugins/wp-downgrade/</a></p>
+<p>Desc<br />
+If it is possible to access the admin panel, the WP downgrade plugin will easily perform the downgrade.</p>
+<p>The plugin uses the WordPress update routine, but forces an update for a specified WordPress release instead of updating to the new version.</p>
+<p><a href="https://muffingroup.com/blog/how-to-backup-a-wordpress-site/">Make sure to fully backup first </a>before installing and activating the WordPress Downgrade plugin.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-downgrade-1.jpg"  alt="wp-downgrade-1 How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc</p>
+<p>The dashboard will tell you which version of WordPress is currently in use.</p>
+<p>Choose the previous version that was released right before the current version and type this in the settings of the WP Downgrade plugin. (For all versions useWordPress releases)</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-downgrade-2.jpg"  alt="wp-downgrade-2 How to downgrade WordPress (Easy to follow guide)"  /></p>
+<p>Desc</p>
+<p>Save the changes, then the WP Downgrade plugin will run the installation.</p>
+<h3>Ending thoughts on how to downgrade WordPress</h3>
+<p>It is very important to have the latest version of WordPress to protect your website from hackers and other vulnerabilities. However if there is a problem with the plugin or theme incompatibility or the WordPress core, it is important to know how to downgrade WordPress for a temporary fix, then upgrade again once the problems are solved.</p>
+<p>Always remember to back up your WordPress website before making any changes.</p>
+<p>If you enjoyed reading this article about how to downgrade WordPress, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/how-to-set-homepage-in-wordpress/">How to set homepage in WordPress with no errors</a></p>
+<p><a href="https://muffingroup.com/blog/political-campaign-websites/">The best political campaign websites to use as inspiration</a></p>
+<p><a href="https://muffingroup.com/blog/time-wasting-websites/">The Best Time-Wasting Websites You Can Browse to Avoid Burnout</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/downgrade-wordpress/">How to downgrade WordPress (Easy to follow guide)</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>Fixing &#8220;sorry, this file type is not permitted for security reasons&#8221;</title>
+		<link>https://muffingroup.com/blog/sorry-this-file-type-is-not-permitted-for-security-reasons/</link>
+				<pubDate>Thu, 19 Mar 2020 10:00:10 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5729</guid>
+				<description><![CDATA[<p>You have your WordPress website ready but you want it to look even better by adding the perfect photo or media file that will make your website the best it possibly can be. </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/sorry-this-file-type-is-not-permitted-for-security-reasons/">Fixing &#8220;sorry, this file type is not permitted for security reasons&#8221;</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+You have your WordPress website ready but you want it to look even better by adding the perfect photo or media file that will make your website the best it possibly can be. Suddenly you get this message, Sorry, this file type is not permitted for security reasons. It’s such an anticlimax. There are fixes, but you do need to understand the reason for the message and what it means.</p>
+<p>First, you may want to check this out so you know this is not uncommon: <a href="https://wordpress.org/support/topic/sorry-this-file-type-is-not-permitted-for-security-reasons-14/">https://wordpress.org/support/topic/sorry-this-file-type-is-not-permitted-for-security-reasons-14/.</a></p>
+<h3>What does it mean that this file is not permitted for security reasons?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/file-type-not-permit.jpg"  alt="file-type-not-permit Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+You may have experienced this type of obstacle when trying to upload a video on YouTube. The server has rejected the file mp4, for example. Or, The media you tried to upload was invalid.</p>
+<p>or DIVI import not working. These messages are quite common but do cause frustration.</p>
+<p>However, WordPress does have a sound reason to stop you in your tracks. The security they refer to is YOUR security, or that of your WordPress website. WordPress doesn’t recognize the file type, it’s not in their safe-list or not supported in WordPress by default. So WordPress tries to protect you.</p>
+<h3>You can surpass the “Sorry, this file type is not permitted for security reasons” obstacle.</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/file-type-not-permitted.jpg"  alt="file-type-not-permitted Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+This is how to bypass the WordPress media library line of defense</p>
+<p>It is not advisable to attempt to solve this yourself because you will likely harm your WordPress website by creating an extra security risk. You may cause permanent damage to your website or provide a pathway for hackers. This is why the Sorry, this file type is not permitted for security reasons-error was created in the first place.</p>
+<p>You won’t encounter any problem uploading a file with any of the common extensions: .jpg, .jpeg, .png, .gif, .icofor images. .mp4, .m4v, .mov, .wmv, .avi, .mpg, and so on, for videos..mp3, .mp4a, .ogg, .wav for audio. Nor will .pdf, .doc, .xls, cause any problems.</p>
+<p>These are accepted by default and would never be on the list of forbidden MIME(Multipurpose Internet Mail Extensions).</p>
+<p>However your custom fonts with extensions such as: .tff and .woff will raise the Sorry, this file type is not permitted for security reasons wall without exception.</p>
+<p>The 6 solutions for your problem:</p>
+<p>Install WordPress multisite</p>
+<p>Install a WordPress plugin</p>
+<p>Edit the wp-config.php file</p>
+<p>Edit the theme’s functions.php File</p>
+<p>Use the upload_mimes WordPress filter hook</p>
+<p>Contact your hosting provider (Read HELP!)</p>
+<h2>The 6 solutions under the microscope</h2>
+<p>&nbsp;</p>
+<h3>Install WordPress multisite</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/network-settings.jpg"  alt="network-settings Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+Install WordPress Multisite whether you need multiple websites for your business or not. Once this is done, you can upload files that are blocked on a single-site.</p>
+<p>You can access the setting you will need via the Network Admin Dashboard:</p>
+<p>Click on Network Settings</p>
+<p>Add the extensions to the Upload File Types Setting</p>
+<p>Save the changes and you will have an updated list of permitted file types for every site in your network.</p>
+<p>This solves the problem for you and the users of your original WordPress site.</p>
+<h3>Install a WordPress plugin</h3>
+<p>Installing a MIME plugin is even faster as well as giving you more control. The purpose of this plugin is to allow you to upload file types that normally get Sorry, this file type is not permitted for security reasons. You can update extensive lists by adding your custom file types to gain this control.</p>
+<p>There are several MIME plugins available. Click on the link of your choice:</p>
+<h4>WP Add Mime Types</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-add-mime-settings.jpg"  alt="wp-add-mime-settings Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/wp-add-mime-types/">https://wordpress.org/plugins/wp-add-mime-types/</a></p>
+<p>Desc</p>
+<h4>Pro Mime Types</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/pro-mime-types.jpg"  alt="pro-mime-types Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/pro-mime-types/">https://wordpress.org/plugins/pro-mime-types/</a></p>
+<p>Desc</p>
+<h4>Mime Types Plus</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/mime-types.jpg"  alt="mime-types Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/mime-types-plus/">https://wordpress.org/plugins/mime-types-plus/</a></p>
+<p>Desc</p>
+<h4>Mime Types Extended</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/mime-types-extended.jpg"  alt="mime-types-extended Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/mime-types-extended/">https://wordpress.org/plugins/mime-types-extended/</a></p>
+<p>Desc</p>
+<h4>Unsafe Mime Types</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/unsafe-mimetypes.jpg"  alt="unsafe-mimetypes Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/unsafe-mimetypes/">https://wordpress.org/plugins/unsafe-mimetypes/</a></p>
+<p>Desc<br />
+Notes:</p>
+<p>Check out the Free WP Extra File Types Plugin to see how it works. Click on <a href="https://wordpress.org/plugins/wp-extra-file-types/">https://wordpress.org/plugins/wp-extra-file-types/</a>. Remember you need to upload the files directly into the media library before attaching the files to the page because you alter the default list of file extensions supported by WordPress Media Library.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-extra-file-types.jpg"  alt="wp-extra-file-types Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /><br />
+<a href="https://wordpress.org/plugins/wp-extra-file-types/">https://wordpress.org/plugins/wp-extra-file-types/</a></p>
+<p>Desc<br />
+Example of how to: WP Add Mime Types</p>
+<p>Install the WP Add Mime Types plugin</p>
+<p>Go to your dashboard</p>
+<p>Choose Setting sand select Mime Type Settings</p>
+<p>Type the MIME name of your file in the Add Values section</p>
+<p>Click Save.</p>
+<p>The MIME type is in the permitted list</p>
+<h3>Edit the wp-config.php file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/wp-config.jpg"  alt="wp-config Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+<a href="https://muffingroup.com/blog/how-to-backup-a-wordpress-site/">Make a back-up of your website</a> first because changing a configuration can cause things to go wrong. After uploading your file(s) you’d be wise to reverse the changes you made to the configuration. This will keep your website secure!</p>
+<h4>Step by step</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/happy-blog.jpg"  alt="happy-blog Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+1. Via an FTP client (or File Manager) enter your installation directory(in most cases, it’s public_html)</p>
+<p>2. Type or paste:<pre>define(‘ALLOW_UNFILTERED_UPLOADS’, true);</pre>
+</p>
+<p>in the wp-config.php file. This above the line ‘That’s all, stop editing! Happy publishing.’</p>
+<p>3. SAVE your changes</p>
+<p>4. Log out of your WordPress account via your WordPress dashboard and log in again.</p>
+<p>Now you can upload any file you want. WordPress Media Library will accept all your file types. You will not encounter Sorry, this file type is not permitted for security reasons.</p>
+<h3>Edit the theme’s functions.php file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/functions-php.jpg"  alt="functions-php Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+Make a backup of your site and go to your functions.php file using an FTP client:</p>
+<p>1. Access your WordPress installation directory (in most cases, it’s public_html) via an FTP client or File Manager.</p>
+<p>2. Navigate to wp-content -&gt; themes -&gt; current theme’s folder</p>
+<p>3. Open the functions.php file</p>
+<p>4. Type:</p>
+<pre>function my_custom_mime_types( $mimes ) {&lt;/p&gt;
+&lt;p&gt;// Add new MIME types here&lt;/p&gt;
+&lt;p&gt;$mimes[\'abiword\'] = \'application/x-abiword\';&lt;/p&gt;
+&lt;p&gt;return $mimes;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;add_filter( \'upload_mimes\', \'my_custom_mime_types\' );&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>5. As always SAFE your changes</p>
+<p>By adding the upload_mimes filter to functions.php, the behaviors of your WordPress site will change. It will be no problem to upload a before prohibited file type.</p>
+<h3>Use the upload_mimes WordPress filter hook</h3>
+<p>Open the functions.php file of your WordPress theme.</p>
+<p>At the top of the file type this code:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;// Add this to the functions.php file of your WordPress theme&lt;/p&gt;
+&lt;p&gt;// It filters the mime types using the upload_mimes filter hook&lt;/p&gt;
+&lt;p&gt;// Add as many keys/values to the $mimes Array as needed&lt;/p&gt;
+&lt;p&gt;function my_custom_upload_mimes($mimes = array()) {&lt;/p&gt;
+&lt;p&gt;// Add a key and value for the CSV file type&lt;/p&gt;
+&lt;p&gt;$mimes[\'csv\'] = \&quot;text/csv\&quot;;&lt;/p&gt;
+&lt;p&gt;return $mimes;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;add_action(\'upload_mimes\', \'my_custom_upload_mimes\');&lt;/p&gt;
+&lt;p&gt;$mimes[\'csv\'] = \&quot;text/csv\&quot; is for a file with csv as extension. The mime type for csv is text/csv. </pre>
+
+<p>To find out what’s the mime type of your file extension, check out the complete list on <a href="https://www.sitepoint.com/mime-types-complete-list/">https://www.sitepoint.com/mime-types-complete-list/</a></p>
+<h3>Contact your hosting provider</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/hosting-siteground.jpg"  alt="hosting-siteground Fixing &quot;sorry, this file type is not permitted for security reasons&quot;"  /></p>
+<p>Desc<br />
+As a last resort you can contact your hosting provider. If your hosting provider restricts what they see as unsafe file types they can reverse this situation.</p>
+<h3>Ending thoughts on Sorry, this file type is not permitted for security reasons</h3>
+<p>The error message Sorry, this file type is not permitted for security reasons is very frustrating, but the fixes listed above should relieve your frustration and it helps to remember that WordPress is concerned about your security.</p>
+<p>Always make sure to stay protected by only allowing a restricted number of file types. Disabling ALL restrictions definitely isn’t safe. It’s best to exercise caution and use a risk-free plugin.</p>
+<p>If you enjoyed reading this article about Sorry, this file type is not permitted for security reasons, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/current-wordpress-version/">How to see the current WordPress version you have</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-memory-limit/">How to increase the WordPress memory limit</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-missing-a-temporary-folder/">WordPress missing a temporary folder: Easy fixing guide</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/sorry-this-file-type-is-not-permitted-for-security-reasons/">Fixing &#8220;sorry, this file type is not permitted for security reasons&#8221;</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to embed a Google form in WordPress</title>
+		<link>https://muffingroup.com/blog/how-to-embed-a-google-form-in-wordpress/</link>
+				<pubDate>Tue, 17 Mar 2020 08:25:45 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5711</guid>
+				<description><![CDATA[<p>Generally website owners are cautious about committing to anything unknown, but if we know what we’re doing then the fears can be alleviated for most problems.  </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-embed-a-google-form-in-wordpress/">How to embed a Google form in WordPress</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Most WordPress website owners know about WordPress Google forms and happily add them to their websites because everything that helps our business thrive in trying economic times is more than welcome.</p>
+<p>Generally website owners are cautious about committing to anything unknown, but if we know what we’re doing then the fears can be alleviated for most problems.</p>
+<p>To use this Google forms productively we need to understand what they are and how to use them. For example, it allows us to integrate information from our visitors and customers, with our more familiar Google Drive. They are very easy to use and make collecting data provided by our <a href="https://muffingroup.com/blog/wordpress-websites/">WordPress website</a> instantly visible.</p>
+<p>.</p>
+<h2>How to embed a Google form in WordPress:</h2>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/gform1.jpg"  alt="gform1 How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>Shedding light on Google forms</p>
+<p>Why should we embed a google form in WordPress?</p>
+<p>Collecting data made easy</p>
+<p>Google forms WordPress, choosing the best way to embed</p>
+<p>Building an effective WordPress form in 2 steps</p>
+<p>How to embed a Google form in WordPress?</p>
+<p>Conclusion on how to embed a Google form in WordPress</p>
+<p>It’s important to understand why Google forms are the perfect solution and to have the information visible where and when we want it.</p>
+<h3>Shedding light on Google forms</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/google-forms-sharing.jpg"  alt="google-forms-sharing How to embed a Google form in WordPress"  /></p>
+<p>Desc<br />
+Can I embed a Google form on my website?</p>
+<p>Yes, you can. Why? Because a Google form is nothing more than an application. It comes with our Google Drive cloud storage package. Google suite or G Suite includes Docs, (spread)Sheets, Slides, Keep, Forms, and Sites for productivity and collaboration. Other popular components are Gmail, Hangouts, Calendar, and Currents for communication.</p>
+<p>A Google form combines the shared information from the different components.</p>
+<p>When users of our website fill out a personalized survey or take part in a quiz supported by our app, the spreadsheet feature shows all their data. This means any action that is a form of collaboration by registration. The result is clear, orderly and ready to use.</p>
+<h3>Why should we embed a Google form in WordPress?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/customized.jpg"  alt="customized How to embed a Google form in WordPress"  /></p>
+<p>Desc<br />
+Why not use the WordPress Form Builder? It makes life easier.</p>
+<p>Google forms are good at connecting all the information you need and the plugins give it a very customized look. WordPress is basic but adding the Google forms and WordPress plugins that manually embed procedure are a more refined and classy option for faultless administration.</p>
+<h3>Collecting data made easy</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/data.jpg"  alt="data How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>Homemade online surveys, quizzes, questionnaires, and registration forms are much easier</p>
+<p>We get real-time responses</p>
+<p>Customizable to our preferences</p>
+<p>We can insert media items, such as images and YouTube videos</p>
+<p>If we have several websites or email lists, one form can be used for all*</p>
+<p>Google Drive Office Suite already includes Google forms</p>
+<p>The result is presented in a clear spreadsheet</p>
+<p>We have immediate access to users’ email addresses (newsletter subscribers!)</p>
+<p>Connected with Google Drive users on your forms</p>
+<p>*This feature holds another clear advantage over WordPress Form Builders. We can share our Google form on Facebook, share a link to it using messaging apps, and use the form for all our websites, email lists, and with collaborators. The feedback we receive will be held in one place because it’s connected to our Google Drive and accessible for the entire team.</p>
+<h3>Google forms WordPress, choosing the best way to embed</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/google-form-embed.jpg"  alt="google-form-embed How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>What are the advantages of using a WordPress plugin before and during embedding a google form into a website?</p>
+<p>Without customizing our form to perfection, it will look a bit alien. We need to make sure our form looks like the rest of our website. With a plugin, we can convert our Google Form into something that fits in our website-layout for</p>
+<p>a professional appearance that reflects our brand</p>
+<p>Easy embedding that feels like a shortcut</p>
+<p>There is the possibility to manually embed our Google form with a Google Forms embed code</p>
+<p>The manual method allows us to use the newest version of Google forms. The plugin only works with the old version.</p>
+<h3>Building an effective WordPress form in 2 steps</h3>
+<p>&nbsp;</p>
+<h4>Step 1:</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/google-form2.jpg"  alt="google-form2 How to embed a Google form in WordPress"  /></p>
+<p>Desc<br />
+To create a good form we either visit <a href="https://docs.google.com/forms/">https://docs.google.com/forms/</a> or open Google Drive. Choose a blank form or a template, then type a title plus description, fill out questions and answer choices or use the drop-down menu and fill out the form fields.</p>
+<h4>Step 2</h4>
+<p>Before embedding the Google form, the WordPress plugin will allow us to customize it until it blends into our WordPress website.</p>
+<h3>How to embed a Google form in WordPress?</h3>
+<p>A plugin will provide part of the answer to how to embed a google form into WordPress with ease.</p>
+<p>Without a plugin the Google form can be manually embedded with Embed HTML from Google itself. Before choosing this embed option, we can first customize our form.</p>
+<p>There are two options:</p>
+<h4>Manually embed a Google form</h4>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/manually-embed.jpg"  alt="manually-embed How to embed a Google form in WordPress"  /></p>
+<p>Desc<br />
+The manual method is useful for beginners. Simply obtain the Google Forms embed code and the rest is easy.</p>
+<p>After creating the form, click on the send button which is in the top-right corner, next to our profile pic.</p>
+<p>Clicking on the symbol on the Send via line will generate an Embed HTML code snippet, which we copy.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/manually-embed1.jpg"  alt="manually-embed1 How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>Go to the post on our WordPress site where you want to embed the form and paste the earlier generated code in the text box. Then switch to the text editor for this action. You can choose to paste the code in either a new or existing post.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/add-wordpress.jpg"  alt="add-wordpress How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>For an existing post, scroll to the section where you want the Google Form and paste the code there.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/form.jpg"  alt="form How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>Press ‘Publish’ and the Google form will appear on our site.</p>
+<h4>Using a plugin to embed a Google Form</h4>
+<p>The plugin gives more flexibility in customizing our form. The underlying reason is that it is embedded as an actual HTML form (it removes the Google wrapper HTML). This results in more options for looks and functions and will look much better on a mobile device.</p>
+<p>Customized Look</p>
+<p>Embedding</p>
+<p>How to embed a Google Form in WordPress with a free plugin? It works in 3 simple steps:</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/google-forms-plugin.jpg"  alt="google-forms-plugin How to embed a Google form in WordPress"  /><br />
+<a href="https://wordpress.org/plugins/wpgform/">https://wordpress.org/plugins/wpgform/</a></p>
+<p>Desc</p>
+<p>Install the Google Forms plugin from our WordPress dashboard and activate it</p>
+<p>Click Add New Google Forms</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/plugin2.jpg"  alt="plugin2 How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>Copy the URL under the Send options on the Google form and paste it in the Form URL box. It is important to opt for the old version of Google Forms. Click the question mark then select back to old forms will bring you to the right form</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/shortcode.jpg"  alt="shortcode How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>We Publish the form and receive the shortcode</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/03/publsh.jpg"  alt="publsh How to embed a Google form in WordPress"  /></p>
+<p>Desc</p>
+<p>After having copied the shortcode, open a new post and paste it in the text editor</p>
+<p>For further reading: Google forms WordPress plugin <a href="https://wordpress.org/plugins/wpgform/">https://wordpress.org/plugins/wpgform/</a></p>
+<h3>Ending thoughts on how to embed a Google form in WordPress</h3>
+<p>The two ways of embedding a Google form in WordPress should now be easy.</p>
+<p>Google Forms has a number of advantages:</p>
+<p>It’s free!</p>
+<p>It can be used for our complete online presence, thanks to its multiple usage possibilities</p>
+<p>It comprises all the necessary features.</p>
+<p>Embedding Google forms into our WordPress home is easy. There are two options:</p>
+<p>Manually embed this information goldmine which uses the new version of Google Forms. However the customizing possibilities are somewhat restricted compared to the WordPress plugin</p>
+<p>Embed the Google form via the WordPress plugin, which allows customization to the extent that it seamlessly blends with the theme of the rest of the WordPress site. However, this does not work with the new version of Google Forms*</p>
+<p>It depends on your priorities and level of skill in handling this kind of application. Does the following list of plugin customizing options look familiar and simple or too difficult?</p>
+<p>“Add your custom confirmation page. Use custom CSS classes. Override the default Google.” Etcetera.</p>
+<p>*Good to know: The man behind the plugin said he might adapt it to the new Google Forms version however until now nothing has changed.</p>
+<p>If you enjoyed reading this article about how to embed a Google form in WordPress, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/an-error-occurred-while-processing-this-directive/">An error occurred while processing this directive [Fixed]</a></p>
+<p><a href="https://muffingroup.com/blog/current-wordpress-version/">How to see the current WordPress version you have</a></p>
+<p><a href="https://muffingroup.com/blog/hide-the-page-title-in-wordpress/">How to hide the page title in WordPress quickly</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-embed-a-google-form-in-wordpress/">How to embed a Google form in WordPress</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>WordAds vs AdSense: Which one to pick for your website?</title>
+		<link>https://muffingroup.com/blog/wordads-vs-adsense/</link>
+				<pubDate>Wed, 04 Mar 2020 14:47:15 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[Web design]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5683</guid>
+				<description><![CDATA[<p>Monetizing your blog is essential for making income from your writing, and there are multiple ways to do this. One of the most popular and common ways, </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/wordads-vs-adsense/">WordAds vs AdSense: Which one to pick for your website?</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Monetizing your blog is essential for making income from your writing, and there are multiple ways to do this. One of the most popular and common ways, is to place ads on the website or blog. These are usually located on the sidebar of the website, or at the end of the blog.</p>
+<p>There are a wide variety of ads to choose from. The most commonly used are those that can be clicked on and pay per click, while others also pay per impressions. The software also makes some difference, and two of the most popular pieces of advertising software are WordAds and Google AdSense. This article will compare both of these.</p>
+<h2>About WordAds and AdSense</h2>
+<p>&nbsp;</p>
+<h3>AdSense</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/google-adsense1.jpg"  alt="google-adsense1 WordAds vs AdSense: Which one to pick for your website?"  /><br />
+<a href="https://www.google.com/adsense/start/">https://www.google.com/adsense/start/</a></p>
+<p>Desc<br />
+Google has designed AdSense as a part of their Google Advertising Network. Every website or blog owner should have a degree of knowledge about this piece of software, as it is very important for monetizing the website or a blog.</p>
+<p>AdSense is known as the best piece of software to make or generate money online by displaying ads. Basically, when a website owner signs up for AdSense, he asks Google for permission to display their ads on their website or applies for their ads.</p>
+<p>AdSense is perhaps one of the fastest-growing and increasingly popular platforms on the web but is it the best?</p>
+<p>Most of the users online and website owners have a certain degree of knowledge about this software, and it is one of the first things people think about when discussing online monetizing. For good reason many people praise AdSense as the best and easiest way to earn money online using ads. It is intuitive to use and can be very lucrative if you can generate enough interest on your site. It can be used by professionals and beginners alike and is usually the first monetizing software recommended for beginners.</p>
+<h3>WordAds</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wordads.jpg"  alt="wordads WordAds vs AdSense: Which one to pick for your website?"  /><br />
+<a href="https://wordads.co/">https://wordads.co/</a></p>
+<p>Desc<br />
+However WordAds is also an important piece of monetizing software.. This software is a worthy competitor to Google’s AdSense so it is good to make the comparisons..</p>
+<p>WordAds is an advertising network owned by Automattic, which is the same company that owns WordPress so we can expect that the software will inevitably be a highly collaborative part of many WordPress sites. WordAds mainly monetizes websites that are hosted through WordPress as well as on self-hosted sites.</p>
+<p>It is also the only form of advertising that is allowed on WordPress so nearly all websites using WordPress will use WordAds, unless you pay for the premium software package. WordAds software is very good, and many users have generated quite a lot of wealth from it.</p>
+<p>You only receive a shared amount through advertising if you generate enough interest on your site. Traffic is key for generating income with this piece of software, because it generates money through impressions, not clicks which means the more traffic you generate, the more money you receive through advertising. According to WordAds, your website would need a couple of thousand website views each month to generate money.</p>
+<p>Now we’ll compare WordAds vs AdSense using certain factors.</p>
+<h2>Application Process</h2>
+<p>We’ll begin with the application process. The login and the registration processes are relatively easy for both. You have to wait for about 7 days to get accepted at Adsense, whereas WordAds accepts your application immediately if you are successful..</p>
+<h3>WordAds</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/word-ad-control.jpg"  alt="word-ad-control WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+Only WordPress users can apply for WordAds, and only <a href="https://muffingroup.com/blog/wordpress-websites/">websites that are managed by WordPress</a> can join. For self-hosted websites, you will have to install Jetpack and use the Premium or Professional plan to be eligible for WordAds.</p>
+<p>Sometimes, users receive an initial rejection from WordAds but even ifit takes multiple applications, it costs nothing. For a better chance of acceptance, you need at least 1000, perhaps more, visitors per month (counting unique visitors only).</p>
+<p>This is because of the sheer number of websites created on a daily basis through WordPress, and they have decided they cannot monetize every single webpage. They also use the following criteria for selecting the websites:</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/jetpack-ads.jpg"  alt="jetpack-ads WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc</p>
+<p>Owning a custom domain through WordPress or as a self-hosted site is the most important rule when it comes to WordAds, and is the first requirement for application. If you have a regular WordPress account, you can connect it with a custom domain.</p>
+<p>You should install Jetpack and connect it to your account. It is important because the software is also made by the same company that owns WordAds.</p>
+<p>Lastly, you should generate enough traffic to qualify for WordAds; at least 1000 unique visitors per month, and thousands of views per month.</p>
+<p>Another way to get instant access to WordAds is by obtaining a Premium, Business, or eCommerce plan which enables you to use it from the start. The application process is vital for free bloggers and websites with bigger traffic who can apply for WordAds.</p>
+<p>Once you have completed the application, they will review it and notify you of their decision through email.</p>
+<h3>AdSense</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/adsensesignup1.jpg"  alt="adsensesignup1 WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+The application process is also different between WordAds and AdSense. Google AdSense uses human beings to process applications so it takes longer.</p>
+<p>The process of approval with AdSense is</p>
+<p>firstly, register for an AdSense account by visiting AdSense.com and provide all the required information: name, address, website URL, and more.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/google-form.jpg"  alt="google-form WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+Secondly, log into your account and find the codes generated then enter these codes in your blog’s sidebar. After you enter the codes, the ads will be placed on your site, but this does not mean that you have been approved for AdSense. You might have to wait a few more days for approval but in the meantime, don’t remove the ads from your site.</p>
+<p>After the approval, you will receive an email confirming your application. Then you will be able to start earning; for each $10, you will get a PIN code to receive the payment.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/googleadcodeotp.jpg"  alt="googleadcodeotp WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+You will receive payments from Google through your preferred banking plan for every $100. However, there are some requirements to be eligible for AdSense. These include:</p>
+<p>High-quality, unique content</p>
+<p>Compliance with the program of AdSense, which you can review before signing up. These policies and terms and conditions can change at any time, so stay up to date.</p>
+<p>Your age should be 18 or over.</p>
+<h2>What About Payments?</h2>
+<p>The most important part of comparing WordAds and AdSense is of course the payments. How do you receive payments, how do they work, and how much can you expect to earn from each?</p>
+<p>The payments and how much you receive can fluctuate, and you cannot expect to make the same amounts every month. How much you make will depend on your visitor rates, which will inevitably vary from month to month. In some cases, your payments will depend on the clicks, and also on impressions.</p>
+<p>The varying factors that determine your payment include:</p>
+<p>Traffic you generate</p>
+<p>The location of the people visiting your site (North American visitors tend to generate more)</p>
+<p>How your advertisers rate your visitors (based on cookies)</p>
+<p>Ad-blocking software</p>
+<p>Competition in your niche</p>
+<p>The quality of the ads displayed.</p>
+<h3>WordAds</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wordadpayments.jpg"  alt="wordadpayments WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+WordAds allow you to accumulate a decent amount of money, although it does take effort on your part, and high-quality content.</p>
+<p>The biggest difference between WordAds and AdSense is that the former generates income through impressions, or through CPM (cost per thousand page views).</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wordadsearnings.jpg"  alt="wordadsearnings WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+This means that the more visitors you have, the more income is generated from the ads. Also, you can expect to earn more with an increase in unique visitors. This can be easier to achieve than via AdSense, which works or pays through clicks.</p>
+<p>For example, if you get 5000-6000 visitors, this is converted to about 6000 impressions, for which you will receive about $4, or $4.50. While that is not a large amount, as your website grows you will receive more.</p>
+<p>Also, you will only get paid once you earn $100 and the payments are via PayPal.</p>
+<h3>AdSense</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/estimated-earning.jpg"  alt="estimated-earning WordAds vs AdSense: Which one to pick for your website?"  /></p>
+<p>Desc<br />
+An advantage of AdSense is the income is generated through clicks and publishers receive 68% of all the revenue generated by advertising. As with WordAds, the higher your numbers, the more substantial your payment.</p>
+<p>Each click will generate from $0.20 to $15, depending on the quality and type of ad. High-quality content is important, and you can expect to receive more for this. Generally, the amount of each click can fluctuate by around $3.</p>
+<p>An advantage of AdSense is that you can receive payments through various methods: EFT payments are supported as well as SEPA payments, wire transfers, and checks.</p>
+<p>If you enjoyed reading this article about WordAds vs AdSense, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/political-campaign-websites/">The best political campaign websites to use as inspiration</a></p>
+<p><a href="https://muffingroup.com/blog/time-wasting-websites/">The Best Time-Wasting Websites You Can Browse to Avoid Burnout</a></p>
+<p><a href="https://muffingroup.com/blog/how-to-set-homepage-in-wordpress/">How to set homepage in WordPress with no errors</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/wordads-vs-adsense/">WordAds vs AdSense: Which one to pick for your website?</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>An error occurred while processing this directive [Fixed]</title>
+		<link>https://muffingroup.com/blog/an-error-occurred-while-processing-this-directive/</link>
+				<pubDate>Mon, 02 Mar 2020 14:47:14 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5673</guid>
+				<description><![CDATA[<p>This error usually appears during the 4th step of the installation. Everything seems fine until you click the “Site Login” button</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/an-error-occurred-while-processing-this-directive/">An error occurred while processing this directive [Fixed]</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Working with WordPress can be frustrating sometimes. Users often report various errors and issues, which take time to be repaired and it can be quite difficult for beginners to manage all these errors. Some of the most common errors include the 500 Internal Server Error, wp-admin not working, error establishing a database connection, and the “an error occurred while processing this directive” issue.</p>
+<p>This article will discuss the “an error occurred while processing this directive” error, and how to eradicate it. This error usually appears during the 4th step of the installation. Everything seems fine until you click the “Site Login” button. It is an unpredictable error which can occur when loading pages, or upon several refreshes.</p>
+<p>So what does it mean, and what is the solution?</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/an-error-occured.jpg"  alt="an-error-occured An error occurred while processing this directive [Fixed]"  /></p>
+<p>Desc<br />
+The directive error normally occurs when the server has no access to files and folders which indicates that WordPress is handling things for the current user.</p>
+<p>It can occur with specific file permissions, and if you have recently changed your hosting provider.</p>
+<p>This error may also be caused by plugins. Try disabling all plugins, then enable them one by one and check if the directive error still appears.</p>
+<p>The solutions to “an error occurred while processing this directive” should fix the problem.</p>
+<h3>How to Fix the Issue</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/file-permission.jpg"  alt="file-permission An error occurred while processing this directive [Fixed]"  /></p>
+<p>Desc<br />
+One of the main culprits for this issue is the file permissions for your scripts which might be incorrectly set up and prevent the server from accessing the files. These include the 666 and the 777 permissions, which you will need to change to either 644 or 755 to fix the problem.</p>
+<p>Use the FTP editor to explore the functional WordPress sites. Check whether all files are set with the 644 permission and if the directories have the 755 permission.</p>
+<p>The main reason for the “an error occurred while processing this directive” are faulty file permissions. Please note that this can be a very long fix, often taking hours and you will need FileZilla or other similar software.</p>
+<p>First, you need to use a PHP script that will automatically set permissions for every directory on your website. This is the code to use.</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>Now you can proceed to fix the “an error occurred while processing this directive” issue.</p>
+<p>Backup all your files first.</p>
+<p>Download this PHP script, which will automatically set the right permissions for all your files and directives (644 and 755).</p>
+<p>You can freely edit the script and add other permissions of your liking.</p>
+<p>Download the file, unzip it, and upload it to the root folder of your site.</p>
+<p>Go to yourdomain.com/php_permissions_755_644.php</p>
+<p>After waiting for a few seconds, you will be able to see a list of all files and directories – which means that the script works and that the permissions are now set.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/file-permission1.jpg"  alt="file-permission1 An error occurred while processing this directive [Fixed]"  /></p>
+<p>Desc<br />
+The script works in such a way that it constantly checks the permissions for your files and folders, and it will set them to the right values when they are set incorrectly. Please note that the most important thing is to backup everything before you do this, which prevents any losses during the procedure.</p>
+<p>Once the script does its work, we recommend that you delete it, as it can be easily hacked if you use it for prolonged periods.</p>
+<p>If the fix doesn’t work (which it should), you can contact your hosting provider for more information and they should be able to fix the “an error occurred while processing this directive” problem for you.</p>
+<h3>About File and Permissions in WordPress</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/file-permission2.jpg"  alt="file-permission2 An error occurred while processing this directive [Fixed]"  /></p>
+<p>Desc<br />
+To gain greater awareness of this problem you need to understand the files and the permissions within WordPress. These permissions dictate who can access the files and folders from your site, and to what extent they can do so. They provide a certain level of security for your files.</p>
+<p>Having no permissions or wrongly set permissions can expose you to hacker attacks and make your files much more vulnerable by allowing unauthorized persons to quite freely access your files. This means they can</p>
+<p>alter them, change your settings, or even plant backdoors, which would obviously lead to losses and harm your site.</p>
+<p>Having the proper file permissions can secure your site and prevent hackers from easily injecting various hack codes and software into it. .</p>
+<p>There are three options for file permissions (who you give the permission to). These are: user (the administrator of the site), group (other people connected to your site, such as editors), and the world (which is anyone using the internet).</p>
+<p>The scope of permissions for each user is defined by a predetermined set of numbers, and each number dictates what a certain person can do. There are three digits for permissions, and here is what they mean:</p>
+<p>The first digit tells us what the user of the account, or the person who owns the site, can do with the files.</p>
+<p>The second digit defines what other users within the admin group can do; this group consists of editors and other similar members of the group.</p>
+<p>The third digit dictates what the rest of the world can do with the files; namely, your website visitors.</p>
+<p>The numbers range from 1-7, and each has its own meaning.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/file-permission4.jpg"  alt="file-permission4 An error occurred while processing this directive [Fixed]"  /></p>
+<p>Desc<br />
+0: no permissions</p>
+<p>1: execute</p>
+<p>2: write</p>
+<p>3: write and execute</p>
+<p>4: read</p>
+<p>5: read and execute</p>
+<p>6: Read and write</p>
+<p>7: read, write, and execute</p>
+<p>So, for example, a 777 permission would mean that everyone has the permission to read, write and execute. Most commonly we find the number 7 in the first place, while the rest of the numbers vary. For example, 755 means that the admin can read, write and execute, while others can read and execute. This is a rough guide to files and permissions.</p>
+<p>If you enjoyed reading this article about an error occurred while processing this directive , you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/wordpress-missing-a-temporary-folder/">WordPress missing a temporary folder: Easy fixing guide</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-publishing-failed/">How to fix the “WordPress publishing failed” error</a></p>
+<p><a href="https://muffingroup.com/blog/jquery-is-not-defined/">How to fix the “jQuery is not defined” error in WordPress</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/an-error-occurred-while-processing-this-directive/">An error occurred while processing this directive [Fixed]</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to see the current WordPress version you have</title>
+		<link>https://muffingroup.com/blog/current-wordpress-version/</link>
+				<pubDate>Wed, 26 Feb 2020 14:00:04 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5651</guid>
+				<description><![CDATA[<p>WordPress releases frequent updates, which makes it hard to keep track of the current WordPress version.  However, checking your version is very easy, and there are six different methods to choose from.</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/current-wordpress-version/">How to see the current WordPress version you have</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+It’s important to know if you have the current WordPress version and this article will show you how to find out.</p>
+<p>Outdated WordPress sites with old versions are vulnerable to hacker attacks and various frauds, so keeping up to date with the current WordPress version is very important for website admins to prevent these attacks.. More than 33% of the users have an old version of WordPress.</p>
+<p>WordPress releases frequent updates, which makes it hard to keep track of the current WordPress version. However, checking your version is very easy, and there are six different methods to choose from.</p>
+<h2>Why Use the Latest WordPress Version?</h2>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-update-1-first-image.jpg"  alt="wp-update-1-first-image How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+As WordPress is an open-source free content management service, many people from the community work consistently on the updates, to regularly provide improvements, bug fixes, performance improvements, and other changes that are vital for staying on top of the strong competition.</p>
+<p>If your WordPress is not up to date you will miss out on all the updates and new features that are necessary for your site to run smoothly.</p>
+<p>Some of the most important benefits of keeping your WordPress up to date are:</p>
+<h3>Stronger Security</h3>
+<p>Undoubtedly, security is one of the most important factors that every site owner needs to consider. If your WordPress is not up to date, you risk the security of your site, as well as that of your users.</p>
+<p>Because WordPress is so popular and open-source, it paves the way for hackers and various fraudsters to take advantage of the huge community.</p>
+<h3>To Enjoy New Features</h3>
+<p>The new and improved features of WordPress, can significantly improve your site.</p>
+<h3>Better Speed and Performance</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-speed1.jpg"  alt="wp-speed1 How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Older versions of WordPress slow down its performance. Developers are constantly trying to improve the performance and the speed of the sites, so you need to keep it up to date to reap the benefits.</p>
+<p>The faster your site, the more users will visit, the higher your SEO ranking, and so the more efficient your site will be.</p>
+<h3>To Fix Bugs</h3>
+<p>Many new updates deliver various small improvements, such as bug fixes. Despite regular updates, some bugs and errors still make their way into the software, so constant updates are implemented to eradicate them.</p>
+<h3>Compatibility</h3>
+<p>If you don’t have the current WordPress version, then you are missing out on the many great plugins and themes that are usually coordinated with the latest WordPress versions.</p>
+<h2>How to Check Your Current WordPress Version</h2>
+<p>&nbsp;</p>
+<h3>Via the Administration Interface</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/Via-the-Administration-Interface2.jpg"  alt="Via-the-Administration-Interface2 How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+The easiest way to check the current WordPress version is by accessing the administration interface within your WordPress site.</p>
+<p>First, log into your WordPress account, and access the admin area. Go to the dashboard, and scroll all the way down to the bottom, where you will be able to see the version. It will be located next to the writing “Thanks for creating with WordPress.”</p>
+<p>In fact, there are two places to check the version of WordPress using the admin interface, and they are:</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/updates.jpg"  alt="updates How to see the current WordPress version you have"  /></p>
+<p>Desc</p>
+<p>On the Updates section; first, log in to WordPress, go to the dashboard, and go to Updates. There, you will be able to see your version and whether any updates are available</p>
+<p>The second is on the footer of the site. Log into your account, go to the dashboard, and scroll to the bottom of your site and your current version is displayed next to the “Thank you for creating with WordPress” sign.</p>
+<p>This information is relevant for WordPress versions of 4.1.5 and older.</p>
+<h3>Via the About page of WordPress</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/about-page-headings.jpg"  alt="about-page-headings How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Another method is located on the About page.</p>
+<p>To find this, log into your WordPress admin area, and go to the top left corner where you will see the WordPress logo: hover over it, and you will see a new menu. On this menu, select the About WordPress option, and a new page will open with all the information.</p>
+<p>This page contains the WordPress version of your site as well as other useful information, such as credits, privacy information and updates, developer notes, and many more. You will need to have access to the admin area.</p>
+<h3>Via Checking the Page Source</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/viewsource.jpg"  alt="viewsource How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+If you are unable to access the WordPress admin area for some reason you can check the page source.</p>
+<p>This option is also viable if you want to check the version of a site you don’t control or if you don’t have FTP access, or can’t log into WordPress.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/view-source-code11.jpg"  alt="view-source-code11 How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Some websites do not allow page source to be checked for security reasons, so not all pages offer this option, but you can check by visiting the site, then right-click on an empty area within the site and click on View Page Source from the menu.</p>
+<p>You will open the source code of the website. Then search for the word “generator” using the CTRL+F function. If you are able to access the information, you will see something like this:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>The number within the content part of the code is the version. It is a very easy way to see the version if you are able to access it.</p>
+<h3>Via the version.php file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/version-php.jpg"  alt="version-php How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+If you want to see your current WordPress version, you can do so by accessing the version.php file. This method can work if you haven’t been able to do it with other methods.</p>
+<p>For this, you will need an FTP client to access the files. Log into your hosting account, and go to the wp-folder within your WordPress installation directory. Locate the version.php file.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/version-php-view.jpg"  alt="version-php-view How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Open the file, and go to line 16 where the version of your site is visible. You can also see it in the readme.html file, however not every site will have this option enabled due to security reasons.</p>
+<h3>Via the Site’s RSS feed</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/rss-feed.jpg"  alt="rss-feed How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+You will have to access the RSS feed for this method. Simply go to https://www.yourdomainname.com/feed/ within your web browser.</p>
+<p>Then, search for “WordPress” using the CTRL+F function where the version will be displayed in this form:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;https://wordpress.org/?v=5.2.4.&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<h3>Via the Source Code of the Login Screen</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/loginscreen-source-code.jpg"  alt="loginscreen-source-code How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+The final option is to access the source code of the login screen. If you want to see the current WordPress version, type “wp-login.php” at the end of the site’s URL.<br />
+no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/loginscreen-source-code1.jpg"  alt="loginscreen-source-code1 How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Then, right-click anywhere on an empty field, and select View Page Source where your current version is visible.</p>
+<h3>How to Hide Your WordPress Version</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/functions-php.jpg"  alt="functions-php How to see the current WordPress version you have"  /></p>
+<p>Desc<br />
+Displaying your version is not safe so it’s ideal to secure the information by hiding it. Do this by adding this line of code to your functions.php file:</p>
+<pre>function remove_wordpress_version() {&lt;/p&gt;
+&lt;p&gt;return \'\';&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;add_filter(\'the_generator\', \'remove_wordpress_version\');</pre>
+
+<p>Then, update the file and reupload it. It will disable the version number to be displayed.</p>
+<p>If you enjoyed reading this article about how to see the current WordPress version , you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/how-to-change-author-in-wordpress/">How to change the author in WordPress for a post</a></p>
+<p><a href="https://muffingroup.com/blog/hide-the-page-title-in-wordpress/">How to hide the page title in WordPress quickly</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-missing-a-temporary-folder/">WordPress missing a temporary folder: Easy fixing guide</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/current-wordpress-version/">How to see the current WordPress version you have</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to increase the WordPress memory limit</title>
+		<link>https://muffingroup.com/blog/wordpress-memory-limit/</link>
+				<pubDate>Mon, 24 Feb 2020 14:33:04 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5641</guid>
+				<description><![CDATA[<p>WordPress is an excellent choice for those looking for an intuitive and useful platform for managing and making their website; </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/wordpress-memory-limit/">How to increase the WordPress memory limit</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+WordPress is an excellent choice for those looking for an intuitive and useful platform for managing and making their website; it is open-source, very flexible, and scalable, but it does have some drawbacks. Working with WordPress can be difficult for beginners at the start, especially with all the technical details it entails, one of which is the WordPress memory limit.</p>
+<p>If your WordPress memory is exhausted very easily, it’s time to take some action.This is confusing if you don’t know what is happening. A good and easy solution to this problem is to increase the WordPress memory limit.</p>
+<p>This tutorial will show you how to increase the WordPress memory limit relatively easily even for beginners..</p>
+<h3>About WordPress Memory Limit</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-memory-limit.jpg"  alt="wp-memory-limit How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+If you tend to expand your website with new content, images, visual content, plugins, and various scripts, the performance of your site will decline, and eventually, you will reach the WordPress memory limit.</p>
+<p>Then you will most likely get a PHP memory limit error often quite familiar to seasoned WordPress users. The error occurs when WordPress doesn’t have sufficient memory to complete the request you asked from it. The more plugins and scripts you use, the more memory it will use and even more memory if the plugin is poorly optimized, or if the installation takes too much memory.</p>
+<p>Once you reach that WordPress memory limit, running your site becomes a problem. Your website requires a certain amount of memory to store all your files, including all the visual content, plugins, database, code, themes, and much more. Unfortunately, the WordPress memory limit restricts the amount of usable memory.. You can, however, increase it quite easily.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/hosting-memore-limit.jpg"  alt="hosting-memore-limit How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+Your hosting server also imposes a limitation. The provider who hosts your site will provide you with a certain amount of resources (memory) to manage all your files. Therefore the amount of memory you receive is largely dependent on your hosting provider.</p>
+<p>You should carefully consider which provider you choose for your website. Choosing a high-quality provider makes sense, especially if you plan to expand your website over time, and consequently use more memory. For beginners, choosing more expensive plans is probably not ideal; however, with time, it might be a good option to consider expanding.</p>
+<h2>How to Increase the WordPress Memory Limit</h2>
+<p>It is relatively easy to increase the WordPress memory limit.. It is a very clear problem and the solution is also pretty clear, so there is no need to go very deep into its cause..</p>
+<p>Three different methods are provided to fix this problem:</p>
+<h3>Method #1: Increase the PHP memory allocated to your website by changing the wp-config file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-config.jpg"  alt="wp-config How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+The most intuitive and relatively easy solution is basically to allocate more memory to your site than what has been allocated.</p>
+<p>However it will only work if you still have space to increase the memory with your hosting provider.</p>
+<p>You normally use much less memory than the provider actually offers. There are different memory limits, depending on the provider, and you need to set it regardless of what is offered.</p>
+<p>You can find your allocation in the wp-config.php file, so access that file first. The memory limit in this file might not be the same as that of the provider. You will need to change the file in such a way that it increases the WordPress memory limit.</p>
+<p>This file is not built-in with your website but comes separately as a part of your installation, so you need to locate it in the root folder of <a href="https://muffingroup.com/blog/wordpress-websites/">your WordPress site</a>. You need to use an FTP client or other suitable file manager software.</p>
+<p>To increase the memory to 256MB, for example, you will need to add this line into the file, right before the line that says “Happy Blogging”:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;define(\'WP_MEMORY_LIMIT\', \'256M\');&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>With this command, you will define the WordPress memory limit to 256MB, but you can change the value to your liking (as long as it is enough for your provider to handle.)</p>
+<p>The last step is to save the file and upload it again to the server. Now you should be able to access more memory.</p>
+<h3>Method #2: Editing the PHP.ini File</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/second-option-php-ini.jpg"  alt="second-option-php-ini How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+If editing the wp-config.php file hasn’t worked, you can try to change your server’s settings instead of the WordPress files.</p>
+<p>If you can access the file, then you will be able to find the file within your root folder, or where your service provider keeps it.</p>
+<p>Go to your wp-admin folder, and try to locate the php.ini file, or the php5.ini file. If the file is there, which is unlikely, double-click on it and download it to your PC. Open it.</p>
+<p>If the file isn’t there, then you will have to open the text editor, and open the php.ini file. Then, locate the line where your memory is specified with the memory_limit and the M values. You will need to change those lines:</p>
+<p>If the line shows 64M as the memory limit, change it to 256M with this line:</p>
+<pre>Memory_limit = 256M</pre>
+
+<p>Hopefully, this will work. Please note this option doesn’t apply for shared hosting, which does not permit access to the PHP.ini file. The next method will help those who use shared hosting.</p>
+<h3>Method #3: Edit the .htaccess file</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/htaccess.jpg"  alt="htaccess How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+If you haven’t yet been able to change the WordPress memory limit by altering the php.ini or wp-config files, you can try changing the .htaccess file. This file will normally be a hidden file, so first you need to make the file visible within your root folder.</p>
+<p>Then double click on the file and download it to your computer. Locate the line where your memory limit is specified, and change it by adding this passage of code; if you can’t locate it, then add it anyway:</p>
+<pre>php_valuememory_limit 512M</pre>
+
+<p>This will change the limit to 512MB. Next, you will have to save the file and overwrite the original. Next, refresh the FTP client, and refresh your site.</p>
+<p>If the solution doesn’t work, then you will have to delete the line and try another solution. If it works, save the file to your root directory.</p>
+<h3>Backup Method: Contact Your Host</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/hosting.jpg"  alt="hosting How to increase the WordPress memory limit"  /></p>
+<p>Desc<br />
+If you want to increase the WordPress memory limit, and the other methods haven’t worked, you can try contacting your host provider to give you a solution.</p>
+<p>In some cases, you will not be able to do it manually, and your provider will have to do it for you. In some cases, this is the easiest and best solution, especially for those with shared hosting.</p>
+<p>because you can’t access the php.ini file, where you can normally make the changes by yourself. If the hosting isn’t allowing you to increase the limit, then the only solution might be to change the hosting provider, or upgrading to a higher tier with your current provider.</p>
+<h3>Ending thoughts on WordPress memory limit</h3>
+<p>Changing the WordPress memory limit is relatively easy if you follow these steps. The options are to change your php.ini file or your wp-config file. In some cases, you will have to alter <a href="https://muffingroup.com/blog/wordpress-htaccess/">the .htaccess file</a>. Finally, you can contact your host to increase it for you, or change the hosting provider.</p>
+<p>If you enjoyed reading this article about WordPress memory limit, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/wix-or-wordpress/">Wix or WordPress: What to Build Your Website With</a></p>
+<p><a href="https://muffingroup.com/blog/contact-form-7-not-sending-emails/">Contact Form 7 not Sending Emails? Here’s How to Fix It</a></p>
+<p><a href="https://muffingroup.com/blog/cannot-login-to-wordpress/">Cannot Login to WordPress? Here’s How to Fix this Issue</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/wordpress-memory-limit/">How to increase the WordPress memory limit</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to add a responsive Google Maps widget to your site</title>
+		<link>https://muffingroup.com/blog/responsive-google-maps/</link>
+				<pubDate>Wed, 19 Feb 2020 10:39:08 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[Web design]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5625</guid>
+				<description><![CDATA[<p>Embedding the Google Maps widget is fairly simple and you need to do it yourself because , Google doesn’t provide support for these kinds of things. </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/responsive-google-maps/">How to add a responsive Google Maps widget to your site</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Responsive Google Maps can be an essential part of your site. These maps are vital for letting your customers know where you are located, even if you don’t own a physical shop. Many sites utilize the Google Maps widget as it is the easiest to use, the most responsive and intuitive tool.</p>
+<p>Embedding the Google Maps widget is fairly simple and you need to do it yourself because , Google doesn’t provide support for these kinds of things. You can either add responsive Google Maps via third-party plugins, or by altering a few lines of code. Both ways will work, but it’s important to know exactly how to do it.</p>
+<p>The following is a simple tutorial on how to add responsive Google Maps widgets to your website.</p>
+<h3>Why Responsive Google Maps?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/Why-Responsive-Google-Maps.jpg"  alt="Why-Responsive-Google-Maps How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+Google Maps are very familiar, but the term responsive is largely unknown, and it is important to know what it means. If something is called responsive, we expect a complete performance based on user’s behavior and an environment that will work regardless of the screen size, platform, or device type.</p>
+<p>A responsive widget works with the same, high standard of quality, whether it’s accessed by your phone, laptop, or computer.</p>
+<p>However, the website actually needs to adapt to these various settings and resolutions utilizing the CSS design and the concept of flexible grids and layouts. Your site should automatically adapt to the changes in the device, so the site should work if you try to access it from your phone and then go to your iPad or computer.</p>
+<p>The website needs to adapt to the user’s changes. It is crucial for the website to do so in order to prevent various site versions and different design phases. Responsive Google Maps are no different, and in many cases, they can be a vital part of a website.</p>
+<h2>How to Add a Responsive Google Maps Widget to Your Site With Code</h2>
+<p>&nbsp;</p>
+<h3>Embed the Map</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/Embed-the-Map1.jpg"  alt="Embed-the-Map1 How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+The first step is to add the maps to your site and embed them, which will allow the widget to appear. This process is easy and only takes a few simple steps. You can opt to do it manually, however this does not yet mean that the maps will be responsive.</p>
+<p>Go to Google Maps, enter the location</p>
+<p>Click search</p>
+<p>On the right-hand side, click on Share</p>
+<p>There you will find the embedded code. Copy the Embed code, and it should look something like this (this is the default embed code for Google Maps)</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;&lt;!-- Height=450px; Width=600px --&gt;&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<h3>Add the Map in WordPress</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/add-pages.jpg"  alt="add-pages How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+The next step is to add the map within WordPress.This is very easy and you will have to edit a post or a page. Adding the maps to the specific pages works for most people, especially if it is a page where the user talks about their location. Add it this way:</p>
+<p>Go to Posts &gt; Add or Pages &gt; Add</p>
+<p>Next, open the HTML editor in text code and add the embedded code where you want the map to be displayed.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/add-pages1.jpg"  alt="add-pages1 How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+Click on Save Draft, then Update, and Publish whenever you are ready.</p>
+<p>Now you should see the map on your page or site however the process is not yet complete, as we also need to make it responsive. If the maps are not visible, check twice if you made any mistakes with the code.</p>
+<h3>Making the Map Responsive</h3>
+<p>You have your maps and you can now make them responsive. This is desirable to enable a better user experience and show the map from wherever it is viewed, and from whichever device. Responsive Google Maps are important for your site.</p>
+<p>At the moment, the default size of the embedded maps is 450px, which is 75% of the default width at 600px. It is specified so within the embedded code.</p>
+<p>To make the maps responsive, you will have to change a few codes of your CSS design. This includes adding a couple of rules to your CSS code and wrapping the IFRAME inside the rules.</p>
+<p>This is an example of the responsive Google Maps CSS code. You can freely change the value of the aspect ratio with changing line #4 (padding-bottom). Here is the code:</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;.google-maps {&lt;/p&gt;
+&lt;p&gt;position: relative;&lt;/p&gt;
+&lt;p&gt;padding-bottom: 75%; // This is the aspect ratio&lt;/p&gt;
+&lt;p&gt;height: 0;&lt;/p&gt;
+&lt;p&gt;overflow: hidden;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;.google-maps iframe {&lt;/p&gt;
+&lt;p&gt;position: absolute;&lt;/p&gt;
+&lt;p&gt;top: 0;&lt;/p&gt;
+&lt;p&gt;left: 0;&lt;/p&gt;
+&lt;p&gt;width: 100% !important;&lt;/p&gt;
+&lt;p&gt;height: 100% !important;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>This will make the maps responsive, and means they will adapt to various screen sizes and other different devices.</p>
+<h3>Adding Responsive Google Maps with Themes</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/googleapi.jpg"  alt="googleapi How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+Some themes enable Google Maps to embed very easily, because many users need these maps, and they already have various themes and pre-made designs built-in.. This is good news for those who want responsive Google Maps already embedded however, you will still need a Google API to get the maps to work. The following guide will show how to add responsive Google Maps with themes.</p>
+<p><a href="https://developers.google.com/maps/documentation/javascript/get-api-key">Begin the API process on the Google website.</a></p>
+<p>Click on Get Started (the blue button).</p>
+<p>In the top left, select the menus indicated by three lines.</p>
+<p>Click on APIs &amp; Services, and select Credentials.</p>
+<p>Select Create Credentials, then API key.</p>
+<p>Select Restrict Key and choose HTTP referrers.</p>
+<p>Save.</p>
+<p>Copy your API key, paste it into the design options page.</p>
+<p>You can now add Google Maps to your theme using the theme design tools. If the theme is responsive, then you will also have your maps responsive.</p>
+<h2>Using Plugins to Add Responsive Google Maps</h2>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/plugins.jpg"  alt="plugins How to add a responsive Google Maps widget to your site"  /></p>
+<p>Desc<br />
+Plugins are a very easy way to add responsive Google Maps to your site, if you don’t want to change the code, or if your theme doesn’t offer the implementation.</p>
+<p>In addition to adding the Google Maps, these plugins will also enable you to create a filterable store locator, and display posts or custom post types on your map.</p>
+<p>They are user-friendly because they use shortcodes.</p>
+<p>This is how to add maps with plugins:</p>
+<p>Go to WordPress, go to Plugins, click on Add New.</p>
+<p>Look for Google Maps, and select the plugin.</p>
+<p>Enable it with plugins, go to Settings.</p>
+<p>Where you want to add the map, you can add the plugin.</p>
+<p>These maps will still need the Google API to work properly, so make sure you take care of that first.</p>
+<p>Some recommended plugins are:</p>
+<h3>WP Google Map Plugin</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-googlemap.jpg"  alt="wp-googlemap How to add a responsive Google Maps widget to your site"  /><br />
+<a href="https://wordpress.org/plugins/wp-google-map-plugin/">https://wordpress.org/plugins/wp-google-map-plugin/</a></p>
+<p>Desc<br />
+This plugin offers a free version where you have access to plenty of functionalities.</p>
+<h3>Google Maps Widget</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/maps-widget-for-google-maps.jpg"  alt="maps-widget-for-google-maps How to add a responsive Google Maps widget to your site"  /><br />
+<a href="https://wordpress.org/plugins/google-maps-widget/">https://wordpress.org/plugins/google-maps-widget/</a></p>
+<p>Desc<br />
+This is a lightweight solution for your responsive Google Maps.</p>
+<h3>WP Google Maps</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/wp-google-maps.jpg"  alt="wp-google-maps How to add a responsive Google Maps widget to your site"  /><br />
+<a href="https://wordpress.org/plugins/wp-google-maps/">https://wordpress.org/plugins/wp-google-maps/</a></p>
+<p>Desc<br />
+This plugin is full of features and functionalities.</p>
+<p>If you enjoyed reading this article about responsive Google Maps , you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/wordpress-missing-a-temporary-folder/">WordPress missing a temporary folder: Easy fixing guide</a></p>
+<p><a href="https://muffingroup.com/blog/jquery-is-not-defined/">How to fix the “jQuery is not defined” error in WordPress</a></p>
+<p><a href="https://muffingroup.com/blog/hide-the-page-title-in-wordpress/">How to hide the page title in WordPress quickly</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/responsive-google-maps/">How to add a responsive Google Maps widget to your site</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>How to change the author in WordPress for a post</title>
+		<link>https://muffingroup.com/blog/how-to-change-author-in-wordpress/</link>
+				<pubDate>Mon, 17 Feb 2020 10:43:19 +0000</pubDate>
+		<dc:creator><![CDATA[Albert Ślusarczyk]]></dc:creator>
+				<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">https://muffingroup.com/blog/?p=5607</guid>
+				<description><![CDATA[<p>In some cases, sites that have a lot of content published on a daily basis will likely have several authors. Also if an author leaves your site for any reason, </p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-change-author-in-wordpress/">How to change the author in WordPress for a post</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Desc<br />
+Are you wondering how to change the author in WordPress for a post? This article will provide all the necessary information about changing the author and why it is so important for WordPress. As you may know, the software automatically sets the author as the person who uploaded the article, and the post is attributed to their username.</p>
+<p>However, it is important that people know who wrote the post by name, and not just by the username because sometimes the author of the post is somebody other than the uploader. In this case you can change the name of the author, which makes it easier for you to attribute the posts to your writers.</p>
+<p>It is very easy to do on your own without a plugin or various other downloads, and you can learn how to do this here.</p>
+<h3>Why Change a Post’s Author?</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/change-author.jpg"  alt="change-author How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+Knowing how to change the author is crucial if you are a part of a multi-author content creation community. You may also have ghostwriters so the author of the post will not be the person by whom you want the post published. Thus you need to change the name to portray the author you want.</p>
+<p>In some cases, sites that have a lot of content published on a daily basis will likely have several authors. Also if an author leaves your site for any reason, changing the name might become very important. You will have to change the name of the author to the name of one of your writers who is still associated with you.</p>
+<p>There are many other cases where you may need to change the name of the writer, when it is different from the person who uploaded the article. WordPress doesn’t explain to their users how this works nor how to change the author in WordPress..</p>
+<p>There are many ways you can go about this, and you can freely change, edit or update the name of the author with some simple steps. First, you have to know which strategy best suits your needs, and then follow the steps provided.</p>
+<h2>How to change author in WordPress to an Existing User</h2>
+<p>&nbsp;</p>
+<h3>Method #1: Using the Block Editor</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/block-editor.jpg"  alt="block-editor How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+Changing the name of the author to an existing user is very easy with the block editor of WordPress.. The first step is to access your posts page by going to Posts &gt; All Posts, and pick the title where you need to make the change.</p>
+<p>Next, once you open the posting page, go to Documents that are located in the sidebar. Then you need to locate the Status &amp; Visibility subpage, click on it and there you will find who the author of the post is.</p>
+<p>Here you can select any author on your existing WordPress page with a connected account. If you don’t have another author, you will have to create one and add it to the posting page, which we will cover later on.</p>
+<p>The last step is to select the right author of the post and click Update in order for the changes to take place.</p>
+<h3>Method #2: Using the Classic Editor</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/classic-editor.jpg"  alt="classic-editor How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+This process is different for those using the Classic editor but it’s still simple to complete. First, select the Screen Options found above the editor.</p>
+<p>Next, select the Author checkbox next to Boxes. Scroll down to the bottom and locate the drop-down menu near the bottom. It is very similar to the block editor.</p>
+<p>Here, you will be able to select the correct author, or the account of the author for the post. The last action is to hit Update in order for the changes to take place.</p>
+<h3>Method #3: Using the Gutenberg Editor</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/gutenberg.jpg"  alt="gutenberg How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+Changing the author of the post is very easy with the Gutenberg editor because unlike the Classic editor, you don’t need to enter the Screen Options. The changes you need to make are located within the post itself, namely, under the Document tab, where you can make the changes very quickly.</p>
+<h3>Method #4: Without Entering the Post</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/Without-Entering-the-Post.jpg"  alt="Without-Entering-the-Post How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+You don’t need to enter the post in order to change the author of the post. You simply go to the Quick Edit option within the Posts lists, select the title you want to change. Then, find the dropdown menu, and locate the author you want to give the post to. Then click the Update button and the post will be ready.</p>
+<p>If you already have an existing author that you want to attribute the post to, then this is one of the quicker ways of how to change author in WordPress. If you don’t have another user ready you will need to add one.</p>
+<h3>Method #5: Updating the Author’s Name</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/Updating-the-Author-Name.jpg"  alt="Updating-the-Author-Name How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+This section provides instructions on how to change the author’s name to the relevant name. Usually only the username of the author is displayed under a post rather than their real name so you might want to change that. Some authors also prefer to write under pen names or various other names and it’s easy to make these changes.</p>
+<p>First go to Users, which you will find in the sidebar, locate the user name of the post, and click Edit. Then find the Name section of the site, where you can make the desired changes. To finish click on Display name publicly, and the right name will appear.</p>
+<h3>How to Add a New Author to Assign Existing Posts to</h3>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/How-to-Add-a-New-Author-to-Assign-Existing-Posts1.jpg"  alt="How-to-Add-a-New-Author-to-Assign-Existing-Posts1 How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+Before you can attribute posts to users, you need to create new authors within your WordPress site and give them certain credentials. If you are the site owner, you will also be the Administrator of the site, which will give you unlimited credentials, including the ability to add new authors.</p>
+<p>Firstly, create a new user account for the author in one of two ways. Either allow registration within <a href="https://muffingroup.com/blog/wordpress-websites/">your WordPress site</a> and allow authors to register from there, or you can add the users manually. The first method is useful to those who will be inviting new people to register to the site and will have plenty of other users, while the second option will suit those who just want to add the few writers or the one writer they need.</p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p><img  title="" src="https://muffingroup.com/blog/wp-content/uploads/2020/02/How-to-Add-a-New-Author-to-Assign-Existing-Posts2.jpg"  alt="How-to-Add-a-New-Author-to-Assign-Existing-Posts2 How to change the author in WordPress for a post"  /></p>
+<p>Desc<br />
+If you add a new user, it’s important to keep in mind the user roles. There are five roles to choose from, and the best role for this situation is the Author\&#8217;s role. So you will want to give your writers the role that enables them to upload, write, edit, and publish their files. To do this, select Role, then Add New User.. You can also give them the password by clicking Send Password.</p>
+<p>This is a good way to add new users or authors to attribute posts to your WordPress site.</p>
+<h3>Removing Author Names from WordPress Posts</h3>
+<p>Many WordPress users also want to understand how to remove names from posts. You cannot do this by default in WordPress, and many themes have the author name hardcoded within their design, so removing the name can be difficult.</p>
+<p>In order to remove the name you will have to edit some code. First find the file where the relevant code is located; most often these are the single.php, content.php, archive.php, and index.php files.</p>
+<p>For example, this is how the theme Twenty Nineteen uses the author name by the twenty nineteen_posted_by code to locate the author. This is how the code looks.</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;function twentynineteen_posted_by() {&lt;/p&gt;
+&lt;p&gt;printf(&lt;/p&gt;
+&lt;p&gt;/* translators: 1: SVG icon. 2: post author, only visible to screen readers. 3: author link. */&lt;/p&gt;
+&lt;p&gt;\'%1$s%2$s&lt;a href=&quot;%3$s&quot;&gt;%4$s&lt;/a&gt;\',&lt;/p&gt;
+&lt;p&gt;twentynineteen_get_icon_svg( \'person\', 16 ),&lt;/p&gt;
+&lt;p&gt;__( \'Posted by\', \'twentynineteen\' ),&lt;/p&gt;
+&lt;p&gt;esc_url( get_author_posts_url( get_the_author_meta( \'ID\' ) ) ),&lt;/p&gt;
+&lt;p&gt;esc_html( get_the_author() )&lt;/p&gt;
+&lt;p&gt;);&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;endif;&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<p>To remove the name, you need to remove this piece of code.</p>
+<pre>&lt;/p&gt;
+&lt;p&gt;function twentynineteen_posted_by() {&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;endif;&lt;/p&gt;
+&lt;p&gt;</pre>
+
+<h3>Ending thoughts on how to change author in WordPress</h3>
+<p>Hopefully, you now know how to change author in WordPress, and the multiple ways to go about it. In some cases, you will also need to add new users to add them as authors.</p>
+<p>If you enjoyed reading this article about how to change author in WordPress, you should read these as well:</p>
+<p><a href="https://muffingroup.com/blog/hide-the-page-title-in-wordpress/">How to hide the page title in WordPress quickly</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-publishing-failed/">How to fix the “WordPress publishing failed” error</a></p>
+<p><a href="https://muffingroup.com/blog/wordpress-interview-questions/">WordPress interview questions you need the answers to</a></p>
+<p>no-repeat;center top;;<br />
+auto</p>
+<p>The post <a rel="nofollow" href="https://muffingroup.com/blog/how-to-change-author-in-wordpress/">How to change the author in WordPress for a post</a> appeared first on <a rel="nofollow" href="https://muffingroup.com/blog">Be Theme Blog</a>.</p>
+]]></content:encoded>
+										</item>
+	</channel>
+</rss>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Object Caching 27/102 objects using disk
+Page Caching using disk: enhanced (Page is feed) 
+Minified using disk
+
+Served from: muffingroup.com @ 2020-03-26 02:54:22 by W3 Total Cache
+-->
