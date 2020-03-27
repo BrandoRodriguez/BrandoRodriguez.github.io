@@ -340,8 +340,9 @@ a {
   display: none;
 }
 .menuMobile .logo img {
-  width: 65px;
-  margin-left: 130px;
+  width: 110px;
+  margin-left: 115px;
+  margin-top: -3px;
 
 }
 .hamburger {
@@ -429,6 +430,8 @@ a {
   padding: 10px;
   position: absolute;
   top: 0;
+
+
   left: 0;
   width: 100%;
 }
@@ -556,8 +559,9 @@ a {
   z-index: 10;
 }
 .sidebar .logo img {
-  width: 75px;
-  margin-top: 45px;
+  width: 110px;
+  margin-left: 115px;
+  margin-top: -3px;
 }
 .sidebar .scrollDown {
   position: absolute;
